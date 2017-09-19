@@ -19,19 +19,28 @@ export default class NotesComponent extends PureComponent {
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		]
 	};
 
 	onSelect = ({ note, column, row }) => {
-		this.setState(prevState => {
-			let changedRow = prevState.rows[row].slice();
-			changedRow.splice(column, 1, note);
-			let newState = prevState.rows.slice();
-			newState.splice(row, 1, changedRow);
-			return { rows: newState };
-		});
+		if (this.state.rows[row][column] !== 0) {
+			this.setState(prevState => {
+				let changedRow = prevState.rows[row].slice();
+				changedRow.splice(column, 1, 0);
+				let newState = prevState.rows.slice();
+				newState.splice(row, 1, changedRow);
+				return { rows: newState };
+			});
+		} else {
+			this.setState(prevState => {
+				let changedRow = prevState.rows[row].slice();
+				changedRow.splice(column, 1, note);
+				let newState = prevState.rows.slice();
+				newState.splice(row, 1, changedRow);
+				return { rows: newState };
+			});
+		}
 	};
 
 	// onDeselect = ({note,column, row}) => {
@@ -39,6 +48,7 @@ export default class NotesComponent extends PureComponent {
 	// }
 
 	render() {
+		console.log(this.state);
 		const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 		const notesClassNames = classNames('notesComponent');
 		return (

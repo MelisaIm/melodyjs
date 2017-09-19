@@ -7,7 +7,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<SoundStudioPage
-					notes={['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']}
+					notes={['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']}
 					onSelect={this.onSelect}
 					instruments={['Synth']}
 					onReplay={this.onReplay}
