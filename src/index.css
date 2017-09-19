@@ -82,12 +82,12 @@ body {
 .Nav {
 	width: 100vw;
 	display: fixed;
-	/*margin-top: 20px;*/
 	background-color: rgb(214, 232, 242);
 	overflow: hidden;
 	position: fixed; /* Set the navbar to fixed position */
 	top: 0; /* Position the navbar at the top of the page */
 	width: 100%; /* Full width */
+	margin-bottom: 20px;
 }
 
 .FooterComponent {
@@ -148,4 +148,24 @@ body {
 
 .filled {
 	background-color: black;
+}
+
+.card-title {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.card {
+	padding: 20px;
+}
+
+.LibraryPageLayout {
+	display: flex;
+	flex-flow: column;
+}
+
+.LibraryPageContent {
+	display: flex;
+	margin-top: 40px;
+	flex-flow: wrap;
 }

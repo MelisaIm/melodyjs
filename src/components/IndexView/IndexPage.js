@@ -5,7 +5,7 @@ import Footer from '../NavBar/FooterComponent';
 export default function IndexPage() {
 	return (
 		<div className="IndexPage">
-			<NavBar />
+			<NavBar activeKey={1} />
 			<div className="IndexPageContent">
 				<div className="jumbotron">
 					<div className="container">
@@ -26,7 +26,7 @@ export default function IndexPage() {
 					</div>
 				</div>
 			</div>
-			<Footer />
+			<Footer activeKey={1} />
 		</div>
 	);
 }

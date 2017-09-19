@@ -16,7 +16,7 @@ export default function SoundStudioPageLayout({
 }) {
 	return (
 		<div className="Page">
-			<NavBarComponent />
+			<NavBarComponent activeKey={3} />
 			<div className="SoundStudioPageLayout">
 				<div className="left">
 					<NotesComponent notes={notes} />
@@ -31,7 +31,7 @@ export default function SoundStudioPageLayout({
 					<InstrumentsComponent chooseInstrument={chooseInstrument} instruments={instruments} />
 				</div>
 			</div>
-			<FooterComponent />
+			<FooterComponent activeKey={3} />
 		</div>
 	);
 }

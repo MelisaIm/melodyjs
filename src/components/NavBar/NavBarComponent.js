@@ -1,13 +1,13 @@
 import React from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
 
-export default function NavBarComponent() {
+export default function NavBarComponent({ activeKey }) {
 	function handleSelect(selectedKey) {
 		alert('selected ' + selectedKey);
 	}
 	return (
 		<div className="Nav">
-			<Nav bsStyle="tabs" activeKey={3} onSelect={handleSelect}>
+			<Nav bsStyle="tabs" activeKey={activeKey} onSelect={handleSelect}>
 				<NavItem eventKey={1} href="/home">
 					MelodyJS
 				</NavItem>

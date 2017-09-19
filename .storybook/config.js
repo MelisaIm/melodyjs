@@ -14,5 +14,6 @@ function loadStories() {
 	// IndexPage & Library
 	require('../src/components/IndexView/IndexPage.story');
 	require('../src/components/LibraryView/LibraryCardComponent.story');
+	require('../src/components/LibraryView/LibraryPageLayout.story');
 }
 configure(loadStories, module);
