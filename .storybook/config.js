@@ -8,5 +8,6 @@ function loadStories() {
 	require('../src/components/SoundStudioView/ToolbarComponent.story');
 	require('../src/components/SoundStudioView/SoundStudioPage.story');
 	require('../src/components/SoundStudioView/SoundStudioPageLayout.story');
+	require('../src/components/NavBar/NavBarComponent.story');
 }
 configure(loadStories, module);

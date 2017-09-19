@@ -15,19 +15,21 @@ export default function SoundStudioPageLayout({
 	chooseInstrument
 }) {
 	return (
-		<div className="SoundStudioPageLayout">
+		<div className="Page">
 			<NavBarComponent />
-			<div className="left">
-				<NotesComponent notes={notes} />
-			</div>
-			<div className="right">
-				<ToolbarComponent
-					onReplay={onReplay}
-					onClear={onClear}
-					onSave={onSave}
-					onDelete={onDelete}
-				/>
-				<InstrumentsComponent chooseInstrument={chooseInstrument} instruments={instruments} />
+			<div className="SoundStudioPageLayout">
+				<div className="left">
+					<NotesComponent notes={notes} />
+				</div>
+				<div className="right">
+					<ToolbarComponent
+						onReplay={onReplay}
+						onClear={onClear}
+						onSave={onSave}
+						onDelete={onDelete}
+					/>
+					<InstrumentsComponent chooseInstrument={chooseInstrument} instruments={instruments} />
+				</div>
 			</div>
 			<FooterComponent />
 		</div>
