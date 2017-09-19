@@ -1,5 +1,74 @@
+@import '../node_modules/font-awesome/css/font-awesome.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap-theme.css';
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+span {
+	pointer-events: none;
+}
+
+.note {
+	display: table;
+	width: 50px;
+	height: 35px;
+	background-color: white;
+	border: 1px black solid;
+}
+
+.noteSpan {
+	color: rgba(76, 141, 156, 0.25);
+}
+
+.note.selected {
+	background: rgba(44, 178, 196, 0.72);
+}
+
+.notesComponent {
+	display: flex;
+	box-sizing: border-box;
+}
+
+.ToolbarComponent {
+	display: flex;
+	flex-wrap: wrap;
+	width: 300px;
+}
+
+.action-button {
+	color: rgb(99, 154, 247);
+	font-weight: bolder;
+	margin-top: 10px;
+	padding: 20px;
+	border-radius: 20px;
+	border: 2px rgba(197, 197, 199, 0.4) solid;
+	width: 100%;
+	background-color: rgb(255, 255, 255);
+}
+
+.SoundStudioPageLayout {
+	display: flex;
+	margin: 10px;
+	justify-content: space-around;
+}
+
+.left {
+	align-items: center;
+	margin: 30px;
+}
+
+.right {
+	padding: 20px;
+}
+
+.InstrumentsComponent {
+	padding-top: 20px;
+}
+
+.ToolbarComponent {
+	text-align: center;
 }
