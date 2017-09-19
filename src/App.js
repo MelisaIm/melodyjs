@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import SoundStudioPage from './components/SoundStudioView/SoundStudioPage';
 
 class App extends Component {

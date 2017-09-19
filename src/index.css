@@ -8,20 +8,18 @@ body {
 	font-family: sans-serif;
 }
 
-span {
-	pointer-events: none;
-	line-height: 35px;
-}
-
 .note {
-	display: table;
+	display: flex;
 	width: 50px;
 	height: 35px;
 	background-color: white;
 	border: 1px black solid;
+	justify-content: center;
 }
 
 .noteSpan {
+	pointer-events: none;
+	line-height: 35px;
 	color: rgba(76, 141, 156, 0.25);
 }
 
@@ -61,8 +59,7 @@ span {
 	margin: 10px;
 	justify-content: space-around;
 	min-height: 100%;
-	margin-bottom: -50px;
-	flex: 1 0 auto;
+	padding: 30px;
 }
 
 .left {
@@ -83,17 +80,72 @@ span {
 }
 
 .Nav {
-	width: 100%;
-	display: flex;
+	width: 100vw;
+	display: fixed;
 	/*margin-top: 20px;*/
 	background-color: rgb(214, 232, 242);
+	overflow: hidden;
+	position: fixed; /* Set the navbar to fixed position */
+	top: 0; /* Position the navbar at the top of the page */
+	width: 100%; /* Full width */
 }
 
 .FooterComponent {
 	background-color: rgb(214, 232, 242);
-	position: absolute;
+	position: fixed;
 	bottom: 0px;
-	width: 100%;
+	width: 100vw;
 	height: 50px;
-	margin-bottom: -10px;
+	margin-bottom: 0px;
+}
+
+.photoCredit {
+	font-size: 12px;
+	position: absolute;
+	bottom: 30px;
+	right: 20px;
+	/*color: rgb(245, 245, 245);*/
+}
+
+.jumbotron-text {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	height: 100vh;
+	background-image: url('./images/haley-powers.jpg');
+	background-size: cover;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*Library Page*/
+.minigrid-row {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+}
+
+.minigrid {
+	display: flex;
+	flex-flow: column;
+	height: 160px;
+	width: 160px;
+	box-sizing: border-box;
+}
+
+.mini-square {
+	display: flex;
+	width: 10px;
+	height: 10px;
+	background-color: white;
+	border: 0.5px black solid;
+	justify-content: center;
+}
+
+.filled {
+	background-color: black;
 }

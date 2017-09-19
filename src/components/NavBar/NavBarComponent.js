@@ -9,7 +9,7 @@ export default function NavBarComponent() {
 		<div className="Nav">
 			<Nav bsStyle="tabs" activeKey={3} onSelect={handleSelect}>
 				<NavItem eventKey={1} href="/home">
-					MelodyJs
+					MelodyJS
 				</NavItem>
 				<NavItem eventKey={2} title="Library">
 					The Library
