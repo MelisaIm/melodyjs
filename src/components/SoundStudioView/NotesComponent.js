@@ -8,7 +8,7 @@ export default class NotesComponent extends PureComponent {
 		super(props);
 
 		this.state = {
-			rows: [
+			song: [
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -35,46 +35,46 @@ export default class NotesComponent extends PureComponent {
 
 	onSelect = ({ note, column, row }) => {
 		this.synth(note);
-		if (this.state.rows[row][column] !== 0) {
+		if (this.state.song[row][column] !== 0) {
 			this.setState(prevState => {
-				let changedRow = prevState.rows[row].slice();
+				let changedRow = prevState.song[row].slice();
 				changedRow.splice(column, 1, 0);
-				let newState = prevState.rows.slice();
+				let newState = prevState.song.slice();
 				newState.splice(row, 1, changedRow);
 				this.props.updateSong(newState);
-				return { rows: newState };
+				return { song: newState };
 			});
 		} else {
 			this.setState(prevState => {
-				let changedRow = prevState.rows[row].slice();
+				let changedRow = prevState.song[row].slice();
 				changedRow.splice(column, 1, note);
-				let newState = prevState.rows.slice();
+				let newState = prevState.song.slice();
 				newState.splice(row, 1, changedRow);
 				this.props.updateSong(newState);
 
-				return { rows: newState };
+				return { song: newState };
 			});
 		}
 	};
 
 	componentDidMount() {
-		console.log(this.props.song);
 		if (this.props.song) {
 			this.setState({
-				rows: this.props.song
+				song: this.props.song
 			});
 		}
 	}
 
 	componentWillReceiveProps = nextProps => {
-		this.setState({
-			rows: nextProps.song
-		});
+		if (nextProps.song.length > 0) {
+			this.setState({
+				song: nextProps.song
+			});
+		}
 	};
 
 	render() {
-		console.log(this.state);
-		if (!this.props.song) {
+		if (!this.state.song) {
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const notesClassNames = classNames('notesComponent');
 			return (
@@ -99,7 +99,6 @@ export default class NotesComponent extends PureComponent {
 				</div>
 			);
 		} else {
-			console.log(this.state);
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const notesClassNames = classNames('notesComponent');
 			return (
@@ -114,7 +113,7 @@ export default class NotesComponent extends PureComponent {
 											name={note}
 											onSelect={this.onSelect}
 											id={`${chord},${row}`}
-											selected={this.state.rows[row][chord]}
+											selected={this.state.song ? this.state.song[row][chord] : false}
 										/>
 									);
 								})}

@@ -2,12 +2,12 @@ import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default function LibraryCardComponent({ song = {} }) {
-	if (song.rows && Array.isArray(song.rows)) {
+	if (song.song && Array.isArray(song.song)) {
 		return (
 			<div className="LibraryCardComponent">
 				<div className="card" style={{ width: 20 + 'rem' }}>
 					<div className="minigrid">
-						{song.rows.map((row, index) => {
+						{song.song.map((row, index) => {
 							return (
 								<div className="minigrid-row" key={index}>
 									{row.map((note, index) => {
@@ -31,10 +31,10 @@ export default function LibraryCardComponent({ song = {} }) {
 					</div>
 					<div className="card-block">
 						<h4 className="card-title">
-							{song.title ? song.title : 'Song Title'}
+							{song.info.title ? song.info.title : 'Song Title'}
 						</h4>
 						<p className="card-text">
-							{song.description ? song.description : 'Song Description'}
+							{song.info.description ? song.info.description : 'Song Description'}
 						</p>
 						<LinkContainer to={`/studio/${song.id}`} exact>
 							<a href="#" className="btn btn-primary">
@@ -54,10 +54,10 @@ export default function LibraryCardComponent({ song = {} }) {
 					</div>
 					<div className="card-block">
 						<h4 className="card-title">
-							{song.title ? song.title : 'Song Title'}
+							{song.info.title ? song.info.title : 'Song Title'}
 						</h4>
 						<p className="card-text">
-							{song.description ? song.description : 'Song Description'}
+							{song.info.description ? song.info.description : 'Song Description'}
 						</p>
 						<LinkContainer to={`/studio/${song.id}`} exact>
 							<a href="#" className="btn btn-primary">

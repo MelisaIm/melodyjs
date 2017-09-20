@@ -10,6 +10,20 @@ export default function LibraryPageLayout({ songs = [] }) {
 				<NavBar />
 				<div className="LibraryPageContent">
 					{songs.map((song, index) => <LibraryCardComponent song={song} key={index} />)}
+					<div className="LibraryCardComponent">
+						<div className="card" style={{ width: 20 + 'rem' }}>
+							<div className="placeholder">
+								<img src="https://placekitten.com/160/160" alt="" />
+							</div>
+							<div className="card-block">
+								<h4 className="card-title" />
+								<p className="card-text" />
+								<a href="/studio" className="btn btn-primary">
+									Create Song
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<Footer activeKey={2} />
 			</div>

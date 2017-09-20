@@ -1,10 +1,9 @@
 export default function recordToSong(record) {
 	return {
 		id: record.id,
-		title: record.fields.title,
-		description: record.fields.description,
-		rows: record.fields.rows
-			? record.fields.rows.split('-').map(array =>
+		info: { title: record.fields.title, description: record.fields.description },
+		song: record.fields.song
+			? record.fields.song.split('-').map(array =>
 					array.split(',').map(digit => {
 						if (parseInt(digit, 10) === 0) {
 							return 0;

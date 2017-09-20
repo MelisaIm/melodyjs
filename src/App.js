@@ -20,6 +20,17 @@ class App extends Component {
 		});
 	}
 
+	updateData = (song, id) => {
+		getSongs({
+			databaseId: 'appxhHjmck1PuVaSU',
+			token: 'keymBy1TajObCCmUW'
+		}).then(data =>
+			this.setState({
+				data
+			})
+		);
+	};
+
 	render() {
 		return (
 			<div className="App">
@@ -73,6 +84,8 @@ class App extends Component {
 										onSave={this.onSave}
 										onDelete={this.onDelete}
 										chooseInstrument={this.chooseInstrument}
+										updateData={this.updateData}
+										data={this.state.data}
 									/>
 								);
 							}}
@@ -93,7 +106,7 @@ class App extends Component {
 									<SoundStudioPage
 										song={
 											this.state.data.find(song => song.id === id)
-												? this.state.data.find(song => song.id === id).rows
+												? this.state.data.find(song => song.id === id).song
 												: []
 										}
 										songId={match.params.songId}
@@ -121,6 +134,8 @@ class App extends Component {
 										onSave={this.onSave}
 										onDelete={this.onDelete}
 										chooseInstrument={this.chooseInstrument}
+										updateData={this.updateData}
+										data={this.state.data}
 									/>
 								);
 							}}

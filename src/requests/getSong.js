@@ -8,6 +8,6 @@ export default function getNotes(id, { databaseId, token }) {
 		}
 	})
 		.then(response => response.json())
-		.then(data => recordToSong(data))
+		.then(record => recordToSong(record).song)
 		.catch(error => console.log(error));
 }

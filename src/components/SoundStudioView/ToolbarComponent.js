@@ -50,7 +50,9 @@ export default function ToolbarComponent({ songId, song, onReplay, onClear, onSa
 	}
 
 	// send changes to api
-	function _handleSave() {}
+	function _handleSave() {
+		onSave(song, songId);
+	}
 
 	// delete song from api
 	function _handleDelete() {}

@@ -58,6 +58,7 @@ body {
 	display: flex;
 	margin: 10px;
 	justify-content: space-around;
+	flex-wrap: wrap;
 	min-height: 100%;
 	padding: 30px;
 }
@@ -69,6 +70,25 @@ body {
 
 .right {
 	padding: 20px;
+}
+
+.formlayout {
+	margin-left: 50px;
+	margin-top: 20px;
+	width: 100vw;
+	text-align: center;
+	display: flex;
+	margin-bottom: -30px;
+}
+
+.form {
+	/*width: 30%;*/
+	display: flex;
+}
+
+.form > * {
+	padding: 5px;
+	margin: 5px;
 }
 
 .InstrumentsComponent {
