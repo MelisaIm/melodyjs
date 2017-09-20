@@ -154,6 +154,7 @@ body {
 }
 
 /*Library Page*/
+
 .minigrid-row {
 	display: flex;
 	flex-flow: row;
@@ -181,10 +182,10 @@ body {
 	background-color: black;
 }
 
-.card-title {
+/*.card-title {
 	margin-top: 0;
 	margin-bottom: 0;
-}
+}*/
 
 .card {
 	padding: 20px;
@@ -199,4 +200,12 @@ body {
 	display: flex;
 	margin-top: 40px;
 	flex-flow: wrap;
+}
+
+.card-buttons {
+	display: flex;
+}
+
+.btn {
+	margin: 5px;
 }

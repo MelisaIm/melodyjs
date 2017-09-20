@@ -4,7 +4,7 @@ import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 export default class Form extends Component {
 	static defaultProps = {
 		info: {},
-		onSave: () => {},
+		onSaveForm: () => {},
 		onDelete: () => {}
 	};
 
@@ -24,10 +24,12 @@ export default class Form extends Component {
 					<ControlLabel>Title</ControlLabel>
 					<FormControl
 						className="Form-titleInput"
+						name="titleInput"
 						type="text"
 						value={this.state.title || ''}
 						placeholder="Give your song a title"
 						onChange={this._handleChangeInput}
+						required
 					/>
 					<ControlLabel>Description</ControlLabel>
 					<FormControl
@@ -37,30 +39,12 @@ export default class Form extends Component {
 						placeholder="Type your description here..."
 						value={this.state.description || ''}
 						onChange={this._handleChangeInput}
+						required
 					/>
-					<div className="Form-saveButtonWrapper">
-						<button className="Form-saveButton btn btn-primary" type="submit">
-							Save
-						</button>
-						{this.state.songId &&
-							<button className="Form-deleteButton" onClick={this._handleClickDeleteButton}>
-								Delete
-							</button>}
-					</div>
 				</FormGroup>
 			</form>
 		);
 	}
-
-	_handleSubmit = event => {
-		event.preventDefault();
-		const { onSave } = this.props;
-		const $form = event.target;
-		const title = $form.titleInput.value.trim();
-		const description = $form.descriptionInput.value.trim();
-		$form.reset();
-		onSave({ title, description });
-	};
 
 	_handleChangeInput = event => {
 		event.preventDefault();
@@ -78,10 +62,16 @@ export default class Form extends Component {
 	};
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.info) {
+		console.log(nextProps.songId);
+		if (nextProps.songId) {
 			this.setState({
 				title: nextProps.info.title,
 				description: nextProps.info.description
+			});
+		} else {
+			this.setState({
+				title: '',
+				description: ''
 			});
 		}
 	}

@@ -70,6 +70,14 @@ export default class SoundStudioPage extends PureComponent {
 		}
 	};
 
+	onSaveForm = ({ info }, id) => {
+		if (id) {
+			console.log('song exists!');
+		} else {
+			console.log('create a new song, yo');
+		}
+	};
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.song) {
 			this.setState({
@@ -99,6 +107,7 @@ export default class SoundStudioPage extends PureComponent {
 					chooseInstrument={this.chooseInstrument}
 					updateSong={this.updateSong}
 					data={this.props.data}
+					onSaveForm={this.onSaveForm}
 				/>
 			</div>
 		);

@@ -1,7 +1,50 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
+import Tone from 'tone';
 
 export default function LibraryCardComponent({ song = {} }) {
+	function sleep(milliseconds) {
+		let start = new Date().getTime();
+		for (let i = 0; i < 1e7; i++) {
+			if (new Date().getTime() - start > milliseconds) {
+				break;
+			}
+		}
+	}
+
+	function _handleReplay() {
+		if (song) {
+			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+			const arrayOfChords = [];
+			chords.forEach(chord => {
+				let chordArray = song.song.map(array => array[chord]).filter(note => note !== 0);
+				if (chordArray.length > 0) {
+					arrayOfChords.push(chordArray);
+				}
+			});
+			arrayOfChords.forEach(chord => {
+				if (chord.length === 1) {
+					sleep(500);
+					synth(chord[0]);
+				} else {
+					sleep(500);
+
+					poly(chord.length, chord);
+				}
+			});
+		} else {
+			return false;
+		}
+	}
+	function poly(voices, chordArray) {
+		let polySynth = new Tone.PolySynth(voices, Tone.Synth).toMaster();
+		polySynth.triggerAttackRelease(chordArray, '16n');
+	}
+	function synth(note) {
+		let synth = new Tone.Synth().toMaster();
+		synth.triggerAttackRelease(note, '16n');
+	}
+
 	if (song.song && Array.isArray(song.song)) {
 		return (
 			<div className="LibraryCardComponent">
@@ -36,11 +79,16 @@ export default function LibraryCardComponent({ song = {} }) {
 						<p className="card-text">
 							{song.info.description ? song.info.description : 'Song Description'}
 						</p>
-						<LinkContainer to={`/studio/${song.id}`} exact>
-							<a href="#" className="btn btn-primary">
-								Open
+						<div className="card-buttons">
+							<LinkContainer to={`/studio/${song.id}`} exact>
+								<a href="#" className="btn btn-primary">
+									Edit
+								</a>
+							</LinkContainer>
+							<a href="#" className="btn btn-primary" onClick={_handleReplay}>
+								Preview
 							</a>
-						</LinkContainer>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -59,11 +107,13 @@ export default function LibraryCardComponent({ song = {} }) {
 						<p className="card-text">
 							{song.info.description ? song.info.description : 'Song Description'}
 						</p>
-						<LinkContainer to={`/studio/${song.id}`} exact>
-							<a href="#" className="btn btn-primary">
-								Open
-							</a>
-						</LinkContainer>
+						<div className="card-buttons">
+							<LinkContainer to={`/studio/${song.id}`} exact>
+								<a href="#" className="btn btn-primary">
+									Open
+								</a>
+							</LinkContainer>
+						</div>
 					</div>
 				</div>
 			</div>

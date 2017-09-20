@@ -1,7 +1,15 @@
 import React from 'react';
 import Tone from 'tone';
 
-export default function ToolbarComponent({ songId, song, onReplay, onClear, onSave, onDelete }) {
+export default function ToolbarComponent({
+	songId,
+	song,
+	onReplay,
+	onClear,
+	onSave,
+	onDelete,
+	info
+}) {
 	function sleep(milliseconds) {
 		let start = new Date().getTime();
 		for (let i = 0; i < 1e7; i++) {
@@ -51,7 +59,7 @@ export default function ToolbarComponent({ songId, song, onReplay, onClear, onSa
 
 	// send changes to api
 	function _handleSave() {
-		onSave(song, songId);
+		onSave(song, songId, info);
 	}
 
 	// delete song from api

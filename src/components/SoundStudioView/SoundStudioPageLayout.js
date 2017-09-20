@@ -17,14 +17,22 @@ export default function SoundStudioPageLayout({
 	song,
 	updateSong,
 	songId,
-	data
+	data,
+	onSaveForm
 }) {
 	return (
 		<div className="Page">
 			<NavBarComponent />
 			<div className="SoundStudioPageLayout">
 				<div className="formlayout">
-					<Form info={songId ? data.find(song => song.id === songId).info : null} />
+					<Form
+						info={
+							data.find(song => song.id === songId)
+								? data.find(song => song.id === songId).info
+								: null
+						}
+						songId={songId}
+					/>
 				</div>
 				<div className="left">
 					<NotesComponent notes={notes} song={song} updateSong={updateSong} />
@@ -37,6 +45,11 @@ export default function SoundStudioPageLayout({
 						onClear={onClear}
 						onSave={onSave}
 						onDelete={onDelete}
+						info={
+							data.find(song => song.id === songId)
+								? data.find(song => song.id === songId).info
+								: null
+						}
 					/>
 					<InstrumentsComponent chooseInstrument={chooseInstrument} instruments={instruments} />
 				</div>
