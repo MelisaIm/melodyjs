@@ -13,17 +13,19 @@ export default function SoundStudioPageLayout({
 	onSave,
 	onDelete,
 	chooseInstrument,
-	song
+	song,
+	updateSong
 }) {
 	return (
 		<div className="Page">
 			<NavBarComponent />
 			<div className="SoundStudioPageLayout">
 				<div className="left">
-					<NotesComponent notes={notes} song={song} />
+					<NotesComponent notes={notes} song={song} updateSong={updateSong} />
 				</div>
 				<div className="right">
 					<ToolbarComponent
+						song={song}
 						onReplay={onReplay}
 						onClear={onClear}
 						onSave={onSave}

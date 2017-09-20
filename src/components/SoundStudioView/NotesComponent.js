@@ -7,7 +7,23 @@ export default class NotesComponent extends PureComponent {
 		super(props);
 
 		this.state = {
-			rows: this.props.song
+			rows: [
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			]
 		};
 	}
 
@@ -19,6 +35,7 @@ export default class NotesComponent extends PureComponent {
 				changedRow.splice(column, 1, 0);
 				let newState = prevState.rows.slice();
 				newState.splice(row, 1, changedRow);
+				this.props.updateSong(newState);
 				return { rows: newState };
 			});
 		} else {
@@ -27,16 +44,28 @@ export default class NotesComponent extends PureComponent {
 				changedRow.splice(column, 1, note);
 				let newState = prevState.rows.slice();
 				newState.splice(row, 1, changedRow);
+				this.props.updateSong(newState);
+
 				return { rows: newState };
 			});
 		}
 	};
 
-	componentWillReceiveProps(nextProps) {
+	componentDidMount() {
+		console.log(this.props.song);
+		if (this.props.song) {
+			this.setState({
+				rows: this.props.song
+			});
+		}
+	}
+
+	componentWillReceiveProps = nextProps => {
+		console.log(nextProps.song);
 		this.setState({
 			rows: nextProps.song
 		});
-	}
+	};
 
 	render() {
 		if (!this.props.song) {
@@ -78,7 +107,9 @@ export default class NotesComponent extends PureComponent {
 											name={note}
 											onSelect={this.onSelect}
 											id={`${chord},${row}`}
-											selected={this.state.rows[row][chord] ? true : false}
+											selected={
+												this.state.rows ? (this.state.rows[row][chord] ? true : false) : false
+											}
 										/>
 									);
 								})}
