@@ -4,9 +4,22 @@ import IndexPage from './components/IndexView/IndexPage';
 import LibraryPage from './components/LibraryView/LibraryPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFoundPage from './components/NotFoundPage';
-import data from './data';
+import getSongs from './requests/getSongs';
 
 class App extends Component {
+	state = {
+		data: []
+	};
+
+	componentDidMount() {
+		getSongs({
+			databaseId: 'appxhHjmck1PuVaSU',
+			token: 'keymBy1TajObCCmUW'
+		}).then(data => {
+			this.setState({ data });
+		});
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -19,6 +32,23 @@ class App extends Component {
 							render={() => {
 								return (
 									<SoundStudioPage
+										song={[
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+											[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+										]}
 										notes={[
 											'C5',
 											'B4',
@@ -51,17 +81,21 @@ class App extends Component {
 							exact
 							path="/library"
 							render={() => {
-								return <LibraryPage songs={data} />;
+								return <LibraryPage songs={this.state.data} />;
 							}}
 						/>
 						<Route
 							exact
 							path="/studio/:songId"
 							render={({ match }) => {
-								const id = parseInt(match.params.songId, 10);
+								const id = match.params.songId;
 								return (
 									<SoundStudioPage
-										song={data.find(song => song.id === id).rows}
+										song={
+											this.state.data.find(song => song.id === id)
+												? this.state.data.find(song => song.id === id).rows
+												: []
+										}
 										notes={[
 											'C5',
 											'B4',

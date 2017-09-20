@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import NoteComponent from './NoteComponent';
+import Tone from 'tone';
 
 export default class NotesComponent extends PureComponent {
 	constructor(props) {
@@ -27,8 +28,13 @@ export default class NotesComponent extends PureComponent {
 		};
 	}
 
+	synth(note) {
+		let synth = new Tone.Synth().toMaster();
+		synth.triggerAttackRelease(note, '16n');
+	}
+
 	onSelect = ({ note, column, row }) => {
-		console.log(note, column, row);
+		this.synth(note);
 		if (this.state.rows[row][column] !== 0) {
 			this.setState(prevState => {
 				let changedRow = prevState.rows[row].slice();
@@ -61,13 +67,13 @@ export default class NotesComponent extends PureComponent {
 	}
 
 	componentWillReceiveProps = nextProps => {
-		console.log(nextProps.song);
 		this.setState({
 			rows: nextProps.song
 		});
 	};
 
 	render() {
+		console.log(this.state);
 		if (!this.props.song) {
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const notesClassNames = classNames('notesComponent');
@@ -83,7 +89,7 @@ export default class NotesComponent extends PureComponent {
 											name={note}
 											onSelect={this.onSelect}
 											id={`${chord},${row}`}
-											selected={this.state.rows[row][chord] ? true : false}
+											selected={false}
 										/>
 									);
 								})}
@@ -93,6 +99,7 @@ export default class NotesComponent extends PureComponent {
 				</div>
 			);
 		} else {
+			console.log(this.state);
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const notesClassNames = classNames('notesComponent');
 			return (
@@ -107,9 +114,7 @@ export default class NotesComponent extends PureComponent {
 											name={note}
 											onSelect={this.onSelect}
 											id={`${chord},${row}`}
-											selected={
-												this.state.rows ? (this.state.rows[row][chord] ? true : false) : false
-											}
+											selected={this.state.rows[row][chord]}
 										/>
 									);
 								})}

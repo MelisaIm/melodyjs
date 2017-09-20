@@ -23,19 +23,14 @@ export default function ToolbarComponent({ song, onReplay, onClear, onSave, onDe
 			});
 			arrayOfChords.forEach(chord => {
 				if (chord.length === 1) {
-					console.log('this happened');
 					sleep(500);
 					synth(chord[0]);
 				} else {
-					console.log('no this');
 					sleep(500);
 
 					poly(chord.length, chord);
 				}
 			});
-
-			// poly();
-			console.log(song);
 		} else {
 			return false;
 		}
@@ -48,10 +43,14 @@ export default function ToolbarComponent({ song, onReplay, onClear, onSave, onDe
 		let synth = new Tone.Synth().toMaster();
 		synth.triggerAttackRelease(note, '16n');
 	}
+
+	// fetch current song
 	function _handleClear() {}
 
+	// send changes to api
 	function _handleSave() {}
 
+	// delete song from api
 	function _handleDelete() {}
 
 	return (

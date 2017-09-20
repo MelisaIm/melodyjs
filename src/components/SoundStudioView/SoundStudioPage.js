@@ -6,7 +6,7 @@ export default class SoundStudioPage extends PureComponent {
 		super(props);
 
 		this.state = {
-			song: this.props.song
+			song: null
 		};
 	}
 
@@ -20,8 +20,19 @@ export default class SoundStudioPage extends PureComponent {
 		console.log(instrument);
 	};
 
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			song: nextProps.song
+		});
+	}
+
+	componentDidMount() {
+		this.setState({
+			song: this.props.song
+		});
+	}
+
 	render() {
-		console.log(this.state);
 		return (
 			<div className="SoundStudioPage">
 				<SoundStudioPageLayout
