@@ -96,6 +96,7 @@ class App extends Component {
 												? this.state.data.find(song => song.id === id).rows
 												: []
 										}
+										songId={match.params.songId}
 										notes={[
 											'C5',
 											'B4',

@@ -14,7 +14,8 @@ export default function SoundStudioPageLayout({
 	onDelete,
 	chooseInstrument,
 	song,
-	updateSong
+	updateSong,
+	songId
 }) {
 	return (
 		<div className="Page">
@@ -25,6 +26,7 @@ export default function SoundStudioPageLayout({
 				</div>
 				<div className="right">
 					<ToolbarComponent
+						songId={songId}
 						song={song}
 						onReplay={onReplay}
 						onClear={onClear}
