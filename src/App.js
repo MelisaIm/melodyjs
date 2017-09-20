@@ -21,19 +21,19 @@ class App extends Component {
 									<SoundStudioPage
 										notes={[
 											'C5',
-											'D4',
-											'E4',
-											'F4',
-											'G4',
-											'A4',
 											'B4',
+											'A4',
+											'G4',
+											'F4',
+											'E4',
+											'D4',
 											'C4',
-											'D3',
-											'E3',
-											'F3',
-											'G3',
-											'A3',
 											'B3',
+											'A3',
+											'G3',
+											'F3',
+											'E3',
+											'D3',
 											'C3'
 										]}
 										onSelect={this.onSelect}
@@ -64,19 +64,19 @@ class App extends Component {
 										song={data.find(song => song.id === id).rows}
 										notes={[
 											'C5',
-											'D4',
-											'E4',
-											'F4',
-											'G4',
-											'A4',
 											'B4',
+											'A4',
+											'G4',
+											'F4',
+											'E4',
+											'D4',
 											'C4',
-											'D3',
-											'E3',
-											'F3',
-											'G3',
-											'A3',
 											'B3',
+											'A3',
+											'G3',
+											'F3',
+											'E3',
+											'D3',
 											'C3'
 										]}
 										onSelect={this.onSelect}
