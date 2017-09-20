@@ -1,23 +1,36 @@
-import React from 'react';
-import { Nav, NavItem } from 'react-bootstrap';
+import React, { PureComponent } from 'react';
+import { Navbar, NavItem, Nav } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
-export default function NavBarComponent({ activeKey }) {
-	function handleSelect(selectedKey) {
-		alert('selected ' + selectedKey);
+export default class NavBarComponent extends PureComponent {
+	constructor(props) {
+		super(props);
+		this.state = {
+			key: null
+		};
 	}
-	return (
-		<div className="Nav">
-			<Nav bsStyle="tabs" activeKey={activeKey} onSelect={handleSelect}>
-				<NavItem eventKey={1} href="/home">
-					MelodyJS
-				</NavItem>
-				<NavItem eventKey={2} title="Library">
-					The Library
-				</NavItem>
-				<NavItem eventKey={3} title="Studio">
-					Sound Studio
-				</NavItem>
-			</Nav>
-		</div>
-	);
+
+	render() {
+		return (
+			<Navbar fixedTop className="Nav" id="myNavbar">
+				<Nav>
+					<LinkContainer to="/" exact>
+						<NavItem eventKey={1} className="nav-item nav-link" href="/">
+							MelodyJS
+						</NavItem>
+					</LinkContainer>
+					<LinkContainer to="/library" exact>
+						<NavItem eventKey={2} className="nav-item nav-link" href="/library" title="library">
+							The Library
+						</NavItem>
+					</LinkContainer>
+					<LinkContainer to="/studio" exact>
+						<NavItem eventKey={3} className="nav-item nav-link" href="/studio" title="studio">
+							Sound Studio
+						</NavItem>
+					</LinkContainer>
+				</Nav>
+			</Navbar>
+		);
+	}
 }

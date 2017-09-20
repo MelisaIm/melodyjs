@@ -6,7 +6,7 @@ import Footer from '../NavBar/FooterComponent';
 export default function LibraryPageLayout({ songs = [] }) {
 	return (
 		<div className="LibraryPageLayout">
-			<NavBar activeKey={2} />
+			<NavBar />
 			<div className="LibraryPageContent">
 				{songs.map((song, index) => <LibraryCardComponent song={song} key={index} />)}
 			</div>

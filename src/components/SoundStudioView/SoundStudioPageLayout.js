@@ -12,14 +12,15 @@ export default function SoundStudioPageLayout({
 	onClear,
 	onSave,
 	onDelete,
-	chooseInstrument
+	chooseInstrument,
+	song
 }) {
 	return (
 		<div className="Page">
-			<NavBarComponent activeKey={3} />
+			<NavBarComponent />
 			<div className="SoundStudioPageLayout">
 				<div className="left">
-					<NotesComponent notes={notes} />
+					<NotesComponent notes={notes} song={song} />
 				</div>
 				<div className="right">
 					<ToolbarComponent

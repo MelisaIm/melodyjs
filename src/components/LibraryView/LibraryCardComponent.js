@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default function LibraryCardComponent({ song = {} }) {
 	if (song.rows && Array.isArray(song.rows)) {
@@ -35,9 +36,11 @@ export default function LibraryCardComponent({ song = {} }) {
 						<p className="card-text">
 							{song.description ? song.description : 'Song Description'}
 						</p>
-						<a href="#" className="btn btn-primary">
-							Open
-						</a>
+						<LinkContainer to={`/studio/${song.id}`} exact>
+							<a href="#" className="btn btn-primary">
+								Open
+							</a>
+						</LinkContainer>
 					</div>
 				</div>
 			</div>
@@ -56,9 +59,11 @@ export default function LibraryCardComponent({ song = {} }) {
 						<p className="card-text">
 							{song.description ? song.description : 'Song Description'}
 						</p>
-						<a href="#" className="btn btn-primary">
-							Open
-						</a>
+						<LinkContainer to={`/studio/${song.id}`} exact>
+							<a href="#" className="btn btn-primary">
+								Open
+							</a>
+						</LinkContainer>
 					</div>
 				</div>
 			</div>

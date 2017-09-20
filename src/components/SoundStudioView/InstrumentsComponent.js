@@ -2,8 +2,6 @@ import React from 'react';
 import InstrumentComponent from './InstrumentComponent';
 
 export default function InstrumentsComponent({ chooseInstrument, instruments }) {
-	console.log(chooseInstrument);
-	console.log(instruments);
 	return (
 		<div className="InstrumentsComponent">
 			<h1>Instruments</h1>

@@ -79,30 +79,41 @@ body {
 	text-align: center;
 }
 
+/*Navigation*/
+
 .Nav {
+	margin-left: 0;
 	width: 100vw;
-	display: fixed;
-	background-color: rgb(214, 232, 242);
-	overflow: hidden;
+	/*display: fixed;*/
+	/*background-color: rgb(84, 84, 84);*/
+	/*background-color: rgb(214, 232, 242);*/
+	/*overflow: hidden;
 	position: fixed; /* Set the navbar to fixed position */
-	top: 0; /* Position the navbar at the top of the page */
-	width: 100%; /* Full width */
+	/*top: 0; /* Position the navbar at the top of the page */
 	margin-bottom: 20px;
 }
 
+.nav-item {
+}
+
 .FooterComponent {
-	background-color: rgb(214, 232, 242);
 	position: fixed;
 	bottom: 0px;
 	width: 100vw;
-	height: 50px;
+	height: 40px;
 	margin-bottom: 0px;
 }
 
+.footer-text {
+	position: absolute;
+	right: 20px;
+}
+
+/*IndexPage*/
 .photoCredit {
 	font-size: 12px;
 	position: absolute;
-	bottom: 30px;
+	bottom: 50px;
 	right: 20px;
 	/*color: rgb(245, 245, 245);*/
 }

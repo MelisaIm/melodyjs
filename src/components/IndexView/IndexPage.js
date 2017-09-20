@@ -5,7 +5,7 @@ import Footer from '../NavBar/FooterComponent';
 export default function IndexPage() {
 	return (
 		<div className="IndexPage">
-			<NavBar activeKey={1} />
+			<NavBar />
 			<div className="IndexPageContent">
 				<div className="jumbotron">
 					<div className="container">
@@ -13,10 +13,10 @@ export default function IndexPage() {
 							<span className="jumbotron-text">Welcome to MelodyJS!</span>
 						</h1>
 						<p>
-							{' '}<span className="jumbotron-text">MelodyJS is a visual music canvas</span>
+							<span className="jumbotron-text">MelodyJS is a visual music canvas</span>
 						</p>
 						<p>
-							<a className="btn btn-primary btn-lg" href="#" role="button">
+							<a className="btn btn-primary btn-lg" href="/studio" role="button">
 								Let's Create
 							</a>
 						</p>
