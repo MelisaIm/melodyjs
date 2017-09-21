@@ -17,7 +17,7 @@ export default function LibraryCardComponent({ song = {} }) {
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const arrayOfChords = [];
 			chords.forEach(chord => {
-				let chordArray = song.song.map(array => array[chord]).filter(note => note !== 0);
+				let chordArray = song.melody.map(array => array[chord]).filter(note => note !== 0);
 				if (chordArray.length > 0) {
 					arrayOfChords.push(chordArray);
 				}
@@ -45,12 +45,12 @@ export default function LibraryCardComponent({ song = {} }) {
 		synth.triggerAttackRelease(note, '16n');
 	}
 
-	if (song.song && Array.isArray(song.song)) {
+	if (song && Array.isArray(song.melody)) {
 		return (
 			<div className="LibraryCardComponent">
 				<div className="card" style={{ width: 20 + 'rem' }}>
 					<div className="minigrid">
-						{song.song.map((row, index) => {
+						{song.melody.map((row, index) => {
 							return (
 								<div className="minigrid-row" key={index}>
 									{row.map((note, index) => {

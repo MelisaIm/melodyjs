@@ -19,8 +19,8 @@ export default class NoteComponent extends PureComponent {
 		const { onSelect } = this.props;
 		console.log(event.target.attributes);
 		const note = event.target.attributes.name.value;
-		const column = event.target.attributes.id.value.split(',')[0];
-		const row = event.target.attributes.id.value.split(',')[1];
+		const column = parseInt(event.target.attributes.id.value.split(',')[0], 10);
+		const row = parseInt(event.target.attributes.id.value.split(',')[1], 10);
 		onSelect({ note, column, row });
 	};
 }

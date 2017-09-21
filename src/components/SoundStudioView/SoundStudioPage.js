@@ -10,13 +10,33 @@ export default class SoundStudioPage extends PureComponent {
 		super(props);
 
 		this.state = {
-			song: null
+			song: {
+				melody: [
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				],
+				info: { title: 'Untitled', description: 'New Song' }
+			}
 		};
 	}
 
-	updateSong = newSong => {
-		this.setState({
-			song: newSong
+	updateSongLocally = newSong => {
+		this.setState(prevState => {
+			const updatedSong = { ...prevState.song, melody: newSong };
+			return { song: updatedSong };
 		});
 	};
 
@@ -33,27 +53,35 @@ export default class SoundStudioPage extends PureComponent {
 				this.setState({ song });
 			});
 		} else {
-			this.setState({
-				song: [
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-				]
+			this.setState(prevState => {
+				const updatedSong = {
+					...prevState.song,
+					melody: [
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+					]
+				};
+				return { song: updatedSong };
 			});
 		}
 	};
+
+	// onEditForm = ({ changes }) => {
+	// 	updateSong({});
+	// };
 
 	onSave = (song, id) => {
 		if (id) {
@@ -62,24 +90,23 @@ export default class SoundStudioPage extends PureComponent {
 				databaseId: 'appxhHjmck1PuVaSU',
 				token: 'keymBy1TajObCCmUW'
 			}).then(song => {
-				this.props.updateData(song, id);
+				this.props.updateData();
 				this.setState({ song });
 			});
 		} else {
-			console.log('create a song instead');
-		}
-	};
-
-	onSaveForm = ({ info }, id) => {
-		if (id) {
-			console.log('song exists!');
-		} else {
-			console.log('create a new song, yo');
+			createSong(song, {
+				databaseId: 'appxhHjmck1PuVaSU',
+				token: 'keymBy1TajObCCmUW'
+			}).then(song => {
+				console.log(song);
+				this.props.updateData();
+				this.setState({ song });
+			});
 		}
 	};
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.song) {
+		if (nextProps.song !== {}) {
 			this.setState({
 				song: nextProps.song
 			});
@@ -105,9 +132,9 @@ export default class SoundStudioPage extends PureComponent {
 					onSave={this.onSave}
 					onDelete={this.props.onDelete}
 					chooseInstrument={this.chooseInstrument}
-					updateSong={this.updateSong}
+					updateSong={this.updateSongLocally}
 					data={this.props.data}
-					onSaveForm={this.onSaveForm}
+					onEditForm={this.onEditForm}
 				/>
 			</div>
 		);

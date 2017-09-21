@@ -8,23 +8,26 @@ export default class NotesComponent extends PureComponent {
 		super(props);
 
 		this.state = {
-			song: [
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-			]
+			song: {
+				melody: [
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				],
+				info: { title: '', description: '' }
+			}
 		};
 	}
 
@@ -35,45 +38,49 @@ export default class NotesComponent extends PureComponent {
 
 	onSelect = ({ note, column, row }) => {
 		this.synth(note);
-		if (this.state.song[row][column] !== 0) {
+		if (this.state.song.melody[row][column] !== 0) {
 			this.setState(prevState => {
-				let changedRow = prevState.song[row].slice();
+				let changedRow = prevState.song.melody[row].slice();
 				changedRow.splice(column, 1, 0);
-				let newState = prevState.song.slice();
+				let newState = prevState.song.melody.slice();
 				newState.splice(row, 1, changedRow);
 				this.props.updateSong(newState);
-				return { song: newState };
+				return { melody: newState };
 			});
 		} else {
 			this.setState(prevState => {
-				let changedRow = prevState.song[row].slice();
+				let changedRow = prevState.song.melody[row].slice();
 				changedRow.splice(column, 1, note);
-				let newState = prevState.song.slice();
+				let newState = prevState.song.melody.slice();
 				newState.splice(row, 1, changedRow);
 				this.props.updateSong(newState);
 
-				return { song: newState };
+				return { melody: newState };
 			});
 		}
 	};
 
 	componentDidMount() {
-		if (this.props.song) {
+		if (this.props.songId) {
+			const song = this.props.song;
 			this.setState({
-				song: this.props.song
+				song
 			});
 		}
 	}
 
 	componentWillReceiveProps = nextProps => {
-		if (nextProps.song.length > 0) {
+		if (nextProps.song !== {}) {
+			let song = nextProps.song;
 			this.setState({
-				song: nextProps.song
+				song
 			});
 		}
 	};
 
 	render() {
+		console.log(this.state);
+
 		if (!this.state.song) {
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const notesClassNames = classNames('notesComponent');
@@ -113,7 +120,7 @@ export default class NotesComponent extends PureComponent {
 											name={note}
 											onSelect={this.onSelect}
 											id={`${chord},${row}`}
-											selected={this.state.song ? this.state.song[row][chord] : false}
+											selected={this.state.song.melody ? this.state.song.melody[row][chord] : false}
 										/>
 									);
 								})}

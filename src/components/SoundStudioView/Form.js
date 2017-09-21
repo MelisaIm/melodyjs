@@ -3,14 +3,11 @@ import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 export default class Form extends Component {
 	static defaultProps = {
-		info: {},
-		onSaveForm: () => {},
-		onDelete: () => {}
+		info: { title: '', description: '' }
 	};
 
 	constructor(props) {
 		super(props);
-		const { info } = this.props;
 		this.state = {
 			title: '',
 			description: ''
@@ -19,7 +16,7 @@ export default class Form extends Component {
 
 	render() {
 		return (
-			<form className="Form" onSubmit={this._handleSubmit}>
+			<form className="Form">
 				<FormGroup className="form" controlId="formControlsTextarea">
 					<ControlLabel>Title</ControlLabel>
 					<FormControl
@@ -50,29 +47,17 @@ export default class Form extends Component {
 		event.preventDefault();
 		const $input = event.target;
 		const inputName = $input.name.replace('Input', '');
-		this.setState({
-			[inputName]: $input.value
-		});
+		this.setState({ [inputName]: $input.value });
+		this.props.onEditForm({ [inputName]: $input.value });
 	};
 
-	_handleClickDeleteButton = event => {
-		event.preventDefault();
-		const { onDelete } = this.props;
-		onDelete({});
-	};
-
-	componentWillReceiveProps(nextProps) {
-		console.log(nextProps.songId);
-		if (nextProps.songId) {
-			this.setState({
-				title: nextProps.info.title,
-				description: nextProps.info.description
-			});
-		} else {
-			this.setState({
-				title: '',
-				description: ''
-			});
-		}
-	}
+	// componentWillReceiveProps(nextProps) {
+	// 	if (nextProps.songId) {
+	// 		const selectedSong = this.props.data.find(song => song.id === nextProps.songId);
+	// 		this.setState({
+	// 			title: selectedSong.info.title,
+	// 			description: selectedSong.info.description
+	// 		});
+	// 	}
+	// }
 }

@@ -20,11 +20,11 @@ export default function ToolbarComponent({
 	}
 
 	function _handleReplay() {
-		if (song) {
+		if (song.melody) {
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const arrayOfChords = [];
 			chords.forEach(chord => {
-				let chordArray = song.map(array => array[chord]).filter(note => note !== 0);
+				let chordArray = song.melody.map(array => array[chord]).filter(note => note !== 0);
 				if (chordArray.length > 0) {
 					arrayOfChords.push(chordArray);
 				}
@@ -58,8 +58,10 @@ export default function ToolbarComponent({
 	}
 
 	// send changes to api
-	function _handleSave() {
-		onSave(song, songId, info);
+	function _handleSave(event) {
+		event.preventDefault();
+		console.log(song, songId, 'toolbar');
+		onSave(song, songId);
 	}
 
 	// delete song from api
