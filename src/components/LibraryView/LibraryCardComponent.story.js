@@ -6,7 +6,7 @@ storiesOf('LibraryCardComponent', module)
 	.add('Happy Path', () =>
 		<LibraryCardComponent
 			song={{
-				rows: [
+				melody: [
 					[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0, 0, 0, 'X', 'X', 'X', 0, 0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0, 0, 'X', 0, 'X', 0, 'X', 0, 0, 0, 0, 0],
@@ -23,8 +23,10 @@ storiesOf('LibraryCardComponent', module)
 					[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0]
 				],
-				title: 'Morning',
-				description: 'Just a wake up song'
+				info: {
+					title: 'Morning',
+					description: 'Just a wake up song'
+				}
 			}}
 		/>
 	)

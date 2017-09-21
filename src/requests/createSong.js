@@ -1,5 +1,5 @@
 import recordToSong from './utils/recordToSong';
-import songToRecord from './utils/songToRecord';
+import melodyToString from './utils/melodyToString';
 
 export default function createSong(song, { databaseId, token }) {
 	console.log(song);
@@ -13,7 +13,7 @@ export default function createSong(song, { databaseId, token }) {
 			fields: {
 				title: song.info.title,
 				description: song.info.description,
-				melody: songToRecord(song.melody)
+				melody: melodyToString(song.melody)
 			}
 		})
 	})

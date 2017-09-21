@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import SoundStudioPageLayout from './SoundStudioPageLayout';
 import getSong from '../../requests/getSong';
 import updateSong from '../../requests/updateSong';
-import songToRecord from '../../requests/utils/songToRecord';
+import melodyToString from '../../requests/utils/melodyToString';
 import createSong from '../../requests/createSong';
 import deleteSong from '../../requests/deleteSong';
 
@@ -86,7 +86,7 @@ export default class SoundStudioPage extends PureComponent {
 
 	onSave = (song, id) => {
 		if (id) {
-			const update = songToRecord(song.melody);
+			const update = melodyToString(song.melody);
 			song = { ...song, melody: update };
 			console.log(song);
 			updateSong(id, song, {
