@@ -84,20 +84,33 @@ export default class SoundStudioPage extends PureComponent {
 	};
 
 	onEditForm = changes => {
-		console.log('changes', changes);
-		this.setState(prevState => {
-			return {
-				song: {
-					...prevState.song,
-					info: {
-						...prevState.song.info,
-						title: changes.title || prevState.song.info.title,
-						description: changes.description || prevState.song.info.description
+		if (changes.title !== undefined) {
+			this.setState(prevState => {
+				return {
+					song: {
+						...prevState.song,
+						info: {
+							...prevState.song.info,
+							title: changes.title,
+							description: prevState.song.info.description
+						}
 					}
-				}
-			};
-		});
-
+				};
+			});
+		} else {
+			this.setState(prevState => {
+				return {
+					song: {
+						...prevState.song,
+						info: {
+							...prevState.song.info,
+							title: prevState.song.info.title,
+							description: changes.description
+						}
+					}
+				};
+			});
+		}
 		// updateSong({});
 	};
 
