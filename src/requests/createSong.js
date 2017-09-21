@@ -2,7 +2,6 @@ import recordToSong from './utils/recordToSong';
 import melodyToString from './utils/melodyToString';
 
 export default function createSong(song, { databaseId, token }) {
-	console.log(song);
 	return fetch(`https://api.airtable.com/v0/${databaseId}/songs`, {
 		method: 'POST',
 		headers: {
