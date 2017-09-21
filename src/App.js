@@ -5,6 +5,8 @@ import LibraryPage from './components/LibraryView/LibraryPage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFoundPage from './components/NotFoundPage';
 import getSongs from './requests/getSongs';
+import getSongsProcess from './redux/thunks/getSongsProcess';
+import LibraryPageContainer from './redux/containers/LibraryPageContainer';
 
 import setupStore from './redux/setupStore';
 import { Provider } from 'react-redux';
@@ -17,6 +19,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
+		// getSongsProcess();
 		// replace with getSongsProcess thunk
 		getSongs({
 			databaseId: 'appxhHjmck1PuVaSU',
@@ -105,7 +108,7 @@ class App extends Component {
 								exact
 								path="/library"
 								render={() => {
-									return <LibraryPage songs={this.state.data} />;
+									return <LibraryPageContainer songs={this.state.data} />;
 								}}
 							/>
 							<Route

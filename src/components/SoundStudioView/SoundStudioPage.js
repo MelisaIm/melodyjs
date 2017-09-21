@@ -119,6 +119,8 @@ export default class SoundStudioPage extends PureComponent {
 			databaseId: 'appxhHjmck1PuVaSU',
 			token: 'keymBy1TajObCCmUW'
 		}).then(result => {
+			this.props.updateData();
+
 			this.setState({
 				song: {
 					melody: [
