@@ -5,21 +5,25 @@ import getSongProcess from '../thunks/getSongProcess';
 import updateSongProcess from '../thunks/updateSongProcess';
 import deleteSongProcess from '../thunks/deleteSongProcess';
 import createSongProcess from '../thunks/createSongProcess';
-
+import melodyToString from '../../requests/utils/melodyToString';
 
 import { compose, lifecycle } from 'recompose';
 
-function mapStateToProps(state) {
-	console.log(state);
-	return { ...state };
+function mapStateToProps(state, ownProps) {
+	return {
+		song: ownProps.song
+	};
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
+	console.log(ownProps);
 	return {
 		onMount: () => {
 			dispatch(getSongsProcess());
 		},
-		onReceiveProps: () => {},
+		onReceiveProps: nextProps => {
+			dispatch({ type: 'GET_SONG', song: nextProps.song });
+		},
 		chooseInstrument: instrument => {
 			console.log(instrument);
 		},
@@ -32,31 +36,18 @@ function mapDispatchToProps(dispatch) {
 		},
 		onSave: (song, id) => {
 			if (id) {
-        // updatesong thunk
-
+				// updatesong thunk
 				const update = melodyToString(song.melody);
 				song = { ...song, melody: update };
-				updateSong(id, song, {
-					databaseId: 'appxhHjmck1PuVaSU',
-					token: 'keymBy1TajObCCmUW'
-				}).then(song => {
-					this.props.updateData();
-					this.setState({ song: song });
-				});
+				dispatch(updateSongProcess(id, song));
 			} else {
-        createSong(song, {
-          databaseId: 'appxhHjmck1PuVaSU',
-          token: 'keymBy1TajObCCmUW'
-        }).then(song => {
-          console.log(song);
-          this.props.updateData();
-          this.setState({ song: song });
-        });
-      }
+				// createSong thunk
+				dispatch(createSongProcess(song));
 			}
 		},
-		onDelete: songId => {},
-		updateSongLocally: newSong => {},
+		onDelete: songId => {
+			dispatch(deleteSongProcess(songId));
+		},
 		onEditForm: changes => {
 			if (changes.title !== undefined) {
 				// dispatch CHANGE_TITLE
@@ -74,10 +65,10 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 const withLifeCycle = lifecycle({
 	componentDidMount() {
 		this.props.onMount();
+	},
+	componentWillReceiveProps(nextProps) {
+		this.props.onReceiveProps();
 	}
-	// componentWillReceiveProps(nextProps) {
-	//   this.props.onReceiveProps();
-	// }
 });
 
 export default compose(connectToStore, withLifeCycle)(SoundStudioPage);

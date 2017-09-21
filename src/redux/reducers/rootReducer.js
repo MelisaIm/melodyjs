@@ -30,9 +30,17 @@ export default function rootReducer(
 		case 'GET_SONG':
 			return { ...currentState, song: action.song };
 		case 'CREATE_SONG':
-			return {};
+			const newSongsArray = currentState.data.slice();
+			newSongsArray.push(action.song);
+			return { ...currentState, song: action.song, data: newSongsArray };
 		case 'UPDATE_SONG':
-			return {};
+			const newUpdatedArray = currentState.data.slice();
+			newUpdatedArray.splice(newUpdatedArray.indexOf(action.song.id), 1, action.song);
+			return {
+				...currentState,
+				data: newUpdatedArray,
+				song: newUpdatedArray.find(song => song.id === action.song.id)
+			};
 		case 'CHANGE_TITLE':
 			return {
 				...currentState,

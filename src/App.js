@@ -6,6 +6,7 @@ import IndexPage from './components/IndexView/IndexPage';
 import NotFoundPage from './components/NotFoundPage';
 import getSongsProcess from './redux/thunks/getSongsProcess';
 import LibraryPageContainer from './redux/containers/LibraryPageContainer';
+import SoundStudioPageContainer from './redux/containers/SoundStudioPageContainer';
 
 import setupStore from './redux/setupStore';
 const store = setupStore();
@@ -15,7 +16,27 @@ export default class App extends Component {
 		super(props);
 
 		this.state = {
-			data: []
+			data: [],
+			song: {
+				melody: [
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				],
+				info: { title: '', description: '' }
+			}
 		};
 
 		store.subscribe(() => {
@@ -42,7 +63,7 @@ export default class App extends Component {
 								path="/studio"
 								render={() => {
 									return (
-										<SoundStudioPage
+										<SoundStudioPageContainer
 											song={{
 												melody: [
 													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -106,7 +127,7 @@ export default class App extends Component {
 								render={({ match }) => {
 									const id = match.params.songId;
 									return (
-										<SoundStudioPage
+										<SoundStudioPageContainer
 											song={
 												this.state.data.find(song => song.id === id)
 													? this.state.data.find(song => song.id === id)
