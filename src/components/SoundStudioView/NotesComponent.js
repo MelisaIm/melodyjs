@@ -64,7 +64,7 @@ export default class NotesComponent extends PureComponent {
 		if (this.props.songId) {
 			const song = this.props.song;
 			this.setState({
-				song
+				song: song
 			});
 		}
 	}
@@ -72,8 +72,9 @@ export default class NotesComponent extends PureComponent {
 	componentWillReceiveProps = nextProps => {
 		if (nextProps.song !== {}) {
 			let song = nextProps.song;
+			console.log(song);
 			this.setState({
-				song
+				song: song
 			});
 		}
 	};

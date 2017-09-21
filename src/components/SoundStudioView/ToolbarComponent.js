@@ -1,5 +1,6 @@
 import React from 'react';
 import Tone from 'tone';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default function ToolbarComponent({
 	songId,
@@ -60,12 +61,13 @@ export default function ToolbarComponent({
 	// send changes to api
 	function _handleSave(event) {
 		event.preventDefault();
-		console.log(song, songId, 'toolbar');
 		onSave(song, songId);
 	}
 
 	// delete song from api
-	function _handleDelete() {}
+	function _handleDelete() {
+		onDelete(songId);
+	}
 
 	return (
 		<div className="ToolbarComponent">

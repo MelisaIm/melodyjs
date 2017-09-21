@@ -1,5 +1,4 @@
 export default function recordToSong(record) {
-	console.log(record);
 	return {
 		id: record.id,
 		info: {

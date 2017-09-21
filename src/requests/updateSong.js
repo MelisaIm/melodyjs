@@ -8,9 +8,13 @@ export default function updateNote(id, update, { databaseId, token }) {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			fields: { song: update }
+			fields: {
+				title: update.info.title,
+				description: update.info.description,
+				melody: update.melody
+			}
 		})
 	})
 		.then(response => response.json())
-		.then(record => recordToSong(record).song);
+		.then(record => recordToSong(record));
 }
