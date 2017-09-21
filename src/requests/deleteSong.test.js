@@ -27,13 +27,13 @@ const data = {
 
 describe('deleteSong', () => {
 	it('Calls fetch and returns a success message', () => {
-		fetch.mockResponse();
+		fetch.mockResponse(JSON.stringify(data));
 
 		return deleteSong(data.id, {
 			AIRTABLE_DATABASE_ID: 'SOME_DATABASE_ID',
 			AIRTABLE_TOKEN: 'SOME_TOKEN'
 		}).then(result => {
-			expect(result).toEqual(true);
+			expect(result).toEqual();
 		});
 	});
 

@@ -85,10 +85,6 @@ export default class Form extends Component {
 		event.preventDefault();
 		const $input = event.target;
 		const inputName = $input.name.replace('Input', '');
-		// this.setState({ [inputName]: $input.value });
-		// if ($input.value.length === 0) {
-		// 	$input.value = '';
-		// }
 		this.props.onEditForm({ [inputName]: $input.value });
 	};
 }
