@@ -34,6 +34,7 @@ export default class SoundStudioPage extends PureComponent {
 		};
 	}
 
+	// dispatch SONG CHANGE
 	updateSongLocally = newSong => {
 		this.setState(prevState => {
 			const updatedSong = { ...prevState.song, melody: newSong };
@@ -45,6 +46,7 @@ export default class SoundStudioPage extends PureComponent {
 		console.log(instrument);
 	};
 
+	// dispatch CLEAR CHANGES
 	onClear = id => {
 		if (id) {
 			getSong(id, {
@@ -54,6 +56,7 @@ export default class SoundStudioPage extends PureComponent {
 				this.setState({ song });
 			});
 		} else {
+			// dispatch CLEAR ALL
 			this.setState(prevState => {
 				const updatedSong = {
 					...prevState.song,
@@ -84,6 +87,7 @@ export default class SoundStudioPage extends PureComponent {
 	// 	updateSong({});
 	// };
 
+	// dispatch SAVE CHANGES
 	onSave = (song, id) => {
 		if (id) {
 			const update = melodyToString(song.melody);
@@ -97,6 +101,7 @@ export default class SoundStudioPage extends PureComponent {
 				this.setState({ song: song });
 			});
 		} else {
+			// dispatch CREATE SONG
 			createSong(song, {
 				databaseId: 'appxhHjmck1PuVaSU',
 				token: 'keymBy1TajObCCmUW'
@@ -108,6 +113,7 @@ export default class SoundStudioPage extends PureComponent {
 		}
 	};
 
+	// dispatch DELETE SONG
 	onDelete = songId => {
 		deleteSong(songId, {
 			databaseId: 'appxhHjmck1PuVaSU',
@@ -139,6 +145,7 @@ export default class SoundStudioPage extends PureComponent {
 		});
 	};
 
+	// subscribe to store
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.song !== {}) {
 			this.setState({
@@ -147,6 +154,7 @@ export default class SoundStudioPage extends PureComponent {
 		}
 	}
 
+	// replace with wrapped onMount function
 	componentDidMount() {
 		this.setState({
 			song: this.props.song
@@ -174,21 +182,3 @@ export default class SoundStudioPage extends PureComponent {
 		);
 	}
 }
-
-// [
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-// 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-// ]
