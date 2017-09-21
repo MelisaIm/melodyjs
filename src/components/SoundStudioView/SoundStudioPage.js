@@ -29,12 +29,12 @@ export default class SoundStudioPage extends PureComponent {
 					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 				],
-				info: { title: 'Untitled', description: 'New Song' }
+				info: { title: '', description: '' }
 			}
 		};
 	}
 
-	// dispatch SONG CHANGE
+	// dispatch UPDATE_SONG
 	updateSongLocally = newSong => {
 		this.setState(prevState => {
 			const updatedSong = { ...prevState.song, melody: newSong };
@@ -83,16 +83,30 @@ export default class SoundStudioPage extends PureComponent {
 		}
 	};
 
-	// onEditForm = ({ changes }) => {
-	// 	updateSong({});
-	// };
+	onEditForm = changes => {
+		console.log('changes', changes);
+		this.setState(prevState => {
+			return {
+				song: {
+					...prevState.song,
+					info: {
+						...prevState.song.info,
+						title: changes.title || prevState.song.info.title,
+						description: changes.description || prevState.song.info.description
+					}
+				}
+			};
+		});
 
-	// dispatch SAVE CHANGES
+		// updateSong({});
+	};
+
+	// dispatch UPDATE_SONG
+	// updateSong Process
 	onSave = (song, id) => {
 		if (id) {
 			const update = melodyToString(song.melody);
 			song = { ...song, melody: update };
-			console.log(song);
 			updateSong(id, song, {
 				databaseId: 'appxhHjmck1PuVaSU',
 				token: 'keymBy1TajObCCmUW'
@@ -113,7 +127,7 @@ export default class SoundStudioPage extends PureComponent {
 		}
 	};
 
-	// dispatch DELETE SONG
+	// dispatch DELETE_SONG
 	onDelete = songId => {
 		deleteSong(songId, {
 			databaseId: 'appxhHjmck1PuVaSU',
@@ -164,6 +178,7 @@ export default class SoundStudioPage extends PureComponent {
 	}
 
 	render() {
+		console.log('>>>>', this.state);
 		return (
 			<div className="SoundStudioPage">
 				<SoundStudioPageLayout

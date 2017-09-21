@@ -24,9 +24,9 @@ export default function SoundStudioPageLayout({
 		<div className="Page">
 			<NavBarComponent />
 			<div className="SoundStudioPageLayout">
-				{/* <div className="formlayout">
-					<Form data={data} songId={songId} onEditForm={onEditForm} />
-				</div> */}
+				<div className="formlayout">
+					<Form data={data} songId={songId} onEditForm={onEditForm} song={song} />
+				</div>
 				<div className="left">
 					<NotesComponent notes={notes} song={song} updateSong={updateSong} />
 				</div>

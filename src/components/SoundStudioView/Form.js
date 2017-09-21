@@ -1,16 +1,54 @@
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import getSong from '../../requests/getSong';
 
 export default class Form extends Component {
 	static defaultProps = {
-		info: { title: '', description: '' }
+		song: {
+			melody: [
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			],
+			info: { title: '', description: '' }
+		}
 	};
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			title: '',
-			description: ''
+			song: {
+				melody: [
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				],
+				info: { title: '', description: '' }
+			}
 		};
 	}
 
@@ -23,7 +61,7 @@ export default class Form extends Component {
 						className="Form-titleInput"
 						name="titleInput"
 						type="text"
-						value={this.state.title || ''}
+						value={this.props.song.info.title || ''}
 						placeholder="Give your song a title"
 						onChange={this._handleChangeInput}
 						required
@@ -34,7 +72,7 @@ export default class Form extends Component {
 						className="Form-bodyInput"
 						name="descriptionInput"
 						placeholder="Type your description here..."
-						value={this.state.description || ''}
+						value={this.props.song.info.description || ''}
 						onChange={this._handleChangeInput}
 						required
 					/>
@@ -47,17 +85,10 @@ export default class Form extends Component {
 		event.preventDefault();
 		const $input = event.target;
 		const inputName = $input.name.replace('Input', '');
-		this.setState({ [inputName]: $input.value });
+		// this.setState({ [inputName]: $input.value });
+		// if ($input.value.length === 0) {
+		// 	$input.value = '';
+		// }
 		this.props.onEditForm({ [inputName]: $input.value });
 	};
-
-	// componentWillReceiveProps(nextProps) {
-	// 	if (nextProps.songId) {
-	// 		const selectedSong = this.props.data.find(song => song.id === nextProps.songId);
-	// 		this.setState({
-	// 			title: selectedSong.info.title,
-	// 			description: selectedSong.info.description
-	// 		});
-	// 	}
-	// }
 }
