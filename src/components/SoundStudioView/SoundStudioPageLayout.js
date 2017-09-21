@@ -20,6 +20,7 @@ export default function SoundStudioPageLayout({
 	data,
 	onEditForm
 }) {
+	console.log(song, songId, onEditForm);
 	return (
 		<div className="Page">
 			<NavBarComponent />

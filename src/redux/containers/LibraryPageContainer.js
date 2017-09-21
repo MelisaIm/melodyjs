@@ -4,7 +4,7 @@ import getSongsProcess from '../thunks/getSongsProcess';
 import { compose, lifecycle } from 'recompose';
 
 function mapStateToProps(state) {
-	return { ...state };
+	return { songs: state.data, song: state.song };
 }
 
 function mapDispatchToProps(dispatch) {

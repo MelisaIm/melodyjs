@@ -1,44 +1,33 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import SoundStudioPage from './components/SoundStudioView/SoundStudioPage';
 import IndexPage from './components/IndexView/IndexPage';
-import LibraryPage from './components/LibraryView/LibraryPage';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFoundPage from './components/NotFoundPage';
-import getSongs from './requests/getSongs';
 import getSongsProcess from './redux/thunks/getSongsProcess';
 import LibraryPageContainer from './redux/containers/LibraryPageContainer';
 
 import setupStore from './redux/setupStore';
-import { Provider } from 'react-redux';
-
 const store = setupStore();
 
-class App extends Component {
-	state = {
-		data: []
-	};
+export default class App extends Component {
+	constructor(props) {
+		super(props);
 
-	componentDidMount() {
-		// getSongsProcess();
-		// replace with getSongsProcess thunk
-		getSongs({
-			databaseId: 'appxhHjmck1PuVaSU',
-			token: 'keymBy1TajObCCmUW'
-		}).then(data => {
-			this.setState({ data });
+		this.state = {
+			data: []
+		};
+
+		store.subscribe(() => {
+			this.setState(store.getState());
 		});
+	}
+	componentDidMount() {
+		getSongsProcess();
 	}
 
 	updateData = () => {
-		// replace with getSongsProcess thunk
-		getSongs({
-			databaseId: 'appxhHjmck1PuVaSU',
-			token: 'keymBy1TajObCCmUW'
-		}).then(data =>
-			this.setState({
-				data
-			})
-		);
+		getSongsProcess();
 	};
 
 	render() {
@@ -162,5 +151,3 @@ class App extends Component {
 		);
 	}
 }
-
-export default App;

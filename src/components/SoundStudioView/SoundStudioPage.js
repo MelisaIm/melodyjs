@@ -5,6 +5,7 @@ import updateSong from '../../requests/updateSong';
 import melodyToString from '../../requests/utils/melodyToString';
 import createSong from '../../requests/createSong';
 import deleteSong from '../../requests/deleteSong';
+import getSongProcess from '../../redux/thunks/getSongProcess';
 
 export default class SoundStudioPage extends PureComponent {
 	constructor(props) {
@@ -47,14 +48,16 @@ export default class SoundStudioPage extends PureComponent {
 	};
 
 	// dispatch CLEAR CHANGES
+	// getSongProcess
 	onClear = id => {
 		if (id) {
-			getSong(id, {
-				databaseId: 'appxhHjmck1PuVaSU',
-				token: 'keymBy1TajObCCmUW'
-			}).then(song => {
-				this.setState({ song });
-			});
+			getSongProcess();
+			// getSong(id, {
+			// 	databaseId: 'appxhHjmck1PuVaSU',
+			// 	token: 'keymBy1TajObCCmUW'
+			// }).then(song => {
+			// 	this.setState({ song });
+			// });
 		} else {
 			// dispatch CLEAR ALL
 			this.setState(prevState => {
@@ -141,6 +144,7 @@ export default class SoundStudioPage extends PureComponent {
 	};
 
 	// dispatch DELETE_SONG
+	// deleteSongProcess thunk
 	onDelete = songId => {
 		deleteSong(songId, {
 			databaseId: 'appxhHjmck1PuVaSU',
@@ -191,7 +195,6 @@ export default class SoundStudioPage extends PureComponent {
 	}
 
 	render() {
-		console.log('>>>>', this.state);
 		return (
 			<div className="SoundStudioPage">
 				<SoundStudioPageLayout

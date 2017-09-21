@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
-import SoundStudioPageLayout from '../../components/SoundStudioView/SoundStudioPageLayout';
+import SoundStudioPage from '../../components/SoundStudioView/SoundStudioPage';
 import getSongsProcess from '../thunks/getSongsProcess';
 import { compose, lifecycle } from 'recompose';
 
 function mapStateToProps(state) {
+	console.log(state);
 	return { ...state };
 }
 
@@ -12,10 +13,13 @@ function mapDispatchToProps(dispatch) {
 		onMount: () => {
 			dispatch(getSongsProcess());
 		},
+		onReceiveProps: () => {},
 		chooseInstrument: instrument => {},
 		onClear: id => {},
 		onSave: (song, id) => {},
-		onDelete: songId => {}
+		onDelete: songId => {},
+		updateSongLocally: newSong => {},
+		onEditForm: changes => {}
 	};
 }
 
@@ -24,8 +28,10 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 const withLifeCycle = lifecycle({
 	componentDidMount() {
 		this.props.onMount();
-	},
-	componentWillReceiveProps(nextProps) {}
+	}
+	// componentWillReceiveProps(nextProps) {
+	//   this.props.onReceiveProps();
+	// }
 });
 
-export default compose(connectToStore, withLifeCycle)(SoundStudioPageLayout);
+export default compose(connectToStore, withLifeCycle)(SoundStudioPage);

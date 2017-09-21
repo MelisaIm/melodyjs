@@ -28,7 +28,7 @@ export default function rootReducer(
 		case 'GET_SONGS':
 			return { ...currentState, data: action.songs };
 		case 'GET_SONG':
-			return {};
+			return { ...currentState, song: action.song };
 		case 'UPDATE_SONGS':
 			return {};
 		default:
