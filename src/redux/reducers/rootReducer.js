@@ -29,8 +29,60 @@ export default function rootReducer(
 			return { ...currentState, data: action.songs };
 		case 'GET_SONG':
 			return { ...currentState, song: action.song };
-		case 'UPDATE_SONGS':
+		case 'CREATE_SONG':
 			return {};
+		case 'UPDATE_SONG':
+			return {};
+		case 'CHANGE_TITLE':
+			return {
+				...currentState,
+				song: {
+					...currentState.song,
+					info: {
+						...currentState.song.info,
+						title: action.title,
+						description: currentState.song.info.description
+					}
+				}
+			};
+		case 'CHANGE_DESCRIPTION':
+			return {
+				...currentState,
+				song: {
+					...currentState.song,
+					info: {
+						...currentState.song.info,
+						title: currentState.song.info.title,
+						description: action.description
+					}
+				}
+			};
+		case 'CLEAR_CHANGE':
+			return { ...currentState, song: action.song };
+		case 'CLEAR_ALL':
+			return {
+				...currentState,
+				song: {
+					...currentState.song,
+					melody: [
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+					]
+				}
+			};
 		default:
 			return currentState;
 	}

@@ -56,7 +56,7 @@ body {
 
 .SoundStudioPageLayout {
 	display: flex;
-	margin: 10px;
+	margin-top: 30px;
 	justify-content: space-around;
 	flex-wrap: wrap;
 	min-height: 100%;
@@ -73,7 +73,7 @@ body {
 }
 
 .formlayout {
-	margin-left: 50px;
+	margin-left: 180px;
 	margin-top: 20px;
 	width: 100vw;
 	text-align: center;
@@ -84,6 +84,7 @@ body {
 .form {
 	/*width: 30%;*/
 	display: flex;
+	width: 100%;
 }
 
 .form > * {

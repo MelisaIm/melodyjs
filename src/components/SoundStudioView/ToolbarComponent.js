@@ -73,14 +73,27 @@ export default function ToolbarComponent({
 		<div className="ToolbarComponent">
 			<h1>Options</h1>
 			<button className="action-button" onClick={_handleReplay}>
-				{' '}REPLAY SONG{' '}
+				{' '}PLAY SONG{' '}
 			</button>
-			<button className="action-button" onClick={_handleClear}>
-				{' '}CLEAR CHANGES{' '}
-			</button>
-			<button className="action-button" onClick={_handleSave}>
-				{' '}SAVE PROGRESS{' '}
-			</button>
+
+			{songId
+				? <div className="ToolbarComponent">
+						<button className="action-button" onClick={_handleSave}>
+							{' '}SAVE CHANGES{' '}
+						</button>
+						<button className="action-button" onClick={_handleClear}>
+							{' '}UNDO CHANGES{' '}
+						</button>
+					</div>
+				: <div className="ToolbarComponent">
+						<button className="action-button" onClick={_handleSave}>
+							{' '}SAVE NEW{' '}
+						</button>
+						<button className="action-button" onClick={_handleClear}>
+							{' '}CLEAR{' '}
+						</button>
+					</div>}
+
 			<button className="action-button" onClick={_handleDelete}>
 				{' '}DELETE SONG{' '}
 			</button>

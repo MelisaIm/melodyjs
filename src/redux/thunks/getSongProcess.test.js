@@ -26,7 +26,7 @@ describe('getSongProcess', () => {
 	it('should return the song', () => {
 		getSong.mockReturnValueOnce(Promise.resolve(fetchedSong));
 		return thunk(dispatch, getState).then(song => {
-			expect(song).toEqual(data[0]);
+			expect(song).toEqual(fetchedSong);
 		});
 	});
 
