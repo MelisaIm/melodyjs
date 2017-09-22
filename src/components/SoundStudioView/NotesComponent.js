@@ -27,7 +27,8 @@ export default class NotesComponent extends PureComponent {
 					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 				],
 				info: { title: '', description: '' }
-			}
+			},
+			songId: null
 		};
 	}
 
@@ -61,27 +62,22 @@ export default class NotesComponent extends PureComponent {
 	};
 
 	componentDidMount() {
-		if (this.props.songId) {
-			const song = this.props.song;
-			this.setState({
-				song: song
-			});
-		}
+		const song = this.state.song;
+		this.setState({
+			song
+		});
 	}
 
 	componentWillReceiveProps = nextProps => {
 		if (nextProps.song !== {}) {
 			let song = nextProps.song;
-			console.log(song);
 			this.setState({
-				song: song
+				song
 			});
 		}
 	};
 
 	render() {
-		console.log(this.state);
-
 		if (!this.state.song) {
 			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 			const notesClassNames = classNames('notesComponent');

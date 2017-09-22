@@ -6,6 +6,7 @@ import IndexPage from './components/IndexView/IndexPage';
 import NotFoundPage from './components/NotFoundPage';
 import getSongsProcess from './redux/thunks/getSongsProcess';
 import LibraryPageContainer from './redux/containers/LibraryPageContainer';
+import SoundStudioPageContainer from './redux/containers/SoundStudioPageContainer';
 
 import setupStore from './redux/setupStore';
 const store = setupStore();
@@ -15,7 +16,27 @@ export default class App extends Component {
 		super(props);
 
 		this.state = {
-			data: []
+			data: [],
+			song: {
+				melody: [
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				],
+				info: { title: '', description: '' }
+			}
 		};
 
 		store.subscribe(() => {
@@ -41,56 +62,7 @@ export default class App extends Component {
 								exact
 								path="/studio"
 								render={() => {
-									return (
-										<SoundStudioPage
-											song={{
-												melody: [
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-													[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-												],
-												info: { title: '', description: '' }
-											}}
-											notes={[
-												'C5',
-												'B4',
-												'A4',
-												'G4',
-												'F4',
-												'E4',
-												'D4',
-												'C4',
-												'B3',
-												'A3',
-												'G3',
-												'F3',
-												'E3',
-												'D3',
-												'C3'
-											]}
-											onSelect={this.onSelect}
-											instruments={['Synth']}
-											onReplay={this.onReplay}
-											onClear={this.onClear}
-											onSave={this.onSave}
-											onDelete={this.onDelete}
-											chooseInstrument={this.chooseInstrument}
-											updateData={this.updateData}
-											data={this.state.data}
-										/>
-									);
+									return <SoundStudioPageContainer songId={null} />;
 								}}
 							/>
 							<Route
@@ -105,42 +77,8 @@ export default class App extends Component {
 								path="/studio/:songId"
 								render={({ match }) => {
 									const id = match.params.songId;
-									return (
-										<SoundStudioPage
-											song={
-												this.state.data.find(song => song.id === id)
-													? this.state.data.find(song => song.id === id)
-													: {}
-											}
-											songId={match.params.songId}
-											notes={[
-												'C5',
-												'B4',
-												'A4',
-												'G4',
-												'F4',
-												'E4',
-												'D4',
-												'C4',
-												'B3',
-												'A3',
-												'G3',
-												'F3',
-												'E3',
-												'D3',
-												'C3'
-											]}
-											onSelect={this.onSelect}
-											instruments={['Synth']}
-											onReplay={this.onReplay}
-											onClear={this.onClear}
-											onSave={this.onSave}
-											onDelete={this.onDelete}
-											chooseInstrument={this.chooseInstrument}
-											updateData={this.updateData}
-											data={this.state.data}
-										/>
-									);
+
+									return <SoundStudioPageContainer songId={id} />;
 								}}
 							/>
 							<Route component={NotFoundPage} />

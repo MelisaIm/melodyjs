@@ -5,24 +5,49 @@ import getSongProcess from '../thunks/getSongProcess';
 import updateSongProcess from '../thunks/updateSongProcess';
 import deleteSongProcess from '../thunks/deleteSongProcess';
 import createSongProcess from '../thunks/createSongProcess';
-
+import melodyToString from '../../requests/utils/melodyToString';
 
 import { compose, lifecycle } from 'recompose';
 
-function mapStateToProps(state) {
-	console.log(state);
-	return { ...state };
+function mapStateToProps(state, ownProps) {
+	return {
+		songId: ownProps.songId,
+		song: state.song,
+		notes: [
+			'C5',
+			'B4',
+			'A4',
+			'G4',
+			'F4',
+			'E4',
+			'D4',
+			'C4',
+			'B3',
+			'A3',
+			'G3',
+			'F3',
+			'E3',
+			'D3',
+			'C3'
+		],
+		instruments: ['Synth'],
+		data: state.data
+	};
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
 	return {
 		onMount: () => {
-			dispatch(getSongsProcess());
+			ownProps.songId
+				? dispatch(getSongProcess(ownProps.songId))
+				: dispatch({ type: 'CLEAR_PAGE' });
 		},
-		onReceiveProps: () => {},
-		chooseInstrument: instrument => {
-			console.log(instrument);
+		onReceiveProps: nextProps => {
+			nextProps.songId
+				? dispatch(getSongProcess(nextProps.songId))
+				: dispatch({ type: 'CLEAR_PAGE' });
 		},
+		chooseInstrument: instrument => {},
 		onClear: id => {
 			if (id) {
 				dispatch(getSongProcess(id));
@@ -32,31 +57,20 @@ function mapDispatchToProps(dispatch) {
 		},
 		onSave: (song, id) => {
 			if (id) {
-        // updatesong thunk
-
 				const update = melodyToString(song.melody);
 				song = { ...song, melody: update };
-				updateSong(id, song, {
-					databaseId: 'appxhHjmck1PuVaSU',
-					token: 'keymBy1TajObCCmUW'
-				}).then(song => {
-					this.props.updateData();
-					this.setState({ song: song });
-				});
+				dispatch(updateSongProcess(id, song));
 			} else {
-        createSong(song, {
-          databaseId: 'appxhHjmck1PuVaSU',
-          token: 'keymBy1TajObCCmUW'
-        }).then(song => {
-          console.log(song);
-          this.props.updateData();
-          this.setState({ song: song });
-        });
-      }
+				dispatch(createSongProcess(song));
 			}
 		},
-		onDelete: songId => {},
-		updateSongLocally: newSong => {},
+		updateSongLocally: newSong => {
+			dispatch({ type: 'UPDATE_MELODY', melody: newSong });
+		},
+		onDelete: songId => {
+			dispatch(deleteSongProcess(songId));
+			dispatch({ type: 'CLEAR_PAGE' });
+		},
 		onEditForm: changes => {
 			if (changes.title !== undefined) {
 				// dispatch CHANGE_TITLE
@@ -74,10 +88,10 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 const withLifeCycle = lifecycle({
 	componentDidMount() {
 		this.props.onMount();
+	},
+	componentWillReceiveProps(nextProps) {
+		if (this.props.songId !== nextProps.songId) this.props.onReceiveProps(nextProps);
 	}
-	// componentWillReceiveProps(nextProps) {
-	//   this.props.onReceiveProps();
-	// }
 });
 
 export default compose(connectToStore, withLifeCycle)(SoundStudioPage);

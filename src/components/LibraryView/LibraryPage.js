@@ -1,10 +1,10 @@
 import React from 'react';
 import LibraryPageLayout from './LibraryPageLayout';
 
-export default function LibraryPage({ songs }) {
+export default function LibraryPage({ songs, song }) {
 	return (
 		<div className="LibraryPage">
-			<LibraryPageLayout songs={songs} />
+			<LibraryPageLayout songs={songs} song={song} />
 		</div>
 	);
 }

@@ -17,7 +17,6 @@ export default class NoteComponent extends PureComponent {
 	_handleClick = event => {
 		event.preventDefault();
 		const { onSelect } = this.props;
-		console.log(event.target.attributes);
 		const note = event.target.attributes.name.value;
 		const column = parseInt(event.target.attributes.id.value.split(',')[0], 10);
 		const row = parseInt(event.target.attributes.id.value.split(',')[1], 10);

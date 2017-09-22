@@ -1,10 +1,10 @@
 import getSong from '../../requests/getSong';
 
 export default function getSongProcess(id) {
-	return (dispatch, getState) => {
+	return (dispatch, getState, env) => {
 		return getSong(id, {
-			databaseId: 'appxhHjmck1PuVaSU',
-			token: 'keymBy1TajObCCmUW'
+			databaseId: env.AIRTABLE_DATABASE_ID,
+			token: env.AIRTABLE_TOKEN
 		}).then(song => {
 			dispatch({ type: 'GET_SONG', song });
 			return song;

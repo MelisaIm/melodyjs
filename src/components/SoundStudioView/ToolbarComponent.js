@@ -11,6 +11,7 @@ export default function ToolbarComponent({
 	onDelete,
 	info
 }) {
+	console.log('****', 'songId', songId, 'song', song);
 	function sleep(milliseconds) {
 		let start = new Date().getTime();
 		for (let i = 0; i < 1e7; i++) {
@@ -84,6 +85,9 @@ export default function ToolbarComponent({
 						<button className="action-button" onClick={_handleClear}>
 							{' '}UNDO CHANGES{' '}
 						</button>
+						<button className="action-button" onClick={_handleDelete}>
+							{' '}DELETE SONG{' '}
+						</button>
 					</div>
 				: <div className="ToolbarComponent">
 						<button className="action-button" onClick={_handleSave}>
@@ -93,10 +97,6 @@ export default function ToolbarComponent({
 							{' '}CLEAR{' '}
 						</button>
 					</div>}
-
-			<button className="action-button" onClick={_handleDelete}>
-				{' '}DELETE SONG{' '}
-			</button>
 		</div>
 	);
 }
