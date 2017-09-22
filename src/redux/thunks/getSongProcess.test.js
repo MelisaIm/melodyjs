@@ -2,6 +2,7 @@
 import getSongProcess from './getSongProcess';
 jest.mock('../../requests/getSong');
 import getSong from '../../requests/getSong';
+import env from '../../env';
 
 import data from '../../data';
 const thunk = getSongProcess();
@@ -18,21 +19,21 @@ describe('getSongProcess', () => {
 	it('should call getSongProcess getSong()', () => {
 		getSong.mockReturnValueOnce(Promise.resolve(fetchedSong));
 
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(getSong).toBeCalled();
 		});
 	});
 
 	it('should return the song', () => {
 		getSong.mockReturnValueOnce(Promise.resolve(fetchedSong));
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(song).toEqual(fetchedSong);
 		});
 	});
 
 	it('should dispatch GET_SONG', () => {
 		getSong.mockReturnValueOnce(Promise.resolve(fetchedSong));
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(dispatch).toBeCalledWith({
 				type: 'GET_SONG',
 				song

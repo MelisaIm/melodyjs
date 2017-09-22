@@ -2,6 +2,7 @@
 import deleteSongProcess from './deleteSongProcess';
 jest.mock('../../requests/deleteSong');
 import deleteSong from '../../requests/deleteSong';
+import env from '../../env';
 
 import data from '../../data';
 
@@ -19,21 +20,21 @@ describe('deleteSongProcess', () => {
 	it('should call deleteSongProcess deleteSong()', () => {
 		deleteSong.mockReturnValueOnce(Promise.resolve());
 
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(deleteSong).toBeCalled();
 		});
 	});
 
 	it('should return no song', () => {
 		deleteSong.mockReturnValueOnce(Promise.resolve());
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(song).toEqual();
 		});
 	});
 
 	it('should dispatch DELETE_SONG', () => {
 		deleteSong.mockReturnValueOnce(Promise.resolve());
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(dispatch).toBeCalledWith({
 				type: 'DELETE_SONG',
 				id: songData.id

@@ -2,6 +2,7 @@
 import updateSongProcess from './updateSongProcess';
 jest.mock('../../requests/updateSong');
 import updateSong from '../../requests/updateSong';
+import env from '../../env';
 
 import data from '../../data';
 
@@ -39,21 +40,21 @@ describe('updateSongProcess', () => {
 	it('should call updateSongProcess updateSong()', () => {
 		updateSong.mockReturnValueOnce(Promise.resolve(changedSong));
 
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(updateSong).toBeCalled();
 		});
 	});
 
 	it('should return the song with changes', () => {
 		updateSong.mockReturnValueOnce(Promise.resolve(changedSong));
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(song).toEqual(changedSong);
 		});
 	});
 
 	it('should dispatch GET_SONG', () => {
 		updateSong.mockReturnValueOnce(Promise.resolve(changedSong));
-		return thunk(dispatch, getState).then(song => {
+		return thunk(dispatch, getState, env).then(song => {
 			expect(dispatch).toBeCalledWith({
 				type: 'UPDATE_SONG',
 				song
