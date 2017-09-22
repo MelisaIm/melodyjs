@@ -10,9 +10,8 @@ import melodyToString from '../../requests/utils/melodyToString';
 import { compose, lifecycle } from 'recompose';
 
 function mapStateToProps(state, ownProps) {
-	console.log('********', state);
 	return {
-		songId: null,
+		songId: ownProps.songId,
 		song: state.song,
 		notes: [
 			'C5',
@@ -37,17 +36,19 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-	console.log(ownProps);
 	return {
 		onMount: () => {
-			dispatch(getSongProcess(ownProps.songId));
+			ownProps.songId
+				? dispatch(getSongProcess(ownProps.songId))
+				: dispatch({ type: 'CLEAR_PAGE' });
 		},
-		// onReceiveProps: nextProps => {
-		// 	dispatch({ type: 'GET_SONG', song: nextProps.song });
-		// },
-		chooseInstrument: instrument => {
-			console.log(instrument);
+		onReceiveProps: nextProps => {
+			console.log(nextProps, '_____________');
+			nextProps.songId
+				? dispatch(getSongProcess(nextProps.songId))
+				: dispatch({ type: 'CLEAR_PAGE' });
 		},
+		chooseInstrument: instrument => {},
 		onClear: id => {
 			if (id) {
 				dispatch(getSongProcess(id));
@@ -57,17 +58,19 @@ function mapDispatchToProps(dispatch, ownProps) {
 		},
 		onSave: (song, id) => {
 			if (id) {
-				// updatesong thunk
 				const update = melodyToString(song.melody);
 				song = { ...song, melody: update };
 				dispatch(updateSongProcess(id, song));
 			} else {
-				// createSong thunk
 				dispatch(createSongProcess(song));
 			}
 		},
+		updateSongLocally: newSong => {
+			dispatch({ type: 'UPDATE_MELODY', melody: newSong });
+		},
 		onDelete: songId => {
 			dispatch(deleteSongProcess(songId));
+			dispatch({ type: 'CLEAR_PAGE' });
 		},
 		onEditForm: changes => {
 			if (changes.title !== undefined) {
@@ -86,10 +89,10 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 const withLifeCycle = lifecycle({
 	componentDidMount() {
 		this.props.onMount();
+	},
+	componentWillReceiveProps(nextProps) {
+		if (this.props.songId !== nextProps.songId) this.props.onReceiveProps(nextProps);
 	}
-	// componentWillReceiveProps(nextProps) {
-	// 	this.props.onReceiveProps();
-	// }
 });
 
 export default compose(connectToStore, withLifeCycle)(SoundStudioPage);

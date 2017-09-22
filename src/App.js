@@ -58,7 +58,13 @@ export default class App extends Component {
 					<Router>
 						<Switch>
 							<Route exact path="/" component={IndexPage} />
-							<Route exact path="/studio" component={SoundStudioPageContainer} />
+							<Route
+								exact
+								path="/studio"
+								render={() => {
+									return <SoundStudioPageContainer songId={null} />;
+								}}
+							/>
 							<Route
 								exact
 								path="/library"

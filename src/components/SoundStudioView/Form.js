@@ -53,7 +53,6 @@ export default class Form extends Component {
 	}
 
 	render() {
-		console.log(this.props, '_____________');
 		return (
 			<form className="Form">
 				<FormGroup className="form" controlId="formControlsTextarea">

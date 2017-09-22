@@ -19,14 +19,17 @@ export default function rootReducer(
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 			],
-			info: { title: 'Untitled', description: 'New Song' }
-		}
+			info: { title: 'Untitled', description: 'New song' }
+		},
+		songId: null
 	},
 	action
 ) {
 	switch (action.type) {
 		case 'SONG_ID':
 			return { ...currentState, songId: action.id };
+		case 'UPDATE_MELODY':
+			return { ...currentState, song: { ...currentState.song, melody: action.melody } };
 		case 'GET_SONGS':
 			return { ...currentState, data: action.songs };
 		case 'GET_SONG':
@@ -38,10 +41,11 @@ export default function rootReducer(
 		case 'UPDATE_SONG':
 			const newUpdatedArray = currentState.data.slice();
 			newUpdatedArray.splice(newUpdatedArray.indexOf(action.song.id), 1, action.song);
+			const newSong = newUpdatedArray.find(song => song.id === action.song.id);
 			return {
 				...currentState,
 				data: newUpdatedArray,
-				song: newUpdatedArray.find(song => song.id === action.song.id)
+				song: newSong
 			};
 		case 'CHANGE_TITLE':
 			return {
@@ -69,6 +73,30 @@ export default function rootReducer(
 			};
 		case 'CLEAR_CHANGE':
 			return { ...currentState, song: action.song };
+		case 'CLEAR_PAGE':
+			return {
+				...currentState,
+				song: {
+					melody: [
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+					],
+					info: { title: 'Untitled', description: 'New song' }
+				}
+			};
 		case 'CLEAR_ALL':
 			return {
 				...currentState,
