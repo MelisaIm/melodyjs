@@ -72,10 +72,8 @@ function mapDispatchToProps(dispatch, ownProps) {
 		},
 		onEditForm: changes => {
 			if (changes.title !== undefined) {
-				// dispatch CHANGE_TITLE
 				dispatch({ type: 'CHANGE_TITLE', title: changes.title });
 			} else {
-				// dispatch CHANGE_DESCRIPTION
 				dispatch({ type: 'CHANGE_DESCRIPTION', description: changes.description });
 			}
 		}

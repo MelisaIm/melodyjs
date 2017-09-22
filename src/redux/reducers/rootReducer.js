@@ -43,11 +43,11 @@ export default function rootReducer(
 		case 'UPDATE_SONG':
 			const newUpdatedArray = currentState.data.slice();
 			newUpdatedArray.splice(newUpdatedArray.indexOf(action.song.id), 1, action.song);
-			const newSong = newUpdatedArray.find(song => song.id === action.song.id);
+			// const newSong = newUpdatedArray.find(song => song.id === action.song.id);
 			return {
 				...currentState,
 				data: newUpdatedArray,
-				song: newSong
+				song: action.song
 			};
 		case 'CHANGE_TITLE':
 			return {
@@ -56,8 +56,7 @@ export default function rootReducer(
 					...currentState.song,
 					info: {
 						...currentState.song.info,
-						title: action.title,
-						description: currentState.song.info.description
+						title: action.title
 					}
 				}
 			};
@@ -68,7 +67,6 @@ export default function rootReducer(
 					...currentState.song,
 					info: {
 						...currentState.song.info,
-						title: currentState.song.info.title,
 						description: action.description
 					}
 				}
