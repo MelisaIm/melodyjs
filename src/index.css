@@ -140,6 +140,7 @@ body {
 }
 
 .jumbotron-text {
+	padding: 3px;
 	color: white;
 	background-color: rgba(0, 0, 0, 0.5);
 }
