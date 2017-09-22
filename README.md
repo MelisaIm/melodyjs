@@ -1,6 +1,6 @@
 # MelodyJS README
 
-![alt-text-1](image1.png "title-1") ![alt-text-2](image2.png "title-2")
+![Index](./images/index.png) ![Library](./images/library.png)![SoundStudio](./images/mountain.png)
 
 ## About MelodyJS:
 
