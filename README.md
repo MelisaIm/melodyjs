@@ -10,7 +10,7 @@ Some tools employed include **react-bootstrap**, **Jest** & **enzyme** for unit 
 
 ## Inspiration:
 
-MelodyJS was inspired by the ToneJES library (hence the name, MelodyJS) and this video on YouTube where a musician created an image that both looked like an unicorn and sounded amazing:
+MelodyJS was inspired by the ToneJS library (hence the name, MelodyJS) and this video on YouTube where a musician created an image that both looked like an unicorn and sounded amazing:
 
 [![MIDI Unicorn](./src/images/horse-music.png)](https://www.youtube.com/watch?v=i3tiuGVDDkk)
 
