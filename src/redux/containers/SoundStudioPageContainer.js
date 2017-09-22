@@ -10,8 +10,29 @@ import melodyToString from '../../requests/utils/melodyToString';
 import { compose, lifecycle } from 'recompose';
 
 function mapStateToProps(state, ownProps) {
+	console.log('********', state);
 	return {
-		song: ownProps.song
+		songId: null,
+		song: state.song,
+		notes: [
+			'C5',
+			'B4',
+			'A4',
+			'G4',
+			'F4',
+			'E4',
+			'D4',
+			'C4',
+			'B3',
+			'A3',
+			'G3',
+			'F3',
+			'E3',
+			'D3',
+			'C3'
+		],
+		instruments: ['Synth'],
+		data: state.data
 	};
 }
 
@@ -19,11 +40,11 @@ function mapDispatchToProps(dispatch, ownProps) {
 	console.log(ownProps);
 	return {
 		onMount: () => {
-			dispatch(getSongsProcess());
+			dispatch(getSongProcess(ownProps.songId));
 		},
-		onReceiveProps: nextProps => {
-			dispatch({ type: 'GET_SONG', song: nextProps.song });
-		},
+		// onReceiveProps: nextProps => {
+		// 	dispatch({ type: 'GET_SONG', song: nextProps.song });
+		// },
 		chooseInstrument: instrument => {
 			console.log(instrument);
 		},
@@ -65,10 +86,10 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 const withLifeCycle = lifecycle({
 	componentDidMount() {
 		this.props.onMount();
-	},
-	componentWillReceiveProps(nextProps) {
-		this.props.onReceiveProps();
 	}
+	// componentWillReceiveProps(nextProps) {
+	// 	this.props.onReceiveProps();
+	// }
 });
 
 export default compose(connectToStore, withLifeCycle)(SoundStudioPage);

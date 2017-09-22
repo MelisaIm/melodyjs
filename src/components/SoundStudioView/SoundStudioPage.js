@@ -1,7 +1,7 @@
 import React from 'react';
 import SoundStudioPageLayout from './SoundStudioPageLayout';
 
-export default function SoundStudioPage(
+export default function SoundStudioPage({
 	songId,
 	song,
 	notes,
@@ -14,7 +14,7 @@ export default function SoundStudioPage(
 	updateSongLocally,
 	data,
 	onEditForm
-) {
+}) {
 	return (
 		<div className="SoundStudioPage">
 			<SoundStudioPageLayout

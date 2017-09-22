@@ -25,6 +25,8 @@ export default function rootReducer(
 	action
 ) {
 	switch (action.type) {
+		case 'SONG_ID':
+			return { ...currentState, songId: action.id };
 		case 'GET_SONGS':
 			return { ...currentState, data: action.songs };
 		case 'GET_SONG':
