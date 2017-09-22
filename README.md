@@ -8,6 +8,12 @@ This project explores the **ToneJS** library, the **ReactJS** framework, **boots
 
 Some tools employed include **react-bootstrap**, **Jest** & **enzyme** for unit testing and mock api calls, **redux** state management, **react-thunks middleware** for async functions, and *storybook** for component based development.  
 
+## Inspiration:
+
+MelodyJS was inspired by this video on YouTube where a musician created an image that both looked like an unicorn and sounded amazing:
+
+[![Alt text for your video](./src/images/horse-music)](https://www.youtube.com/watch?v=i3tiuGVDDkk)
+
 ### Future Enhancements:
 - Multiple instruments for playback
 - Visualize music using C3/D3 to show as music previews
