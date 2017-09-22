@@ -1,4 +1,4 @@
-# MelodyJS README
+# MelodyJS README: http://melodyjs.surge.sh/
 
 ![Index](./src/images/index.png) ![Library](./src/images/library.png)![SoundStudio](./src/images/mountain.png)
 
