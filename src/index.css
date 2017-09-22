@@ -123,6 +123,7 @@ body {
 	width: 100vw;
 	height: 40px;
 	margin-bottom: 0px;
+	margin-top: 10px;
 }
 
 .footer-text {
@@ -205,6 +206,8 @@ body {
 	display: flex;
 	margin-top: 40px;
 	flex-flow: wrap;
+	padding: 10px;
+	padding-bottom: 40px;
 }
 
 .card-buttons {
@@ -221,6 +224,7 @@ body {
 	margin-top: 30px;
 	margin-left: 100px;
 }
+
 .LibrarySortComponentSpan {
 	margin-right: 20px;
 	margin-top: 10px;

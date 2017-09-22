@@ -1,7 +1,6 @@
 import rootReducer from './rootReducer';
 import deepFreeze from 'deep-freeze';
-
-const songs = [];
+import songs from './mock-data.json';
 
 const state = {
 	data: [],
@@ -29,6 +28,30 @@ const state = {
 };
 
 describe('rootReducer', () => {
+	it('action.type CLEAR_SORTED', () => {
+		const action = {
+			type: 'CLEAR_SORTED',
+			newsongs: []
+		};
+		const currentState = {};
+		deepFreeze(currentState);
+		const nextState = {};
+
+		expect(rootReducer(currentState, action)).toEqual(nextState);
+	});
+
+	it('action.type SORTED_SONGS', () => {
+		const action = {
+			type: 'SORTED_SONGS',
+			newsongs: []
+		};
+		const currentState = {};
+		deepFreeze(currentState);
+		const nextState = {};
+
+		expect(rootReducer(currentState, action)).toEqual(nextState);
+	});
+
 	it('action.type SORT_SONGS', () => {
 		const action = {
 			type: 'SORT_SONGS',
