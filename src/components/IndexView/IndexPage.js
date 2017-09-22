@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBarComponent';
 import Footer from '../NavBar/FooterComponent';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default function IndexPage() {
 	return (
@@ -16,9 +17,11 @@ export default function IndexPage() {
 							<span className="jumbotron-text">MelodyJS is a visual music canvas</span>
 						</p>
 						<p>
-							<a className="btn btn-primary btn-lg" href="/studio" role="button">
-								Let's Create
-							</a>
+							<LinkContainer to="/studio" exact>
+								<a className="btn btn-primary btn-lg" href="/studio" role="button">
+									Let's Create
+								</a>
+							</LinkContainer>
 						</p>
 						<div className="photoCredit">
 							<span className="jumbotron-text">Photo by Haley Powers on Unsplash</span>
