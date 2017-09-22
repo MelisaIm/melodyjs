@@ -1,6 +1,6 @@
 # MelodyJS README
 
-![Index](./images/index.png) ![Library](./images/library.png)![SoundStudio](./images/mountain.png)
+![Index](./src/images/index.png) ![Library](./src/images/library.png)![SoundStudio](./src/images/mountain.png)
 
 ## About MelodyJS:
 
