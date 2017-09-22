@@ -1,10 +1,10 @@
 import deleteSong from '../../requests/deleteSong';
 
 export default function deleteSongProcess(id) {
-	return (dispatch, getState) => {
+	return (dispatch, getState, env) => {
 		return deleteSong(id, {
-			databaseId: 'appxhHjmck1PuVaSU',
-			token: 'keymBy1TajObCCmUW'
+			databaseId: env.AIRTABLE_DATABASE_ID,
+			token: env.AIRTABLE_TOKEN
 		}).then(result => {
 			dispatch({ type: 'DELETE_SONG', id });
 			return result;

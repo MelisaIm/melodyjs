@@ -43,7 +43,6 @@ function mapDispatchToProps(dispatch, ownProps) {
 				: dispatch({ type: 'CLEAR_PAGE' });
 		},
 		onReceiveProps: nextProps => {
-			console.log(nextProps, '_____________');
 			nextProps.songId
 				? dispatch(getSongProcess(nextProps.songId))
 				: dispatch({ type: 'CLEAR_PAGE' });
