@@ -25,7 +25,7 @@ function mapDispatchToProps(dispatch) {
 		},
 		sortByDate: songs => {
 			dispatch(
-				sortSongsProcess('?sort%5B0%5D%5Bfield%5D=createdTime&sort%5B0%5D%5Bdirection%5D=inc')
+				sortSongsProcess('?sort%5B0%5D%5Bfield%5D=createdTime&sort%5B0%5D%5Bdirection%5D=asc')
 			);
 		}
 	};
