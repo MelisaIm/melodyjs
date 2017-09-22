@@ -28,11 +28,9 @@ export default function rootReducer(
 ) {
 	switch (action.type) {
 		case 'CLEAR_SORTED':
-			return { currentState, sortedSongs: null };
+			return { ...currentState, sortedSongs: null };
 		case 'SORTED_SONGS':
 			return { ...currentState, sortedSongs: action.newsongs };
-		case 'SORT_SONGS':
-			return { ...currentState, data: action.newsongs };
 		case 'SONG_ID':
 			return { ...currentState, songId: action.id };
 		case 'UPDATE_MELODY':
