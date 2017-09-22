@@ -1,7 +1,7 @@
 import recordToSong from '../../requests/utils/recordToSong';
 export default function sortSongsProcess(sort) {
 	return (dispatch, getState, env) => {
-		return fetch(`https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/songs/`, {
+		return fetch(`https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/songs/${sort}`, {
 			headers: {
 				Authorization: `Bearer ${env.AIRTABLE_TOKEN}`
 			}

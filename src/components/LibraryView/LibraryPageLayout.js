@@ -4,7 +4,13 @@ import NavBar from '../NavBar/NavBarComponent';
 import Footer from '../NavBar/FooterComponent';
 import LibrarySortComponent from './LibrarySortComponent';
 
-export default function LibraryPageLayout({ data = [], sortAlphabetically, sortByDate }) {
+export default function LibraryPageLayout({
+	data = [],
+	sortAlphabetically,
+	sortByDate,
+	filterSongs,
+	sortedSongs
+}) {
 	if (Array.isArray(data) && data.length > 0) {
 		return (
 			<div className="LibraryPageLayout">
@@ -14,8 +20,11 @@ export default function LibraryPageLayout({ data = [], sortAlphabetically, sortB
 						data={data}
 						sortAlphabetically={sortAlphabetically}
 						sortByDate={sortByDate}
+						filterSongs={filterSongs}
 					/>
-					{data.map((song, index) => <LibraryCardComponent song={song} key={index} />)}
+					{sortedSongs
+						? sortedSongs.map((song, index) => <LibraryCardComponent song={song} key={index} />)
+						: data.map((song, index) => <LibraryCardComponent song={song} key={index} />)}
 					<div className="LibraryCardComponent">
 						<div className="card" style={{ width: 20 + 'rem' }}>
 							<div className="placeholder">
@@ -34,6 +43,6 @@ export default function LibraryPageLayout({ data = [], sortAlphabetically, sortB
 			</div>
 		);
 	} else {
-		return <div> No Songs</div>;
+		return <div>...Loading</div>;
 	}
 }

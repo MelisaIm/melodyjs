@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import LibraryPage from '../../components/LibraryView/LibraryPage';
 import getSongsProcess from '../thunks/getSongsProcess';
 import { compose, lifecycle } from 'recompose';
-import sortSongsProcess from '../thunks/sortSongsProcess';
+// import sortSongsProcess from '../thunks/sortSongsProcess';
 
 function mapStateToProps(state) {
-	return { data: state.data, song: state.song };
+	return { data: state.data, song: state.song, sortedSongs: state.sortedSongs };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -13,20 +13,42 @@ function mapDispatchToProps(dispatch) {
 		onMount: () => {
 			dispatch(getSongsProcess());
 		},
-		sortAlphabetically: songs => {
-			const newsongs = songs.slice().sort((a, b) => {
-				let songA = a.info.title.toUpperCase();
-				let songB = b.info.title.toUpperCase();
-				if (songA < songB) return -1;
-				if (songA > songB) return 1;
-				return 0;
-			});
-			dispatch({ type: 'SORT_SONGS', newsongs });
+		sortAlphabetically: (songs, order) => {
+			if (order === 'A-Z') {
+				const newsongs = songs.slice().sort((a, b) => {
+					let songA = a.info.title.toUpperCase();
+					let songB = b.info.title.toUpperCase();
+					if (songA < songB) return -1;
+					if (songA > songB) return 1;
+					return 0;
+				});
+				dispatch({ type: 'SORT_SONGS', newsongs });
+			} else {
+				// sortByDate: songs => {
+				// 	dispatch(
+				// 		sortSongsProcess('?sort%5B0%5D%5Bfield%5D=createdTime&sort%5B0%5D%5Bdirection%5D=asc')
+				// 	);
+				// }
+				const newsongs = songs.slice().sort((b, a) => {
+					let songA = a.info.title.toUpperCase();
+					let songB = b.info.title.toUpperCase();
+					if (songA < songB) return -1;
+					if (songA > songB) return 1;
+					return 0;
+				});
+				dispatch({ type: 'SORT_SONGS', newsongs });
+			}
 		},
-		sortByDate: songs => {
-			dispatch(
-				sortSongsProcess('?sort%5B0%5D%5Bfield%5D=createdTime&sort%5B0%5D%5Bdirection%5D=asc')
-			);
+		filterSongs: (songs, searchQuery) => {
+			if (searchQuery) {
+				const newsongs = songs.filter(song =>
+					song.info.title.toUpperCase().includes(searchQuery.toUpperCase())
+				);
+				dispatch({ type: 'SORTED_SONGS', newsongs });
+			} else {
+				dispatch(getSongsProcess());
+				dispatch({ type: 'CLEAR_SORTED' });
+			}
 		}
 	};
 }

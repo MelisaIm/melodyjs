@@ -1,6 +1,7 @@
 export default function rootReducer(
 	currentState = {
 		data: [],
+		sortedSongs: null,
 		song: {
 			melody: [
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -26,6 +27,10 @@ export default function rootReducer(
 	action
 ) {
 	switch (action.type) {
+		case 'CLEAR_SORTED':
+			return { currentState, sortedSongs: null };
+		case 'SORTED_SONGS':
+			return { ...currentState, sortedSongs: action.newsongs };
 		case 'SORT_SONGS':
 			return { ...currentState, data: action.newsongs };
 		case 'SONG_ID':
