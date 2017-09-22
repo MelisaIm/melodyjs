@@ -12,7 +12,7 @@ Some tools employed include **react-bootstrap**, **Jest** & **enzyme** for unit 
 
 MelodyJS was inspired by this video on YouTube where a musician created an image that both looked like an unicorn and sounded amazing:
 
-[![MIDI Unicorn](./src/images/horse-music)(https://www.youtube.com/watch?v=i3tiuGVDDkk)
+[![MIDI Unicorn](./src/images/horse-music)](https://www.youtube.com/watch?v=i3tiuGVDDkk)
 
 ### Future Enhancements:
 - Multiple instruments for playback
