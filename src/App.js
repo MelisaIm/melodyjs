@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import SoundStudioPage from './components/SoundStudioView/SoundStudioPage';
 import IndexPage from './components/IndexView/IndexPage';
 import NotFoundPage from './components/NotFoundPage';
 import getSongsProcess from './redux/thunks/getSongsProcess';

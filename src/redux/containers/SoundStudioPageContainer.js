@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import SoundStudioPage from '../../components/SoundStudioView/SoundStudioPage';
-import getSongsProcess from '../thunks/getSongsProcess';
 import getSongProcess from '../thunks/getSongProcess';
 import updateSongProcess from '../thunks/updateSongProcess';
 import deleteSongProcess from '../thunks/deleteSongProcess';

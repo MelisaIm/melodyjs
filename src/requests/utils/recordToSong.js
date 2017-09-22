@@ -5,6 +5,7 @@ export default function recordToSong(record) {
 			title: record.fields.title ? record.fields.title : '',
 			description: record.fields.description ? record.fields.description : ''
 		},
+		createdTime: record.createdTime,
 		melody: record.fields.melody
 			? record.fields.melody.split('-').map(array =>
 					array.split(',').map(digit => {

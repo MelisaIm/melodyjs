@@ -1,6 +1,5 @@
 import React from 'react';
 import Tone from 'tone';
-import { LinkContainer } from 'react-router-bootstrap';
 
 export default function ToolbarComponent({
 	songId,
@@ -11,7 +10,6 @@ export default function ToolbarComponent({
 	onDelete,
 	info
 }) {
-	console.log('****', 'songId', songId, 'song', song);
 	function sleep(milliseconds) {
 		let start = new Date().getTime();
 		for (let i = 0; i < 1e7; i++) {

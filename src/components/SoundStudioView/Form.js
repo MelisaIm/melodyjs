@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import getSong from '../../requests/getSong';
 
 export default class Form extends Component {
 	static defaultProps = {

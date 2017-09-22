@@ -16,7 +16,6 @@ export default function LibraryPageLayout({ songs = [] }) {
 								<img src="https://placekitten.com/160/160" alt="" />
 							</div>
 							<div className="card-block">
-								<h4 className="card-title" />
 								<p className="card-text" />
 								<a href="/studio" className="btn btn-primary">
 									Create Song

@@ -81,11 +81,11 @@ export default function LibraryCardComponent({ song = {} }) {
 						</p>
 						<div className="card-buttons">
 							<LinkContainer to={`/studio/${song.id}`} exact>
-								<a href="#" className="btn btn-primary">
+								<a href={`/studio/${song.id}`} className="btn btn-primary">
 									Edit
 								</a>
 							</LinkContainer>
-							<a href="#" className="btn btn-primary" onClick={_handleReplay}>
+							<a className="btn btn-primary" onClick={_handleReplay}>
 								Preview
 							</a>
 						</div>
@@ -109,7 +109,7 @@ export default function LibraryCardComponent({ song = {} }) {
 						</p>
 						<div className="card-buttons">
 							<LinkContainer to={`/studio/${song.id}`} exact>
-								<a href="#" className="btn btn-primary">
+								<a href={`/studio/${song.id}`} className="btn btn-primary">
 									Open
 								</a>
 							</LinkContainer>
