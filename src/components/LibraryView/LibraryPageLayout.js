@@ -2,14 +2,20 @@ import React from 'react';
 import LibraryCardComponent from './LibraryCardComponent';
 import NavBar from '../NavBar/NavBarComponent';
 import Footer from '../NavBar/FooterComponent';
+import LibrarySortComponent from './LibrarySortComponent';
 
-export default function LibraryPageLayout({ songs = [] }) {
-	if (Array.isArray(songs) && songs.length > 0) {
+export default function LibraryPageLayout({ data = [], sortAlphabetically, sortByDate }) {
+	if (Array.isArray(data) && data.length > 0) {
 		return (
 			<div className="LibraryPageLayout">
 				<NavBar />
 				<div className="LibraryPageContent">
-					{songs.map((song, index) => <LibraryCardComponent song={song} key={index} />)}
+					<LibrarySortComponent
+						data={data}
+						sortAlphabetically={sortAlphabetically}
+						sortByDate={sortByDate}
+					/>
+					{data.map((song, index) => <LibraryCardComponent song={song} key={index} />)}
 					<div className="LibraryCardComponent">
 						<div className="card" style={{ width: 20 + 'rem' }}>
 							<div className="placeholder">

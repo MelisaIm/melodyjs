@@ -213,3 +213,14 @@ body {
 .btn {
 	margin: 5px;
 }
+
+.LibrarySortComponent {
+	display: flex;
+	width: 100%;
+	margin-top: 30px;
+	margin-left: 100px;
+}
+.LibrarySortComponentSpan {
+	margin-right: 20px;
+	margin-top: 10px;
+}
