@@ -221,7 +221,10 @@ describe('rootReducer', () => {
 		};
 		const currentState = state;
 		deepFreeze(currentState);
-		const nextState = {};
+		const nextState = {
+			...state,
+			song: { ...state.song, info: { ...state.song.info, title: action.title } }
+		};
 
 		expect(rootReducer(currentState, action)).toEqual(nextState);
 	});
@@ -229,11 +232,14 @@ describe('rootReducer', () => {
 	it('action.type CHANGE_DESCRIPTION', () => {
 		const action = {
 			type: 'CHANGE_DESCRIPTION',
-			newsongs: []
+			description: 'new text'
 		};
 		const currentState = state;
 		deepFreeze(currentState);
-		const nextState = {};
+		const nextState = {
+			...state,
+			song: { ...state.song, info: { ...state.song.info, description: action.description } }
+		};
 
 		expect(rootReducer(currentState, action)).toEqual(nextState);
 	});
@@ -241,23 +247,57 @@ describe('rootReducer', () => {
 	it('action.type CLEAR_CHANGE', () => {
 		const action = {
 			type: 'CLEAR_CHANGE',
-			newsongs: []
+			song: sortedSongs[0]
 		};
 		const currentState = state;
 		deepFreeze(currentState);
-		const nextState = {};
+		const nextState = { ...state, song: action.song };
+
+		expect(rootReducer(currentState, action)).toEqual(nextState);
+	});
+
+	it('action.type CLEAR_PAGE', () => {
+		const action = {
+			type: 'CLEAR_PAGE'
+		};
+		const currentState = { ...state, song: sortedSongs[0] };
+		deepFreeze(currentState);
+		const nextState = state;
 
 		expect(rootReducer(currentState, action)).toEqual(nextState);
 	});
 
 	it('action.type CLEAR_ALL', () => {
 		const action = {
-			type: 'CLEAR_ALL',
-			newsongs: []
+			type: 'CLEAR_ALL'
 		};
-		const currentState = state;
+		const currentState = {
+			data: unsortedSongs,
+			sortedSongs: sortedSongs,
+			song: {
+				melody: [
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 'C4', 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 'D5', 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+				],
+				info: { title: 'Untitled', description: 'New song' }
+			},
+			songId: null
+		};
 		deepFreeze(currentState);
-		const nextState = {};
+		const nextState = stateSorted;
 
 		expect(rootReducer(currentState, action)).toEqual(nextState);
 	});
