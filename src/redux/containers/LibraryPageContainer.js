@@ -14,6 +14,8 @@ function mapDispatchToProps(dispatch) {
 			dispatch(getSongsProcess());
 		},
 		sortAlphabetically: (songs, order) => {
+			dispatch(getSongsProcess());
+
 			if (order === 'A-Z') {
 				const newsongs = songs.slice().sort((a, b) => {
 					let songA = a.info.title.toUpperCase();
@@ -22,8 +24,10 @@ function mapDispatchToProps(dispatch) {
 					if (songA > songB) return 1;
 					return 0;
 				});
-				dispatch({ type: 'SORT_SONGS', newsongs });
+				dispatch({ type: 'SORTED_SONGS', newsongs });
 			} else {
+				dispatch(getSongsProcess());
+
 				// sortByDate: songs => {
 				// 	dispatch(
 				// 		sortSongsProcess('?sort%5B0%5D%5Bfield%5D=createdTime&sort%5B0%5D%5Bdirection%5D=asc')
@@ -36,7 +40,8 @@ function mapDispatchToProps(dispatch) {
 					if (songA > songB) return 1;
 					return 0;
 				});
-				dispatch({ type: 'SORT_SONGS', newsongs });
+
+				dispatch({ type: 'SORTED_SONGS', newsongs });
 			}
 		},
 		filterSongs: (songs, searchQuery) => {
