@@ -45,6 +45,7 @@ function mapDispatchToProps(dispatch) {
 					song.info.title.toUpperCase().includes(searchQuery.toUpperCase())
 				);
 				dispatch({ type: 'SORTED_SONGS', newsongs });
+				dispatch(getSongsProcess());
 			} else {
 				dispatch(getSongsProcess());
 				dispatch({ type: 'CLEAR_SORTED' });

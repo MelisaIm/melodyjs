@@ -5,6 +5,7 @@ import updateSongProcess from '../thunks/updateSongProcess';
 import deleteSongProcess from '../thunks/deleteSongProcess';
 import createSongProcess from '../thunks/createSongProcess';
 import melodyToString from '../../requests/utils/melodyToString';
+import getSongsProcess from '../thunks/getSongsProcess';
 
 import { compose, lifecycle } from 'recompose';
 
@@ -37,6 +38,9 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
 		onMount: () => {
+			dispatch(getSongsProcess());
+			dispatch({ type: 'CLEAR_SORTED' });
+
 			ownProps.songId
 				? dispatch(getSongProcess(ownProps.songId))
 				: dispatch({ type: 'CLEAR_PAGE' });
