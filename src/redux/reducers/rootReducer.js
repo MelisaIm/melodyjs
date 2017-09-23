@@ -2,7 +2,7 @@ export default function rootReducer(
 	currentState = {
 		data: [],
 		sortedSongs: null,
-		playingChord: 4,
+		playingChord: null,
 		song: {
 			melody: [
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

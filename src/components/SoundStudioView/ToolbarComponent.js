@@ -9,7 +9,8 @@ export default function ToolbarComponent({
 	onSave,
 	onDelete,
 	info,
-	passChord
+	passChord,
+	playingChord
 }) {
 	function sleep(milliseconds) {
 		let start = new Date().getTime();
@@ -29,10 +30,14 @@ export default function ToolbarComponent({
 				arrayOfChords.push(chordArray);
 			});
 			arrayOfChords.forEach((chord, index) => {
-				sleep(500);
-				passChord(index);
-				poly(chord.length, chord);
+				setTimeout(() => {
+					passChord(index);
+					poly(chord.length, chord);
+				}, 500 * index);
 			});
+			setTimeout(() => {
+				passChord(null);
+			}, 500 * 16);
 		}
 	}
 	function poly(voices, chordArray) {
@@ -59,7 +64,10 @@ export default function ToolbarComponent({
 	return (
 		<div className="ToolbarComponent">
 			<h1>Options</h1>
-			<button className="action-button action-button-replay" onClick={_handleReplay}>
+			<button
+				className="action-button action-button-replay"
+				onClick={_handleReplay}
+				disabled={playingChord}>
 				{' '}PLAY SONG{' '}
 			</button>
 

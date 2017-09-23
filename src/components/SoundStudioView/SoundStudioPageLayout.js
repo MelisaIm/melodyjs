@@ -47,6 +47,7 @@ export default function SoundStudioPageLayout({
 						onDelete={onDelete}
 						data={data}
 						passChord={passChord}
+						playingChord={playingChord}
 					/>
 					<InstrumentsComponent chooseInstrument={chooseInstrument} instruments={instruments} />
 				</div>
