@@ -25,16 +25,12 @@ export default function ToolbarComponent({
 			const arrayOfChords = [];
 			chords.forEach(chord => {
 				let chordArray = song.melody.map(array => array[chord]).filter(note => note !== 0);
-				if (chordArray.length > 0) {
-					arrayOfChords.push(chordArray);
-				}
+				arrayOfChords.push(chordArray);
 			});
 			arrayOfChords.forEach(chord => {
 				sleep(500);
 				poly(chord.length, chord);
 			});
-		} else {
-			return false;
 		}
 	}
 	function poly(voices, chordArray) {
