@@ -32,6 +32,10 @@ body {
 	box-sizing: border-box;
 }
 
+.playing > * {
+	background-color: yellow;
+}
+
 .ToolbarComponent {
 	display: flex;
 	flex-wrap: wrap;

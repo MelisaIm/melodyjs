@@ -18,7 +18,9 @@ export default function SoundStudioPageLayout({
 	updateSong,
 	songId,
 	data,
-	onEditForm
+	onEditForm,
+	passChord,
+	playingChord
 }) {
 	return (
 		<div className="Page">
@@ -28,7 +30,12 @@ export default function SoundStudioPageLayout({
 					<Form data={data} songId={songId} onEditForm={onEditForm} song={song} />
 				</div>
 				<div className="left">
-					<NotesComponent notes={notes} song={song} updateSong={updateSong} />
+					<NotesComponent
+						notes={notes}
+						song={song}
+						updateSong={updateSong}
+						playingChord={playingChord}
+					/>
 				</div>
 				<div className="right">
 					<ToolbarComponent
@@ -39,6 +46,7 @@ export default function SoundStudioPageLayout({
 						onSave={onSave}
 						onDelete={onDelete}
 						data={data}
+						passChord={passChord}
 					/>
 					<InstrumentsComponent chooseInstrument={chooseInstrument} instruments={instruments} />
 				</div>

@@ -108,8 +108,11 @@ export default class NotesComponent extends PureComponent {
 			return (
 				<div className={notesClassNames}>
 					{chords.map(chord => {
+						const chordClassNames = classNames('notes-column', {
+							playing: this.props.playingChord === chord
+						});
 						return (
-							<div className="notes-column" key={chord}>
+							<div className={chordClassNames} key={chord}>
 								{this.props.notes.map((note, row) => {
 									return (
 										<NoteComponent

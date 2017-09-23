@@ -13,7 +13,9 @@ export default function SoundStudioPage({
 	chooseInstrument,
 	updateSongLocally,
 	data,
-	onEditForm
+	onEditForm,
+	passChord,
+	playingChord
 }) {
 	return (
 		<div className="SoundStudioPage">
@@ -30,6 +32,8 @@ export default function SoundStudioPage({
 				updateSong={updateSongLocally}
 				data={data}
 				onEditForm={onEditForm}
+				playingChord={playingChord}
+				passChord={passChord}
 			/>
 		</div>
 	);

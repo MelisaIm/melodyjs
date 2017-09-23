@@ -8,7 +8,8 @@ export default function ToolbarComponent({
 	onClear,
 	onSave,
 	onDelete,
-	info
+	info,
+	passChord
 }) {
 	function sleep(milliseconds) {
 		let start = new Date().getTime();
@@ -27,8 +28,9 @@ export default function ToolbarComponent({
 				let chordArray = song.melody.map(array => array[chord]).filter(note => note !== 0);
 				arrayOfChords.push(chordArray);
 			});
-			arrayOfChords.forEach(chord => {
+			arrayOfChords.forEach((chord, index) => {
 				sleep(500);
+				passChord(index);
 				poly(chord.length, chord);
 			});
 		}

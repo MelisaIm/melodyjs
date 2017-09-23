@@ -2,6 +2,7 @@ export default function rootReducer(
 	currentState = {
 		data: [],
 		sortedSongs: null,
+		playingChord: 4,
 		song: {
 			melody: [
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -124,6 +125,8 @@ export default function rootReducer(
 					]
 				}
 			};
+		case 'PASS_CHORD':
+			return { ...currentState, playingChord: action.chord };
 		default:
 			return currentState;
 	}

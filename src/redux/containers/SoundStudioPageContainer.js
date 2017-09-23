@@ -11,6 +11,7 @@ import { compose, lifecycle } from 'recompose';
 
 function mapStateToProps(state, ownProps) {
 	return {
+		playingChord: state.playingChord,
 		songId: ownProps.songId,
 		song: state.song,
 		notes: [
@@ -80,6 +81,9 @@ function mapDispatchToProps(dispatch, ownProps) {
 			} else {
 				dispatch({ type: 'CHANGE_DESCRIPTION', description: changes.description });
 			}
+		},
+		passChord: chord => {
+			dispatch({ type: 'PASS_CHORD', chord });
 		}
 	};
 }
