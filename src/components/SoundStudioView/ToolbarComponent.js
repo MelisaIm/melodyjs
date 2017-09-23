@@ -30,14 +30,8 @@ export default function ToolbarComponent({
 				}
 			});
 			arrayOfChords.forEach(chord => {
-				if (chord.length === 1) {
-					sleep(500);
-					synth(chord[0]);
-				} else {
-					sleep(500);
-
-					poly(chord.length, chord);
-				}
+				sleep(500);
+				poly(chord.length, chord);
 			});
 		} else {
 			return false;
@@ -46,10 +40,6 @@ export default function ToolbarComponent({
 	function poly(voices, chordArray) {
 		let polySynth = new Tone.PolySynth(voices, Tone.Synth).toMaster();
 		polySynth.triggerAttackRelease(chordArray, '16n');
-	}
-	function synth(note) {
-		let synth = new Tone.Synth().toMaster();
-		synth.triggerAttackRelease(note, '16n');
 	}
 
 	// fetch current song
