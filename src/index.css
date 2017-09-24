@@ -53,6 +53,10 @@ body {
 	background-color: rgb(255, 255, 255);
 }
 
+button:disabled {
+	color: grey;
+}
+
 .Page {
 	display: flex;
 	flex-direction: column;
