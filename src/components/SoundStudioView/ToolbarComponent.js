@@ -44,21 +44,36 @@ export default function ToolbarComponent({
 
 			{songId
 				? <div className="ToolbarComponent">
-						<button className="action-button action-button-save" onClick={_handleSave}>
+						<button
+							className="action-button action-button-save"
+							onClick={_handleSave}
+							disabled={playingChord}>
 							{' '}SAVE CHANGES{' '}
 						</button>
-						<button className="action-button action-button-undo" onClick={_handleClear}>
+						<button
+							className="action-button action-button-undo"
+							onClick={_handleClear}
+							disabled={playingChord}>
 							{' '}UNDO CHANGES{' '}
 						</button>
-						<button className="action-button action-button-delete" onClick={_handleDelete}>
+						<button
+							className="action-button action-button-delete"
+							onClick={_handleDelete}
+							disabled={playingChord}>
 							{' '}DELETE SONG{' '}
 						</button>
 					</div>
 				: <div className="ToolbarComponent">
-						<button className="action-button action-button-save" onClick={_handleSave}>
+						<button
+							className="action-button action-button-save"
+							onClick={_handleSave}
+							disabled={playingChord}>
 							{' '}SAVE NEW{' '}
 						</button>
-						<button className="action-button action-button-clear" onClick={_handleClear}>
+						<button
+							className="action-button action-button-clear"
+							onClick={_handleClear}
+							disabled={playingChord}>
 							{' '}CLEAR{' '}
 						</button>
 					</div>}
