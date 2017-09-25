@@ -16,6 +16,7 @@ ShallowWrapper {
     </h1>
     <button
       className="action-button action-button-replay"
+      disabled={undefined}
       onClick={[Function]}
     >
        
@@ -27,6 +28,7 @@ ShallowWrapper {
     >
       <button
         className="action-button action-button-save"
+        disabled={undefined}
         onClick={[Function]}
       >
          
@@ -35,6 +37,7 @@ ShallowWrapper {
       </button>
       <button
         className="action-button action-button-undo"
+        disabled={undefined}
         onClick={[Function]}
       >
          
@@ -43,6 +46,7 @@ ShallowWrapper {
       </button>
       <button
         className="action-button action-button-delete"
+        disabled={undefined}
         onClick={[Function]}
       >
          
@@ -60,6 +64,7 @@ ShallowWrapper {
       </h1>
       <button
         className="action-button action-button-replay"
+        disabled={undefined}
         onClick={[Function]}
       >
          
@@ -71,6 +76,7 @@ ShallowWrapper {
       >
         <button
           className="action-button action-button-save"
+          disabled={undefined}
           onClick={[Function]}
         >
            
@@ -79,6 +85,7 @@ ShallowWrapper {
         </button>
         <button
           className="action-button action-button-undo"
+          disabled={undefined}
           onClick={[Function]}
         >
            
@@ -87,6 +94,7 @@ ShallowWrapper {
         </button>
         <button
           className="action-button action-button-delete"
+          disabled={undefined}
           onClick={[Function]}
         >
            
@@ -712,6 +720,7 @@ ShallowWrapper {
           </h1>
           <button
             className="action-button action-button-replay"
+            disabled={undefined}
             onClick={[Function]}
           >
              
@@ -723,6 +732,7 @@ ShallowWrapper {
           >
             <button
               className="action-button action-button-save"
+              disabled={undefined}
               onClick={[Function]}
             >
                
@@ -731,6 +741,7 @@ ShallowWrapper {
             </button>
             <button
               className="action-button action-button-undo"
+              disabled={undefined}
               onClick={[Function]}
             >
                
@@ -739,6 +750,7 @@ ShallowWrapper {
             </button>
             <button
               className="action-button action-button-delete"
+              disabled={undefined}
               onClick={[Function]}
             >
                
@@ -756,6 +768,7 @@ ShallowWrapper {
           </h1>
           <button
             className="action-button action-button-replay"
+            disabled={undefined}
             onClick={[Function]}
           >
              
@@ -767,6 +780,7 @@ ShallowWrapper {
           >
             <button
               className="action-button action-button-save"
+              disabled={undefined}
               onClick={[Function]}
             >
                
@@ -775,6 +789,7 @@ ShallowWrapper {
             </button>
             <button
               className="action-button action-button-undo"
+              disabled={undefined}
               onClick={[Function]}
             >
                
@@ -783,6 +798,7 @@ ShallowWrapper {
             </button>
             <button
               className="action-button action-button-delete"
+              disabled={undefined}
               onClick={[Function]}
             >
                

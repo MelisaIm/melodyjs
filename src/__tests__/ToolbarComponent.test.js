@@ -1,7 +1,11 @@
+/* eslint-disable import/first */
+
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import ToolbarComponent from '../components/SoundStudioView/ToolbarComponent';
 import { assert } from 'chai';
+jest.mock('helperFunctions/handleReplay');
+import handleReplay from 'helperFunctions/handleReplay';
 
 const song = {
 	id: 101,
@@ -51,18 +55,20 @@ describe('Testing ToolbarComponent', () => {
 		expect(onClear).toHaveBeenCalled();
 	});
 
-	xit('should call onReplay()', () => {
+	it('should call handleReplay()', () => {
 		shallowWrapper.find('.action-button-replay').simulate('click');
-		expect(onReplay).toHaveBeenCalled();
-		// NOTE: some ToneJS errors when running tests
+		expect(handleReplay).toHaveBeenCalled();
 	});
 
 	it('should call onSave()', () => {
-		shallowWrapper.find('.action-button-save').simulate('click');
+		shallowWrapper.find('.action-button-save').simulate('click', { preventDefault() {} });
 		expect(onSave).toHaveBeenCalled();
 	});
 
-	xit('should call onDelete()', () => {});
+	it('should call onDelete()', () => {
+		shallowWrapper.find('.action-button-delete').simulate('click');
+		expect(onDelete).toHaveBeenCalled();
+	});
 
 	it('should pass the snapshot test', () => {
 		expect(shallowWrapper).toMatchSnapshot();
