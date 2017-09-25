@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import IndexPage from './components/IndexView/IndexPage';
 import NotFoundPage from './components/NotFoundPage';
@@ -71,6 +71,7 @@ export default class App extends Component {
 									return <LibraryPageContainer songs={this.state.data} />;
 								}}
 							/>
+
 							<Route
 								exact
 								path="/studio/:songId"
