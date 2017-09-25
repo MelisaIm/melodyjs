@@ -49,7 +49,24 @@ const shallowWrapper = shallow(
 	/>
 );
 
+const shallowWrapperNoID = shallow(
+	<ToolbarComponent
+		songId={null}
+		song={null}
+		onReplay={onReplay}
+		onClear={onClear}
+		onSave={onSave}
+		onDelete={onDelete}
+		data={[]}
+	/>
+);
+
 describe('Testing ToolbarComponent', () => {
+	it('should show 4 buttons instead of 3 when there is a song ID', () => {
+		const buttons = shallowWrapper.find('.action-button');
+		assert.equal(buttons.length, 4);
+	});
+
 	it('should call onClear()', () => {
 		shallowWrapper.find('.action-button-undo').simulate('click');
 		expect(onClear).toHaveBeenCalled();
@@ -68,6 +85,11 @@ describe('Testing ToolbarComponent', () => {
 	it('should call onDelete()', () => {
 		shallowWrapper.find('.action-button-delete').simulate('click');
 		expect(onDelete).toHaveBeenCalled();
+	});
+
+	it('should show 3 buttons instead of 4 when there is no song ID', () => {
+		const buttons = shallowWrapperNoID.find('.action-button');
+		assert.equal(buttons.length, 3);
 	});
 
 	it('should pass the snapshot test', () => {
