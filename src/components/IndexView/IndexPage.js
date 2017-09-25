@@ -14,9 +14,7 @@ export default function IndexPage() {
 							<span className="jumbotron-text">Welcome to MelodyJS!</span>
 						</h1>
 						<p>
-							<span className="jumbotron-text">
-								MelodyJS is a visual music canvas, compatible with Chrome and Safari
-							</span>
+							<span className="jumbotron-text">MelodyJS is a visual music canvas</span>
 						</p>
 						<p>
 							<LinkContainer to="/studio" exact>
