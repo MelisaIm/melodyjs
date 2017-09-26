@@ -20,7 +20,8 @@ export default function SoundStudioPageLayout({
 	data,
 	onEditForm,
 	passChord,
-	playingChord
+	playingChord,
+	history
 }) {
 	return (
 		<div className="Page">
@@ -39,6 +40,7 @@ export default function SoundStudioPageLayout({
 				</div>
 				<div className="right">
 					<ToolbarComponent
+						history={history}
 						songId={songId}
 						song={song}
 						onReplay={onReplay}

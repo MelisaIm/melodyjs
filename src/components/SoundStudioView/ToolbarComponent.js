@@ -10,7 +10,8 @@ export default function ToolbarComponent({
 	onDelete,
 	info,
 	passChord,
-	playingChord
+	playingChord,
+	history
 }) {
 	function _handleReplay() {
 		handleReplay(song, passChord);
@@ -24,12 +25,12 @@ export default function ToolbarComponent({
 	// send changes to api
 	function _handleSave(event) {
 		event.preventDefault();
-		onSave(song, songId);
+		onSave(song, songId, history);
 	}
 
 	// delete song from api
 	function _handleDelete() {
-		onDelete(songId);
+		onDelete(songId, history);
 	}
 
 	return (

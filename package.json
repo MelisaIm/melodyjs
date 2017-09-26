@@ -30,7 +30,8 @@
 		"build": "NODE_PATH=src react-scripts build",
 		"test": "NODE_PATH=src react-scripts test --env=jsdom",
 		"eject": "NODE_PATH=src react-scripts eject",
-		"storybook": "NODE_PATH=src start-storybook -p 9001 -c .storybook"
+		"storybook": "NODE_PATH=src start-storybook -p 9001 -c .storybook",
+		"deploy": "cp build/index.html build/200.html; surge -p build/ -d melodyjs.surge.sh"
 	},
 	"devDependencies": {
 		"@storybook/react": "^3.2.8",

@@ -6,6 +6,7 @@ import deleteSongProcess from '../thunks/deleteSongProcess';
 import createSongProcess from '../thunks/createSongProcess';
 import melodyToString from '../../requests/utils/melodyToString';
 import getSongsProcess from '../thunks/getSongsProcess';
+import { withRouter } from 'react-router-dom';
 
 import { compose, lifecycle } from 'recompose';
 
@@ -59,20 +60,20 @@ function mapDispatchToProps(dispatch, ownProps) {
 				dispatch({ type: 'CLEAR_ALL' });
 			}
 		},
-		onSave: (song, id) => {
+		onSave: (song, id, history) => {
 			if (id) {
 				const update = melodyToString(song.melody);
 				song = { ...song, melody: update };
 				dispatch(updateSongProcess(id, song));
 			} else {
-				dispatch(createSongProcess(song));
+				dispatch(createSongProcess(song, history));
 			}
 		},
 		updateSongLocally: newSong => {
 			dispatch({ type: 'UPDATE_MELODY', melody: newSong });
 		},
-		onDelete: songId => {
-			dispatch(deleteSongProcess(songId));
+		onDelete: (songId, history) => {
+			dispatch(deleteSongProcess(songId, history));
 			dispatch({ type: 'CLEAR_PAGE' });
 		},
 		onEditForm: changes => {
@@ -99,4 +100,4 @@ const withLifeCycle = lifecycle({
 	}
 });
 
-export default compose(connectToStore, withLifeCycle)(SoundStudioPage);
+export default compose(connectToStore, withLifeCycle)(withRouter(SoundStudioPage));
