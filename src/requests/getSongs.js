@@ -1,9 +1,9 @@
 import recordToSong from './utils/recordToSong';
 
 export default function getNotes({ databaseId, token }) {
-	return fetch(`https://api.airtable.com/v0/${databaseId}/songs/`, {
+	return fetch(`${process.env.BASE_URL}/songs/`, {
 		headers: {
-			Authorization: `Bearer ${token}`
+			// Authorization: `Bearer ${token}`
 		}
 	})
 		.then(response => response.json())
