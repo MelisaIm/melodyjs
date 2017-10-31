@@ -1,17 +1,16 @@
 export default function createSong(song, { baseUrl, databaseId, token }) {
+	console.log(song);
 	return fetch(`${baseUrl}/songs`, {
 		method: 'POST',
 		headers: {
-			Authorization: `Bearer ${token}`,
+			// Authorization: `Bearer ${token}`,
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			fields: {
-				authorId: song.authorId,
-				title: song.title,
-				description: song.description,
-				melody: song.melody
-			}
+			authorId: 1,
+			title: song.title,
+			description: song.description,
+			melody: JSON.stringify(song.melody)
 		})
 	}).then(response => response.json());
 }

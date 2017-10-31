@@ -6,12 +6,10 @@ export default function updateSong(id, update, { baseUrl, databaseId, token }) {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			fields: {
-				title: update.title,
-				description: update.description,
-				melody: update.melody,
-				updatedAt: new Date().toISOString()
-			}
+			title: update.title,
+			description: update.description,
+			melody: JSON.stringify(update.melody),
+			updatedAt: new Date().toISOString()
 		})
 	}).then(response => response.json());
 }

@@ -93,7 +93,8 @@ export default function rootReducer(
 						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 					],
-					info: { title: 'Untitled', description: 'New song' }
+					title: 'Untitled',
+					description: 'New song'
 				}
 			};
 		case 'CLEAR_ALL':

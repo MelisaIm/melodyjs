@@ -1,10 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import LibraryPageLayout from './LibraryPageLayout';
+import { MemoryRouter } from 'react-router';
 
 const songs = [
 	{
-		rows: [
+		melody: [
 			[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 'X', 'X', 'X', 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 'X', 0, 'X', 0, 'X', 0, 0, 0, 0, 0],
@@ -25,7 +26,7 @@ const songs = [
 		description: 'just some song'
 	},
 	{
-		rows: [
+		melody: [
 			[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 'X', 'X', 'X', 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 'X', 0, 'X', 0, 'X', 0, 0, 0, 0, 0],
@@ -46,7 +47,7 @@ const songs = [
 		description: 'Original piece'
 	},
 	{
-		rows: [
+		melody: [
 			[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 'X', 'X', 'X', 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 'X', 0, 'X', 0, 'X', 0, 0, 0, 0, 0],
@@ -66,4 +67,10 @@ const songs = [
 	}
 ];
 
-storiesOf('LibraryPageLayout', module).add('Happy Path', () => <LibraryPageLayout songs={songs} />);
+storiesOf('LibraryPageLayout', module)
+	.addDecorator(story =>
+		<MemoryRouter initialEntries={['/']}>
+			{story()}
+		</MemoryRouter>
+	)
+	.add('Happy Path', () => <LibraryPageLayout data={songs} />);
