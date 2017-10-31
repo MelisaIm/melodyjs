@@ -1,5 +1,3 @@
-import recordToSong from './utils/recordToSong';
-
 export default function updateSong(id, update, { databaseId, token }) {
 	return fetch(`${process.env.BASE_URL}/songs/${id}`, {
 		method: 'PATCH',
@@ -15,7 +13,5 @@ export default function updateSong(id, update, { databaseId, token }) {
 				updatedAt: new Date().toISOString()
 			}
 		})
-	})
-		.then(response => response.json())
-		.then(record => recordToSong(record));
+	}).then(response => response.json());
 }

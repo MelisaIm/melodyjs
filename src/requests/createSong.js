@@ -1,5 +1,3 @@
-import recordToSong from './utils/recordToSong';
-
 export default function createSong(song, { databaseId, token }) {
 	return fetch(`${process.env.BASE_URL}/songs`, {
 		method: 'POST',
@@ -15,7 +13,5 @@ export default function createSong(song, { databaseId, token }) {
 				melody: song.melody
 			}
 		})
-	})
-		.then(response => response.json())
-		.then(recordToSong);
+	}).then(response => response.json());
 }

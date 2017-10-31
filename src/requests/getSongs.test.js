@@ -1,10 +1,9 @@
 import getSongs from './getSongs';
-import songToRecord from './utils/songToRecord';
 import data from '../data';
 
 describe('getSongs', () => {
 	it('Calls fetch and returns songs', () => {
-		fetch.mockResponse(JSON.stringify({ records: data.map(songToRecord) }));
+		fetch.mockResponse(JSON.stringify(data));
 
 		return getSongs({
 			AIRTABLE_DATABASE_ID: 'SOME_DATABASE_ID',
