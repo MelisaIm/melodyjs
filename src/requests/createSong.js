@@ -1,5 +1,5 @@
-export default function createSong(song, { databaseId, token }) {
-	return fetch(`${process.env.BASE_URL}/songs`, {
+export default function createSong(song, { baseUrl, databaseId, token }) {
+	return fetch(`${baseUrl}/songs`, {
 		method: 'POST',
 		headers: {
 			Authorization: `Bearer ${token}`,
@@ -7,9 +7,9 @@ export default function createSong(song, { databaseId, token }) {
 		},
 		body: JSON.stringify({
 			fields: {
-				authorId: song.info.authorId,
-				title: song.info.title,
-				description: song.info.description,
+				authorId: song.authorId,
+				title: song.title,
+				description: song.description,
 				melody: song.melody
 			}
 		})

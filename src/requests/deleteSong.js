@@ -1,5 +1,5 @@
-export default function deleteSong(id, { databaseId, token }) {
-	return fetch(`${process.env.BASE_URL}/songs/${id}`, {
+export default function deleteSong(id, { baseUrl, databaseId, token }) {
+	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'DELETE',
 		headers: {
 			// Authorization: `Bearer ${token}`

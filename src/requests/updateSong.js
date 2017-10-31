@@ -1,5 +1,5 @@
-export default function updateSong(id, update, { databaseId, token }) {
-	return fetch(`${process.env.BASE_URL}/songs/${id}`, {
+export default function updateSong(id, update, { baseUrl, databaseId, token }) {
+	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'PATCH',
 		headers: {
 			// Authorization: `Bearer ${token}`,
@@ -7,8 +7,8 @@ export default function updateSong(id, update, { databaseId, token }) {
 		},
 		body: JSON.stringify({
 			fields: {
-				title: update.info.title,
-				description: update.info.description,
+				title: update.title,
+				description: update.description,
 				melody: update.melody,
 				updatedAt: new Date().toISOString()
 			}
