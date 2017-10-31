@@ -9,9 +9,10 @@ export default function createSong(song, { databaseId, token }) {
 		},
 		body: JSON.stringify({
 			fields: {
+				authorId: song.info.authorId,
 				title: song.info.title,
 				description: song.info.description,
-				melody: melodyToString(song.melody)
+				melody: song.melody
 			}
 		})
 	})

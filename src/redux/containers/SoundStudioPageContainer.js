@@ -4,7 +4,6 @@ import getSongProcess from '../thunks/getSongProcess';
 import updateSongProcess from '../thunks/updateSongProcess';
 import deleteSongProcess from '../thunks/deleteSongProcess';
 import createSongProcess from '../thunks/createSongProcess';
-import melodyToString from '../../requests/utils/melodyToString';
 import getSongsProcess from '../thunks/getSongsProcess';
 import { withRouter } from 'react-router-dom';
 
@@ -62,7 +61,7 @@ function mapDispatchToProps(dispatch, ownProps) {
 		},
 		onSave: (song, id, history) => {
 			if (id) {
-				const update = melodyToString(song.melody);
+				const update = song.melody;
 				song = { ...song, melody: update };
 				dispatch(updateSongProcess(id, song));
 			} else {
