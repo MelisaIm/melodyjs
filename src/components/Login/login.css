@@ -1,11 +1,40 @@
-.LoginComponent {
-	width: 50%;
+.login {
+	border: 10px solid black;
+	width: 200px;
 	display: flex;
-	flex-flow: column;
+	padding: 30px;
 }
 
-.login {
-	background-color: red;
-	width: 300px;
+.signup {
+	margin-top: 30px;
+	padding: 10px;
+	border: 10px solid black;
+	width: 200px;
 	display: flex;
+}
+
+.loginForm,
+.signupForm {
+	margin-bottom: 0;
+}
+
+.submitBtn {
+	margin-top: 10px;
+}
+
+.bold {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.center {
+	text-align: center;
+	justify-content: center;
+}
+
+.LoginPage {
+	display: flex;
+	width: 100%;
+	justify-content: center;
 }
