@@ -9,12 +9,13 @@ export default function LibraryPageLayout({
 	sortAlphabetically,
 	sortByDate,
 	filterSongs,
-	sortedSongs
+	sortedSongs,
+	loggedUser
 }) {
 	if (Array.isArray(data) && data.length > 0) {
 		return (
 			<div className="LibraryPageLayout">
-				<NavBar />
+				<NavBar loggedUser={loggedUser} />
 				<div className="LibraryPageContent">
 					<LibrarySortComponent
 						data={data}

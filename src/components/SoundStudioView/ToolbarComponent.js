@@ -11,7 +11,8 @@ export default function ToolbarComponent({
 	info,
 	passChord,
 	playingChord,
-	history
+	history,
+	loggedUser
 }) {
 	function _handleReplay() {
 		handleReplay(song, passChord);

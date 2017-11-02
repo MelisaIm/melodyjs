@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 export default function IndexPage() {
 	return (
 		<div className="IndexPage">
-			<NavBar />
+			<NavBar loggedUser={localStorage.getItem('token') ? true : false} />
 			<div className="IndexPageContent">
 				<div className="jumbotron">
 					<div className="container">

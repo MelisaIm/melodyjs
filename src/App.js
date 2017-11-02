@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import IndexPage from './components/IndexView/IndexPage';
 import NotFoundPage from './components/NotFoundPage';
+import LoggedOutPage from './components/LoggedOutPage';
 import getSongsProcess from './redux/thunks/getSongsProcess';
 import LibraryPageContainer from './redux/containers/LibraryPageContainer';
 import SoundStudioPageContainer from './redux/containers/SoundStudioPageContainer';
@@ -11,37 +12,6 @@ import SignupPageContainer from './redux/containers/SignupPageContainer';
 import setupStore from './redux/setupStore';
 
 export default class App extends Component {
-	// constructor(props) {
-	// 	super(props);
-	//
-	// 	this.state = {
-	// 		data: [],
-	// 		song: {
-	// 			melody: [
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	// 			],
-	// 			info: { title: '', description: '' }
-	// 		}
-	// 	};
-	//
-	// 	this.props.store.subscribe(() => {
-	// 		this.setState(this.props.store.getState());
-	// 	});
-	// }
 	componentDidMount() {
 		getSongsProcess();
 	}
@@ -107,6 +77,7 @@ export default class App extends Component {
 									return <SoundStudioPageContainer songId={id} />;
 								}}
 							/>
+							<Route exact path="/logout" render={() => <IndexPage />} />
 							<Route component={NotFoundPage} />
 						</Switch>
 					</Router>

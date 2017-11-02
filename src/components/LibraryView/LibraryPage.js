@@ -7,7 +7,8 @@ export default function LibraryPage({
 	sortAlphabetically,
 	sortByDate,
 	filterSongs,
-	sortedSongs
+	sortedSongs,
+	loggedUser
 }) {
 	return (
 		<div className="LibraryPage">
@@ -18,6 +19,7 @@ export default function LibraryPage({
 				sortByDate={sortByDate}
 				filterSongs={filterSongs}
 				sortedSongs={sortedSongs}
+				loggedUser={loggedUser}
 			/>
 		</div>
 	);
