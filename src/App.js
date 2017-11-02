@@ -77,7 +77,6 @@ export default class App extends Component {
 								path="/studio/:songId"
 								render={({ match }) => {
 									const id = match.params.songId;
-
 									return <SoundStudioPageContainer songId={id} />;
 								}}
 							/>

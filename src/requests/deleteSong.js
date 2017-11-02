@@ -1,8 +1,8 @@
-export default function deleteSong(id, { databaseId, token }) {
-	return fetch(`https://api.airtable.com/v0/${databaseId}/notes/${id}`, {
+export default function deleteSong(id, { baseUrl, databaseId, token }) {
+	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'DELETE',
 		headers: {
-			Authorization: `Bearer ${token}`
+			// Authorization: `Bearer ${token}`
 		}
 	})
 		.then(response => response.json())

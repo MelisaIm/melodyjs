@@ -60,7 +60,7 @@ export default class Form extends Component {
 						className="Form-titleInput"
 						name="titleInput"
 						type="text"
-						value={this.props.song.info.title || ''}
+						value={this.props.song.title || ''}
 						placeholder="Give your song a title"
 						onChange={this._handleChangeInput}
 						required
@@ -71,7 +71,7 @@ export default class Form extends Component {
 						className="Form-bodyInput"
 						name="descriptionInput"
 						placeholder="Type your description here..."
-						value={this.props.song.info.description || ''}
+						value={this.props.song.description || ''}
 						onChange={this._handleChangeInput}
 						required
 					/>

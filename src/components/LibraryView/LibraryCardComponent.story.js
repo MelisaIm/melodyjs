@@ -1,8 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import LibraryCardComponent from './LibraryCardComponent';
+import { MemoryRouter } from 'react-router';
 
 storiesOf('LibraryCardComponent', module)
+	.addDecorator(story =>
+		<MemoryRouter initialEntries={['/']}>
+			{story()}
+		</MemoryRouter>
+	)
 	.add('Happy Path', () =>
 		<LibraryCardComponent
 			song={{
@@ -23,10 +29,9 @@ storiesOf('LibraryCardComponent', module)
 					[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0],
 					[0, 0, 0, 0, 0, 0, 0, 0, 'X', 0, 0, 0, 0, 0, 0, 0]
 				],
-				info: {
-					title: 'Morning',
-					description: 'Just a wake up song'
-				}
+
+				title: 'Morning',
+				description: 'Just a wake up song'
 			}}
 		/>
 	)

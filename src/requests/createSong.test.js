@@ -1,5 +1,4 @@
 import createSong from './createSong';
-import songToRecord from './utils/songToRecord';
 
 const data = {
 	id: 101,
@@ -28,7 +27,7 @@ const data = {
 
 describe('createSong', () => {
 	it('Calls fetch and returns a new song', () => {
-		fetch.mockResponse(JSON.stringify(songToRecord(data)));
+		fetch.mockResponse(JSON.stringify(data));
 
 		return createSong(data, {
 			AIRTABLE_DATABASE_ID: 'SOME_DATABASE_ID',
