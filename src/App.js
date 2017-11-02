@@ -7,9 +7,6 @@ import getSongsProcess from './redux/thunks/getSongsProcess';
 import LibraryPageContainer from './redux/containers/LibraryPageContainer';
 import SoundStudioPageContainer from './redux/containers/SoundStudioPageContainer';
 
-import setupStore from './redux/setupStore';
-const store = setupStore();
-
 export default class App extends Component {
 	constructor(props) {
 		super(props);
@@ -38,8 +35,8 @@ export default class App extends Component {
 			}
 		};
 
-		store.subscribe(() => {
-			this.setState(store.getState());
+		this.props.store.subscribe(() => {
+			this.setState(this.props.store.getState());
 		});
 	}
 	componentDidMount() {
@@ -53,9 +50,11 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Provider store={store}>
+				<Provider store={this.props.store}>
 					<Router>
 						<Switch>
+							<Route exact path="/register" component={IndexPage} />
+							<Route exact path="/login" component={IndexPage} />
 							<Route exact path="/" component={IndexPage} />
 							<Route
 								exact
