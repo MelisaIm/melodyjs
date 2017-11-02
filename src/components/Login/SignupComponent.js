@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-<<<<<<< HEAD
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 // import CSSModules from 'react-css-modules';
 import styles from './login.css';
@@ -62,15 +61,5 @@ export default class SignupComponent extends PureComponent {
 			password: password.trim()
 		});
 	};
-=======
 
-export default class SignupComponent extends PureComponent {
-	render() {
-		return (
-			<div>
-				<div>hi</div>
-			</div>
-		);
-	}
->>>>>>> c922244b286e91d611dc88259f61fa82154f4fa9
 }
