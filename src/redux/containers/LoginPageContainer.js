@@ -1,25 +1,27 @@
-import { branch, lifecycle, renderComponent } from 'recompose';
+import { lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
-import ErrorPage from '../../components/NotFoundPage';
+import { withRouter } from 'react-router-dom';
+import loginProcess from '../thunks/loginProcess';
 
-import LoginPage from '../../components/LoginPage';
+import LoginPage from '../../components/Login/LoginPage';
 
 function mapStateToProps(state) {
-	return {};
+	return { authenticatedUser: state.authenticatedUser };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
 		onSubmit: (userName, password) => {
-			dispatch();
+			dispatch(loginProcess(userName, password), ownProps.history);
 		}
 	};
 }
 
 const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 
-const addLifecycle = lifecycle({
-	componentDidMount() {}
-});
+// const withLifeCycle = lifecycle({
+// 	componentDidMount() {}
+// });
 
-export default connectToStore(addLifecycle(LoginPage));
+// export default connectToStore(addLifecycle(LoginPage));
+export default compose(connectToStore)(withRouter(LoginPage));

@@ -1,5 +1,5 @@
 export default function getUser(id, { baseUrl, token }) {
-	return fetch(`${baseUrl}/songs/${id}`, {
+	return fetch(`${baseUrl}/users/${id}`, {
 		headers: {
 			Authorization: `Bearer ${token}`
 		}

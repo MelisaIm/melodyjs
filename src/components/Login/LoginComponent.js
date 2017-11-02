@@ -13,16 +13,15 @@ export default class LoginComponent extends PureComponent {
 	}
 	render() {
 		return (
-			<form className="login">
+			<form className="login" onSubmit={this._handleSubmit}>
 				<FormGroup className="loginForm" controlId="formControlsTextarea">
 					<div className="center bold">Login</div>
 					<ControlLabel>Username</ControlLabel>
 					<FormControl
 						className="Form-username"
 						name="userName"
-						type="username"
+						type="text"
 						placeholder="username"
-						onSubmit={this._handleSubmit}
 						required
 					/>
 					<ControlLabel>Password</ControlLabel>
@@ -31,7 +30,6 @@ export default class LoginComponent extends PureComponent {
 						type="password"
 						name="password"
 						placeholder="password"
-						onSubmit={this._handleSubmit}
 						required
 					/>
 					<div className="center">
@@ -45,13 +43,11 @@ export default class LoginComponent extends PureComponent {
 	}
 
 	_handleSubmit = event => {
-		console.log(event);
 		event.preventDefault();
 		const { userName, password } = event.target;
-		console.log(userName, password);
 		this.props.onSubmit({
-			userName: userName,
-			password: password
+			userName: userName.value.trim(),
+			password: password.value.trim()
 		});
 	};
 }

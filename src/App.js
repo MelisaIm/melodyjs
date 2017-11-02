@@ -6,8 +6,8 @@ import NotFoundPage from './components/NotFoundPage';
 import getSongsProcess from './redux/thunks/getSongsProcess';
 import LibraryPageContainer from './redux/containers/LibraryPageContainer';
 import SoundStudioPageContainer from './redux/containers/SoundStudioPageContainer';
-import LoginPage from './components/Login/LoginPage';
-import SignupPage from './components/Login/SignupPage';
+import LoginPageContainer from './redux/containers/LoginPageContainer';
+import SignupPageContainer from './redux/containers/SignupPageContainer';
 
 export default class App extends Component {
 	constructor(props) {
@@ -55,8 +55,20 @@ export default class App extends Component {
 				<Provider store={this.props.store}>
 					<Router>
 						<Switch>
-							<Route exact path="/register" component={SignupPage} />
-							<Route exact path="/login" component={LoginPage} />
+							<Route
+								exact
+								path="/register"
+								render={() => {
+									return <SignupPageContainer />;
+								}}
+							/>
+							<Route
+								exact
+								path="/login"
+								render={() => {
+									return <LoginPageContainer />;
+								}}
+							/>
 							<Route exact path="/" component={IndexPage} />
 							<Route
 								exact

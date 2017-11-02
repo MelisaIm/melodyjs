@@ -13,7 +13,7 @@ export default class SignupComponent extends PureComponent {
 	}
 	render() {
 		return (
-			<form className="signup">
+			<form className="signup" onSubmit={this._handleSubmit}>
 				<FormGroup className="signupForm" controlId="formControlsTextarea">
 					<div className="center bold">SignUp</div>
 					<ControlLabel>Username</ControlLabel>
@@ -25,13 +25,20 @@ export default class SignupComponent extends PureComponent {
 						onChange={this._handleSubmit}
 						required
 					/>
+					<ControlLabel>Email</ControlLabel>
+					<FormControl
+						className="Form-email"
+						name="email"
+						type="email"
+						placeholder="email"
+						required
+					/>
 					<ControlLabel>Password</ControlLabel>
 					<FormControl
 						className="Form-password"
 						type="password"
 						name="password"
 						placeholder="new password"
-						onChange={this._handleSubmit}
 						required
 					/>
 					<ControlLabel>Password</ControlLabel>
@@ -40,7 +47,6 @@ export default class SignupComponent extends PureComponent {
 						type="password"
 						name="password"
 						placeholder="re-enter your password"
-						onChange={this._handleSubmit}
 						required
 					/>
 					<div className="center">
@@ -57,9 +63,8 @@ export default class SignupComponent extends PureComponent {
 		const { userName, password } = event.target;
 
 		this.props.onSubmit({
-			userName: userName.trim(),
-			password: password.trim()
+			userName: userName.value.trim(),
+			password: password.value.trim()
 		});
 	};
-
 }
