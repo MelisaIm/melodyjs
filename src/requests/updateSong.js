@@ -2,17 +2,14 @@ export default function updateSong(id, update, { baseUrl, token }) {
 	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'PATCH',
 		headers: {
-			Authorization: `Bearer ${token}`,
+			// Authorization: `Bearer ${token}`,
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			fields: {
-				title: update.info.title,
-				description: update.info.description,
-				melody: update.melody
-			}
+			title: update.title,
+			description: update.description,
+			melody: JSON.stringify(update.melody),
+			updatedAt: new Date().toISOString()
 		})
-	})
-		.then(response => response.json())
-		.then(record => recordToSong(record));
+	}).then(response => response.json());
 }

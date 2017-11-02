@@ -5,5 +5,5 @@ export default function getNotes({ baseUrl, token }) {
 		}
 	})
 		.then(response => response.json())
-		.then(data => data.records.map(recordToSong));
+		.catch(error => console.log(error));
 }

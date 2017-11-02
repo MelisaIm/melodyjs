@@ -21,7 +21,8 @@ export default function rootReducer(
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 			],
-			info: { title: 'Untitled', description: 'New song' }
+			title: 'Untitled',
+			description: 'New song'
 		},
 		songId: null
 	},
@@ -58,10 +59,7 @@ export default function rootReducer(
 				...currentState,
 				song: {
 					...currentState.song,
-					info: {
-						...currentState.song.info,
-						title: action.title
-					}
+					title: action.title
 				}
 			};
 		case 'CHANGE_DESCRIPTION':
@@ -69,10 +67,7 @@ export default function rootReducer(
 				...currentState,
 				song: {
 					...currentState.song,
-					info: {
-						...currentState.song.info,
-						description: action.description
-					}
+					description: action.description
 				}
 			};
 		case 'CLEAR_CHANGE':
@@ -98,7 +93,8 @@ export default function rootReducer(
 						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 					],
-					info: { title: 'Untitled', description: 'New song' }
+					title: 'Untitled',
+					description: 'New song'
 				}
 			};
 		case 'CLEAR_ALL':

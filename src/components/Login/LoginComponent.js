@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
-<<<<<<< HEAD
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 // import CSSModules from 'react-css-modules';
 import styles from './login.css';
 
-export default class SignupComponent extends PureComponent {
+export default class LoginComponent extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -14,15 +13,15 @@ export default class SignupComponent extends PureComponent {
 	}
 	render() {
 		return (
-			<form className="signup">
-				<FormGroup className="signupForm" controlId="formControlsTextarea">
-					<div className="center bold">SignUp</div>
+			<form className="login">
+				<FormGroup className="loginForm" controlId="formControlsTextarea">
+					<div className="center bold">Login</div>
 					<ControlLabel>Username</ControlLabel>
 					<FormControl
 						className="Form-username"
 						name="userName"
 						type="username"
-						placeholder="new username"
+						placeholder="username"
 						onChange={this._handleSubmit}
 						required
 					/>
@@ -31,16 +30,7 @@ export default class SignupComponent extends PureComponent {
 						className="Form-password"
 						type="password"
 						name="password"
-						placeholder="new password"
-						onChange={this._handleSubmit}
-						required
-					/>
-					<ControlLabel>Password</ControlLabel>
-					<FormControl
-						className="Form-password"
-						type="password"
-						name="password"
-						placeholder="re-enter your password"
+						placeholder="password"
 						onChange={this._handleSubmit}
 						required
 					/>
@@ -62,15 +52,4 @@ export default class SignupComponent extends PureComponent {
 			password: password.trim()
 		});
 	};
-=======
-
-export default class SignupComponent extends PureComponent {
-	render() {
-		return (
-			<div>
-				<div>hi</div>
-			</div>
-		);
-	}
->>>>>>> c922244b286e91d611dc88259f61fa82154f4fa9
 }

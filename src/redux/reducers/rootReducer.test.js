@@ -223,7 +223,7 @@ describe('rootReducer', () => {
 		deepFreeze(currentState);
 		const nextState = {
 			...state,
-			song: { ...state.song, info: { ...state.song.info, title: action.title } }
+			song: { ...state.song, title: action.title }
 		};
 
 		expect(rootReducer(currentState, action)).toEqual(nextState);
@@ -238,7 +238,7 @@ describe('rootReducer', () => {
 		deepFreeze(currentState);
 		const nextState = {
 			...state,
-			song: { ...state.song, info: { ...state.song.info, description: action.description } }
+			song: { ...state.song, description: action.description }
 		};
 
 		expect(rootReducer(currentState, action)).toEqual(nextState);

@@ -36,10 +36,10 @@ export default function LibraryCardComponent({ song = {} }) {
 					</div>
 					<div className="card-block">
 						<h4 className="card-title">
-							{song.info.title ? song.info.title : 'Song Title'}
+							{song.title ? song.title : 'Song Title'}
 						</h4>
 						<p className="card-text">
-							{song.info.description ? song.info.description : 'Song Description'}
+							{song.description ? song.description : 'Song Description'}
 						</p>
 						<div className="card-buttons">
 							<LinkContainer to={`/studio/${song.id}`} exact>
@@ -64,10 +64,10 @@ export default function LibraryCardComponent({ song = {} }) {
 					</div>
 					<div className="card-block">
 						<h4 className="card-title">
-							{song.info.title ? song.info.title : 'Song Title'}
+							{song.title ? song.title : 'Song Title'}
 						</h4>
 						<p className="card-text">
-							{song.info.description ? song.info.description : 'Song Description'}
+							{song.description ? song.description : 'Song Description'}
 						</p>
 						<div className="card-buttons">
 							<LinkContainer to={`/studio/${song.id}`} exact>
