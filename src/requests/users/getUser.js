@@ -1,5 +1,5 @@
-export default function getNotes({ baseUrl, token }) {
-	return fetch(`${baseUrl}/songs/`, {
+export default function getUser(id, { baseUrl, token }) {
+	return fetch(`${baseUrl}/songs/${id}`, {
 		headers: {
 			Authorization: `Bearer ${token}`
 		}

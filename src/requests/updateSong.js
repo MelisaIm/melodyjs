@@ -1,4 +1,4 @@
-export default function updateSong(id, update, { baseUrl, databaseId, token }) {
+export default function updateSong(id, update, { baseUrl, token }) {
 	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'PATCH',
 		headers: {

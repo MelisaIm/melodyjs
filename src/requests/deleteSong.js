@@ -1,4 +1,4 @@
-export default function deleteSong(id, { baseUrl, databaseId, token }) {
+export default function deleteSong(id, { baseUrl, token }) {
 	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'DELETE',
 		headers: {

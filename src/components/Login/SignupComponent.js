@@ -61,4 +61,5 @@ export default class SignupComponent extends PureComponent {
 			password: password.trim()
 		});
 	};
+
 }

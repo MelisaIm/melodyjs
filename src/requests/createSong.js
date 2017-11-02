@@ -1,4 +1,4 @@
-export default function createSong(song, { baseUrl, databaseId, token }) {
+export default function createSong(song, { baseUrl, token }) {
 	return fetch(`${baseUrl}/songs`, {
 		method: 'POST',
 		headers: {
