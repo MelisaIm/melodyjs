@@ -47,7 +47,8 @@ export default class Form extends Component {
 					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 				],
 				title: '',
-				description: ''
+				description: '',
+				authorId: ''
 			}
 		};
 	}

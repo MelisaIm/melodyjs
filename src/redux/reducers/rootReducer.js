@@ -22,7 +22,8 @@ export default function rootReducer(
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 			],
 			title: 'Untitled',
-			description: 'New song'
+			description: 'New song',
+			authorId: ''
 		},
 		songId: null,
 		loggedUser: {}

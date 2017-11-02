@@ -16,7 +16,8 @@ export default function SoundStudioPage({
 	onEditForm,
 	passChord,
 	playingChord,
-	history
+	history,
+	loggedUser
 }) {
 	return (
 		<div className="SoundStudioPage">
@@ -36,6 +37,7 @@ export default function SoundStudioPage({
 				playingChord={playingChord}
 				passChord={passChord}
 				history={history}
+				loggedUser={loggedUser}
 			/>
 		</div>
 	);

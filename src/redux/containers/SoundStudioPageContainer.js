@@ -15,24 +15,25 @@ function mapStateToProps(state, ownProps) {
 		songId: ownProps.songId,
 		song: state.song,
 		notes: [
-			'C5',
+			'C#5',
 			'B4',
 			'A4',
 			'G4',
-			'F4',
+			'F#4',
 			'E4',
 			'D4',
-			'C4',
+			'C#4',
 			'B3',
 			'A3',
 			'G3',
-			'F3',
+			'F#3',
 			'E3',
 			'D3',
-			'C3'
+			'C#3'
 		],
 		instruments: ['Synth'],
-		data: state.data
+		data: state.data,
+		loggedUser: state.loggedUser
 	};
 }
 

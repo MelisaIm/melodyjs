@@ -7,7 +7,7 @@ import checkAuthentication from './helperFunctions/checkAuthentication';
 
 async function render() {
 	const authentication = await checkAuthentication({
-		baseUrl: env.API_BASE_URL
+		baseUrl: env.BASE_URL
 	});
 	console.log(authentication);
 	ReactDOM.render(<App authentication={authentication} />, document.getElementById('root'));

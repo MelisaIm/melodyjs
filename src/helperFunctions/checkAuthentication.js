@@ -12,14 +12,13 @@ export default async function checkAuthentication({ baseUrl }) {
 
 		const { sub: userId, exp: expiration } = jwtDecode(token);
 
-		if (expiration * 1000 > Date.now()) {
-			localStorage.removeItem('token');
-			return null;
-		}
-
+		// if (expiration * 1000 > Date.now()) {
+		// 	localStorage.removeItem('token');
+		// 	return null;
+		// }
 		const user = await getUser(userId, { baseUrl, token });
 
-		return Object.assign({}, token, user);
+		return Object.assign({}, { token }, { user });
 	} catch (error) {
 		console.log('HERE');
 
