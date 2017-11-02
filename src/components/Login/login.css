@@ -1,0 +1,11 @@
+.LoginComponent {
+	width: 50%;
+	display: flex;
+	flex-flow: column;
+}
+
+.login {
+	background-color: red;
+	width: 300px;
+	display: flex;
+}

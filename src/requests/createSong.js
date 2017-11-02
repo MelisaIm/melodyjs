@@ -1,5 +1,4 @@
 export default function createSong(song, { baseUrl, databaseId, token }) {
-	console.log(song);
 	return fetch(`${baseUrl}/songs`, {
 		method: 'POST',
 		headers: {
