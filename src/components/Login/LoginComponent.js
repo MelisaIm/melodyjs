@@ -22,7 +22,7 @@ export default class LoginComponent extends PureComponent {
 						name="userName"
 						type="username"
 						placeholder="username"
-						onChange={this._handleSubmit}
+						onSubmit={this._handleSubmit}
 						required
 					/>
 					<ControlLabel>Password</ControlLabel>
@@ -31,7 +31,7 @@ export default class LoginComponent extends PureComponent {
 						type="password"
 						name="password"
 						placeholder="password"
-						onChange={this._handleSubmit}
+						onSubmit={this._handleSubmit}
 						required
 					/>
 					<div className="center">
@@ -43,13 +43,15 @@ export default class LoginComponent extends PureComponent {
 			</form>
 		);
 	}
+
 	_handleSubmit = event => {
+		console.log(event);
 		event.preventDefault();
 		const { userName, password } = event.target;
-
+		console.log(userName, password);
 		this.props.onSubmit({
-			userName: userName.trim(),
-			password: password.trim()
+			userName: userName,
+			password: password
 		});
 	};
 }

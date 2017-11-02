@@ -4,7 +4,6 @@ import Footer from '../NavBar/FooterComponent';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default function IndexPage() {
-	console.log();
 	return (
 		<div className="IndexPage">
 			<NavBar />

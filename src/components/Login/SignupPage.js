@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import LoginComponent from './LoginComponent';
+import SignupComponent from './SignupComponent';
 import NavBar from '../NavBar/NavBarComponent';
 import Footer from '../NavBar/FooterComponent';
 
@@ -9,7 +9,7 @@ export default class LoginPage extends PureComponent {
 			<div className="LoginPage">
 				<NavBar />
 				<div className="logincontainer">
-					<LoginComponent onSubmit={() => {}} />
+					<SignupComponent />}
 				</div>
 				<Footer />
 			</div>

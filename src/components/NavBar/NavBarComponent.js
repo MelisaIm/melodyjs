@@ -29,6 +29,16 @@ export default class NavBarComponent extends PureComponent {
 							Sound Studio
 						</NavItem>
 					</LinkContainer>
+					<LinkContainer to="/login" exact>
+						<NavItem eventKey={4} className="nav-item nav-link" href="/login" title="login">
+							Login
+						</NavItem>
+					</LinkContainer>
+					<LinkContainer to="/register" exact>
+						<NavItem eventKey={5} className="nav-item nav-link" href="/register" title="register">
+							Signup
+						</NavItem>
+					</LinkContainer>
 				</Nav>
 			</Navbar>
 		);
