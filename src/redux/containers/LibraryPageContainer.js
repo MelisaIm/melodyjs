@@ -5,7 +5,12 @@ import { compose, lifecycle } from 'recompose';
 // import sortSongsProcess from '../thunks/sortSongsProcess';
 
 function mapStateToProps(state) {
-	return { data: state.data, song: state.song, sortedSongs: state.sortedSongs };
+	return {
+		data: state.data,
+		song: state.song,
+		sortedSongs: state.sortedSongs,
+		loggedUser: state.loggedUser
+	};
 }
 
 function mapDispatchToProps(dispatch) {

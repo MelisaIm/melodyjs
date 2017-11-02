@@ -4,7 +4,6 @@ export default function deleteSongProcess(id, history) {
 	return (dispatch, getState, env) => {
 		return deleteSong(id, {
 			baseUrl: env.BASE_URL,
-			databaseId: env.AIRTABLE_DATABASE_ID,
 			token: env.AIRTABLE_TOKEN
 		}).then(result => {
 			dispatch({ type: 'DELETE_SONG', id });

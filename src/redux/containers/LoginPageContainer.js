@@ -1,4 +1,4 @@
-import { lifecycle, compose } from 'recompose';
+// import { lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import loginProcess from '../thunks/loginProcess';
@@ -11,8 +11,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
-		onSubmit: (userName, password) => {
-			dispatch(loginProcess(userName, password), ownProps.history);
+		onSubmit: ({ userName, password, history }) => {
+			dispatch(loginProcess({ userName, password }, history));
 		}
 	};
 }
@@ -24,4 +24,4 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 // });
 
 // export default connectToStore(addLifecycle(LoginPage));
-export default compose(connectToStore)(withRouter(LoginPage));
+export default connectToStore(withRouter(LoginPage));

@@ -24,7 +24,8 @@ export default function rootReducer(
 			title: 'Untitled',
 			description: 'New song'
 		},
-		songId: null
+		songId: null,
+		loggedUser: {}
 	},
 	action
 ) {
@@ -123,6 +124,9 @@ export default function rootReducer(
 			};
 		case 'PASS_CHORD':
 			return { ...currentState, playingChord: action.chord };
+		// AUTH
+		case 'LOGIN_USER':
+			return { ...currentState, loggedUser: action.user };
 		default:
 			return currentState;
 	}

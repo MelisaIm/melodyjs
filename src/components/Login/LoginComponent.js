@@ -6,10 +6,7 @@ import styles from './login.css';
 export default class LoginComponent extends PureComponent {
 	constructor(props) {
 		super(props);
-		this.state = {
-			username: '',
-			password: ''
-		};
+		this._history = this.props.history;
 	}
 	render() {
 		return (
@@ -47,7 +44,8 @@ export default class LoginComponent extends PureComponent {
 		const { userName, password } = event.target;
 		this.props.onSubmit({
 			userName: userName.value.trim(),
-			password: password.value.trim()
+			password: password.value.trim(),
+			history: this._history
 		});
 	};
 }

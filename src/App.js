@@ -8,39 +8,40 @@ import LibraryPageContainer from './redux/containers/LibraryPageContainer';
 import SoundStudioPageContainer from './redux/containers/SoundStudioPageContainer';
 import LoginPageContainer from './redux/containers/LoginPageContainer';
 import SignupPageContainer from './redux/containers/SignupPageContainer';
+import setupStore from './redux/setupStore';
 
 export default class App extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			data: [],
-			song: {
-				melody: [
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-				],
-				info: { title: '', description: '' }
-			}
-		};
-
-		this.props.store.subscribe(() => {
-			this.setState(this.props.store.getState());
-		});
-	}
+	// constructor(props) {
+	// 	super(props);
+	//
+	// 	this.state = {
+	// 		data: [],
+	// 		song: {
+	// 			melody: [
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	// 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	// 			],
+	// 			info: { title: '', description: '' }
+	// 		}
+	// 	};
+	//
+	// 	this.props.store.subscribe(() => {
+	// 		this.setState(this.props.store.getState());
+	// 	});
+	// }
 	componentDidMount() {
 		getSongsProcess();
 	}
@@ -50,9 +51,21 @@ export default class App extends Component {
 	};
 
 	render() {
+		function getInitialState(authentication) {
+			return authentication
+				? Object.assign(
+						{},
+						{
+							token: authentication.token,
+							authenticatedUserId: authentication.user.id,
+							user: authentication.user
+						}
+					)
+				: {};
+		}
 		return (
 			<div className="App">
-				<Provider store={this.props.store}>
+				<Provider store={setupStore(getInitialState(this.props.authentication))}>
 					<Router>
 						<Switch>
 							<Route
@@ -81,7 +94,7 @@ export default class App extends Component {
 								exact
 								path="/library"
 								render={() => {
-									return <LibraryPageContainer songs={this.state.data} />;
+									return <LibraryPageContainer />;
 								}}
 							/>
 

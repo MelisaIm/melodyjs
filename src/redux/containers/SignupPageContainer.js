@@ -1,4 +1,4 @@
-import { lifecycle } from 'recompose';
+// import { lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import loginProcess from '../thunks/loginProcess';
@@ -19,8 +19,8 @@ function mapDispatchToProps(dispatch, ownProps) {
 
 const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 
-const addLifecycle = lifecycle({
-	componentDidMount() {}
-});
+// const addLifecycle = lifecycle({
+// 	componentDidMount() {}
+// });
 
-export default connectToStore(addLifecycle(SignupPage));
+export default connectToStore(withRouter(SignupPage));

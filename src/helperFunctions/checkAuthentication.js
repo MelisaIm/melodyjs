@@ -21,6 +21,8 @@ export default async function checkAuthentication({ baseUrl }) {
 
 		return Object.assign({}, token, user);
 	} catch (error) {
+		console.log('HERE');
+
 		localStorage.removeItem('token');
 		return null;
 	}
