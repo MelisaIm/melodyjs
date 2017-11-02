@@ -1,7 +1,5 @@
-import recordToSong from './utils/recordToSong';
-
-export default function updateSong(id, update, { databaseId, token }) {
-	return fetch(`https://api.airtable.com/v0/${databaseId}/songs/${id}`, {
+export default function updateSong(id, update, { baseUrl, token }) {
+	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'PATCH',
 		headers: {
 			Authorization: `Bearer ${token}`,

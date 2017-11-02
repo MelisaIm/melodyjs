@@ -1,7 +1,5 @@
-import recordToSong from './utils/recordToSong';
-
-export default function getNotes({ databaseId, token }) {
-	return fetch(`https://api.airtable.com/v0/${databaseId}/songs/`, {
+export default function getNotes({ baseUrl, token }) {
+	return fetch(`${baseUrl}/songs/`, {
 		headers: {
 			Authorization: `Bearer ${token}`
 		}
