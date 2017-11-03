@@ -29,11 +29,6 @@ export default class NavBarComponent extends PureComponent {
 								Sound Studio
 							</NavItem>
 						</LinkContainer>
-						<LinkContainer to="/login" exact>
-							<NavItem eventKey={4} className="nav-item nav-link" href="/" title="logout">
-								Logout
-							</NavItem>
-						</LinkContainer>
 					</Nav>
 				</Navbar>
 			: <Navbar fixedTop className="Nav" id="myNavbar">

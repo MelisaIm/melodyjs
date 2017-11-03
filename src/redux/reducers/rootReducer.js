@@ -26,7 +26,7 @@ export default function rootReducer(
 			authorId: ''
 		},
 		songId: null,
-		loggedUser: {}
+		loggedUser: null
 	},
 	action
 ) {
@@ -128,6 +128,9 @@ export default function rootReducer(
 		// AUTH
 		case 'LOGIN_USER':
 			return { ...currentState, loggedUser: action.user };
+		case 'LOGOUT_USER':
+			const loggedUser = Object.assign({});
+			return { ...currentState, loggedUser };
 		default:
 			return currentState;
 	}

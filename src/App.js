@@ -23,7 +23,7 @@ export default class App extends Component {
 	render() {
 		function getInitialState(authentication) {
 			console.log(authentication);
-			return Object.keys(authentication).length !== 0
+			return authentication
 				? Object.assign(
 						{},
 						{
