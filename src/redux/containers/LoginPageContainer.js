@@ -5,9 +5,7 @@ import loginProcess from '../thunks/loginProcess';
 import LoginPage from '../../components/Login/LoginPage';
 
 function mapStateToProps(state) {
-	const loggedUser = !state.loggedUser ? null : state.loggedUser;
-
-	return { loggedUser };
+	return { loggedUser: state.loggedUser };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {

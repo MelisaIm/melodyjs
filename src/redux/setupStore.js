@@ -5,6 +5,6 @@ import env from '../env';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancers = composeEnhancers(applyMiddleware(thunkMiddleware.withExtraArgument(env)));
-export default function setupStore() {
-	return createStore(rootReducer, enhancers);
+export default function setupStore(initalState) {
+	return createStore(rootReducer, initalState, enhancers);
 }

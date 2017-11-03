@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import IndexPage from './components/IndexView/IndexPage';
 import NotFoundPage from './components/NotFoundPage';
-import LoggedOutPage from './components/LoggedOutPage';
-import getSongsProcess from './redux/thunks/getSongsProcess';
+// import LoggedOutPage from './components/LoggedOutPage';
+// import getSongsProcess from './redux/thunks/getSongsProcess';
 import LibraryPageContainer from './redux/containers/LibraryPageContainer';
 import SoundStudioPageContainer from './redux/containers/SoundStudioPageContainer';
 import LoginPageContainer from './redux/containers/LoginPageContainer';
@@ -12,26 +12,79 @@ import SignupPageContainer from './redux/containers/SignupPageContainer';
 import setupStore from './redux/setupStore';
 
 export default class App extends Component {
-	componentDidMount() {
-		getSongsProcess();
-	}
-
-	updateData = () => {
-		getSongsProcess();
-	};
+	// componentDidMount() {
+	// 	getSongsProcess();
+	// }
+	//
+	// updateData = () => {
+	// 	getSongsProcess();
+	// };
 
 	render() {
 		function getInitialState(authentication) {
-			return authentication && Object.keys(authentication)
+			return authentication
 				? Object.assign(
 						{},
 						{
+							data: [],
+							sortedSongs: null,
+							playingChord: null,
+							song: {
+								melody: [
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+								],
+								title: 'Untitled',
+								description: 'New song',
+								authorId: ''
+							},
+							songId: null,
 							token: authentication.token,
 							authenticatedUserId: authentication.user.id,
 							loggedUser: authentication.user
 						}
 					)
-				: {};
+				: {
+						data: [],
+						sortedSongs: null,
+						playingChord: null,
+						song: {
+							melody: [
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+							],
+							title: 'Untitled',
+							description: 'New song',
+							authorId: ''
+						},
+						songId: null
+					};
 		}
 		return (
 			<div className="App">

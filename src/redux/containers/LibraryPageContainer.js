@@ -5,12 +5,11 @@ import { compose, lifecycle } from 'recompose';
 // import sortSongsProcess from '../thunks/sortSongsProcess';
 
 function mapStateToProps(state) {
-	const loggedUser = !state.loggedUser ? null : state.loggedUser;
 	return {
 		data: state.data,
 		song: state.song,
 		sortedSongs: state.sortedSongs,
-		loggedUser
+		loggedUser: state.loggedUser
 	};
 }
 

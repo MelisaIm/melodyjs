@@ -10,8 +10,6 @@ import { withRouter } from 'react-router-dom';
 import { compose, lifecycle } from 'recompose';
 
 function mapStateToProps(state, ownProps) {
-	const loggedUser = !state.loggedUser ? null : state.loggedUser;
-
 	return {
 		playingChord: state.playingChord,
 		songId: ownProps.songId,
@@ -35,7 +33,7 @@ function mapStateToProps(state, ownProps) {
 		],
 		instruments: ['Synth'],
 		data: state.data,
-		loggedUser
+		loggedUser: state.loggedUser
 	};
 }
 
