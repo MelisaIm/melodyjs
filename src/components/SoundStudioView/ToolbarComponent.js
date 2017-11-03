@@ -65,20 +65,35 @@ export default function ToolbarComponent({
 							{' '}DELETE SONG{' '}
 						</button>
 					</div>
-				: <div className="ToolbarComponent">
-						<button
-							className="action-button action-button-save"
-							onClick={_handleSave}
-							disabled={playingChord}>
-							{' '}SAVE NEW{' '}
-						</button>
-						<button
-							className="action-button action-button-clear"
-							onClick={_handleClear}
-							disabled={playingChord}>
-							{' '}CLEAR{' '}
-						</button>
-					</div>}
+				: loggedUser
+					? <div className="ToolbarComponent">
+							<button
+								className="action-button action-button-save"
+								onClick={_handleSave}
+								disabled={playingChord}>
+								{' '}SAVE NEW{' '}
+							</button>
+							<button
+								className="action-button action-button-clear"
+								onClick={_handleClear}
+								disabled={playingChord}>
+								{' '}CLEAR{' '}
+							</button>
+						</div>
+					: <div className="ToolbarComponent">
+							<button
+								className="action-button action-button-save"
+								onClick={_handleSave}
+								disabled={true}>
+								{' '}SAVE{' '}
+							</button>
+							<button
+								className="action-button action-button-clear"
+								onClick={_handleClear}
+								disabled={playingChord}>
+								{' '}CLEAR{' '}
+							</button>
+						</div>}
 		</div>
 	);
 }

@@ -127,10 +127,9 @@ export default function rootReducer(
 			return { ...currentState, playingChord: action.chord };
 		// AUTH
 		case 'LOGIN_USER':
-			return { ...currentState, loggedUser: action.user };
+			return { ...currentState, loggedUser: action.loggedUser };
 		case 'LOGOUT_USER':
-			const loggedUser = Object.assign({});
-			return { ...currentState, loggedUser };
+			return { ...currentState, loggedUser: undefined };
 		default:
 			return currentState;
 	}

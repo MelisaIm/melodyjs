@@ -1,33 +1,32 @@
-import { lifecycle } from 'recompose';
+// import { lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import loginProcess from '../thunks/loginProcess';
-import logOutProcess from '../thunks/logoutProcess';
 import LoginPage from '../../components/Login/LoginPage';
 
 function mapStateToProps(state) {
-	return { loggedUser: state.loggedUser };
+	const loggedUser = !state.loggedUser ? null : state.loggedUser;
+
+	return { loggedUser };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
 		onSubmit: ({ userName, password, history }) => {
 			dispatch(loginProcess({ userName, password }, history));
+		},
+		onLogOut: loggedUser => {
+			localStorage.removeItem('token');
+			dispatch({ type: 'LOGOUT_USER' });
 		}
-		// ,
-		// onLogOut: loggedUser => {
-		// 	logOutProcess(loggedUser);
-		// }
 	};
 }
 
 const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 
-const withLifeCycle = lifecycle({
-	componentDidMount(props) {
-		console.log(props);
-	}
-});
+// const withLifeCycle = lifecycle({
+// 	componentDidMount(props) {}
+// });
 
-export default connectToStore(withRouter(withLifeCycle(LoginPage)));
-// export default connectToStore(withRouter(LoginPage));
+// export default connectToStore(withRouter(withLifeCycle(LoginPage)));
+export default connectToStore(withRouter(LoginPage));

@@ -12,7 +12,9 @@ export default class LoginComponent extends PureComponent {
 		return (
 			<form className="login" onSubmit={this._handleSubmit}>
 				<FormGroup className="loginForm" controlId="formControlsTextarea">
-					<div className="center bold">Login</div>
+					{this.props.loggedUser
+						? <div className="center bold">Logout</div>
+						: <div className="center bold">Login</div>}
 					<ControlLabel>Username</ControlLabel>
 					<FormControl
 						className="Form-username"
@@ -29,11 +31,17 @@ export default class LoginComponent extends PureComponent {
 						placeholder="password"
 						required
 					/>
-					<div className="center">
-						<Button className="submitBtn" type="submit">
-							Submit
-						</Button>
-					</div>
+					{this.props.loggedUser
+						? <div className="center">
+								<Button className="submitBtn" type="submit">
+									Logout
+								</Button>
+							</div>
+						: <div className="center">
+								<Button className="submitBtn" type="submit">
+									Submit
+								</Button>
+							</div>}
 				</FormGroup>
 			</form>
 		);

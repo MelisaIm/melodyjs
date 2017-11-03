@@ -6,9 +6,13 @@ import Footer from '../NavBar/FooterComponent';
 export default function LoginPage({ onSubmit, history, onLogOut, loggedUser }) {
 	return (
 		<div className="LoginPage">
-			<NavBar />
+			<NavBar loggedUser={loggedUser} />
 			<div className="logincontainer">
-				<LoginComponent onSubmit={onSubmit} history={history} />
+				<LoginComponent
+					onSubmit={loggedUser ? onLogOut : onSubmit}
+					history={history}
+					loggedUser={loggedUser}
+				/>
 			</div>
 			<Footer />
 		</div>

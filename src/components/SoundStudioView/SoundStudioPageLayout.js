@@ -26,7 +26,7 @@ export default function SoundStudioPageLayout({
 }) {
 	return (
 		<div className="Page">
-			<NavBarComponent loggedUser={loggedUser} />
+			<NavBarComponent loggedUser={localStorage.getItem('token') ? true : false} />
 			<div className="SoundStudioPageLayout">
 				<div className="formlayout">
 					<Form

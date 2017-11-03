@@ -22,14 +22,13 @@ export default class App extends Component {
 
 	render() {
 		function getInitialState(authentication) {
-			console.log(authentication);
-			return authentication
+			return authentication && Object.keys(authentication)
 				? Object.assign(
 						{},
 						{
 							token: authentication.token,
 							authenticatedUserId: authentication.user.id,
-							user: authentication.user
+							loggedUser: authentication.user
 						}
 					)
 				: {};

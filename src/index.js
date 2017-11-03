@@ -9,7 +9,6 @@ async function render() {
 	const authentication = await checkAuthentication({
 		baseUrl: env.BASE_URL
 	});
-	console.log(authentication);
 	ReactDOM.render(<App authentication={authentication} />, document.getElementById('root'));
 }
 

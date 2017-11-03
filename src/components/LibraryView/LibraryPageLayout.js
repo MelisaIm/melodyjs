@@ -15,7 +15,7 @@ export default function LibraryPageLayout({
 	if (Array.isArray(data) && data.length > 0) {
 		return (
 			<div className="LibraryPageLayout">
-				<NavBar loggedUser={loggedUser} />
+				<NavBar loggedUser={localStorage.getItem('token') ? true : false} />
 				<div className="LibraryPageContent">
 					<LibrarySortComponent
 						data={data}
