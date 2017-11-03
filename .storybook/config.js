@@ -17,7 +17,8 @@ function loadStories() {
 	require('../src/components/LibraryView/LibraryPageLayout.story');
 	// Login
 	require('../src/components/Login/LoginComponent.story');
-	// require('../src/components/Login/LoginPage.story');
 	require('../src/components/Login/SignupComponent.story');
+	// Token
+	require('../src/components/Tags/TagDisplayComponent.story');
 }
 configure(loadStories, module);

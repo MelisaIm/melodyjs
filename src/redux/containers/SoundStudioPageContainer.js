@@ -5,6 +5,7 @@ import updateSongProcess from '../thunks/updateSongProcess';
 import deleteSongProcess from '../thunks/deleteSongProcess';
 import createSongProcess from '../thunks/createSongProcess';
 import getSongsProcess from '../thunks/getSongsProcess';
+import addTagsToSongsProcess from '../thunks/addTagsToSongsProcess';
 import { withRouter } from 'react-router-dom';
 
 import { compose, lifecycle } from 'recompose';
@@ -101,8 +102,8 @@ function mapDispatchToProps(dispatch, ownProps) {
 		passChord: chord => {
 			dispatch({ type: 'PASS_CHORD', chord });
 		},
-		addTag: (id, tags) => {
-			dispatch(addTagsToSongProcess(id, tags));
+		addTag: (userId, tags, song) => {
+			dispatch(addTagsToSongsProcess(userId, tags, song));
 		}
 	};
 }

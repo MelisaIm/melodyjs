@@ -27,25 +27,31 @@ export default function SoundStudioPageLayout({
 	loggedUser,
 	addTags
 }) {
+	console.log(loggedUser, song);
 	return (
 		<div className="Page">
-			<NavBarComponent loggedUser={localStorage.getItem('token') ? true : false} />
+			<NavBarComponent loggedUser={loggedUser} />
 			<div className="SoundStudioPageLayout">
-				<div className="formlayout">
-					<Form
-						data={data}
-						songId={songId}
-						onEditForm={onEditForm}
-						song={song}
-						loggedUser={loggedUser}
-					/>
-					<TagInputComponent
-						addTags={addTags}
-						tags={song.tags}
-						song={song}
-						loggedUser={loggedUser}
-					/>
-				</div>
+				{loggedUser.id === song.authorId
+					? <div className="formlayout">
+							<Form
+								data={data}
+								songId={songId}
+								onEditForm={onEditForm}
+								song={song}
+								loggedUser={loggedUser}
+							/>
+							<TagInputComponent
+								addTags={addTags}
+								tags={song.tags}
+								song={song}
+								loggedUser={loggedUser}
+							/>
+						</div>
+					: <div className="formlayout bold">
+							{song.title} {song.description}
+							<TagDisplayComponent />
+						</div>}
 				<div className="left">
 					<NotesComponent
 						notes={notes}

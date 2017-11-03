@@ -247,3 +247,50 @@ button:disabled {
 .searchSortLabel {
 	margin-left: 20px;
 }
+
+/*TAGS*/
+
+.tagsContainer {
+	display: flex;
+	flex-flow: row;
+}
+
+.tag {
+	color: white;
+	border-radius: 5px;
+	height: 30px;
+	padding: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.red {
+	background-color: red;
+}
+.black {
+	background-color: black;
+}
+.blue {
+	background-color: blue;
+}
+
+.green {
+	background-color: green;
+}
+.pink {
+	background-color: pink;
+}
+.purple {
+	background-color: purple;
+}
+.violet {
+	background-color: violet;
+}
+.indigo {
+	background-color: indigo;
+}
+
+.tagInput {
+	display: inline;
+	width: 340px;
+}
