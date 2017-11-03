@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
 import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-// import CSSModules from 'react-css-modules';
-import styles from './login.css';
 
 export default class SignupComponent extends PureComponent {
 	constructor(props) {
