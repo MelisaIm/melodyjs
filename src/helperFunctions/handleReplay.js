@@ -8,6 +8,15 @@ export default function handleReplay(song, passChord) {
 			let chordArray = song.melody.map(array => array[chord]).filter(note => note !== 0);
 			arrayOfChords.push(chordArray);
 		});
+
+		let isEmpty = array => {
+			return Array.isArray(array) && array.every(isEmpty);
+		};
+
+		if (isEmpty(arrayOfChords)) {
+			return;
+		}
+
 		arrayOfChords.forEach((chord, index) => {
 			setTimeout(() => {
 				passChord(index);

@@ -61,6 +61,21 @@ function mapDispatchToProps(dispatch, ownProps) {
 			}
 		},
 		onSave: (song, id, history) => {
+			const chords = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+			const arrayOfChords = [];
+			chords.forEach(chord => {
+				let chordArray = song.melody.map(array => array[chord]).filter(note => note !== 0);
+				arrayOfChords.push(chordArray);
+			});
+
+			let isEmpty = array => {
+				return Array.isArray(array) && array.every(isEmpty);
+			};
+
+			if (isEmpty(arrayOfChords)) {
+				history.push('/studio');
+				return;
+			}
 			if (id) {
 				const update = song.melody;
 				song = { ...song, melody: update };

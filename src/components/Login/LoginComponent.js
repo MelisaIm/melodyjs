@@ -8,42 +8,57 @@ export default class LoginComponent extends PureComponent {
 	}
 	render() {
 		return (
-			<form className="login" onSubmit={this._handleSubmit}>
-				<FormGroup className="loginForm" controlId="formControlsTextarea">
-					{this.props.loggedUser
-						? <div className="center bold">Logout</div>
-						: <div className="center bold">Login</div>}
-					<ControlLabel>Username</ControlLabel>
-					<FormControl
-						className="Form-username"
-						name="userName"
-						type="text"
-						placeholder="username"
-						required
-					/>
-					<ControlLabel>Password</ControlLabel>
-					<FormControl
-						className="Form-password"
-						type="password"
-						name="password"
-						placeholder="password"
-						required
-					/>
-					{this.props.loggedUser
-						? <div className="center">
-								<Button className="submitBtn" type="submit">
-									Logout
-								</Button>
-							</div>
-						: <div className="center">
-								<Button className="submitBtn" type="submit">
-									Submit
-								</Button>
-							</div>}
-				</FormGroup>
-			</form>
+			<div>
+				{this.props.loggedUser
+					? <form className="login" onSubmit={this._handleLogOut}>
+							<FormGroup className="loginForm" controlId="formControlsTextarea">
+								<div className="center bold">
+									Log out {this.props.loggedUser.userName}?
+								</div>
+
+								<div className="center">
+									<Button className="submitBtn" type="submit">
+										Confirm
+									</Button>
+								</div>
+							</FormGroup>
+						</form>
+					: <form className="login" onSubmit={this._handleSubmit}>
+							<FormGroup className="loginForm" controlId="formControlsTextarea">
+								<div className="center bold">Login</div>
+								<ControlLabel>Username</ControlLabel>
+								<FormControl
+									className="Form-username"
+									name="userName"
+									type="text"
+									placeholder="username"
+									required
+								/>
+								<ControlLabel>Password</ControlLabel>
+								<FormControl
+									className="Form-password"
+									type="password"
+									name="password"
+									placeholder="password"
+									required
+								/>
+								<div className="center">
+									<Button className="submitBtn" type="submit">
+										Submit
+									</Button>
+								</div>
+							</FormGroup>
+						</form>}
+			</div>
 		);
 	}
+
+	_handleLogOut = event => {
+		event.preventDefault();
+		this.props.onSubmit({
+			history: this._history
+		});
+	};
 
 	_handleSubmit = event => {
 		event.preventDefault();

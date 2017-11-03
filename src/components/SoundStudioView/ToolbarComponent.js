@@ -34,59 +34,63 @@ export default function ToolbarComponent({
 		onDelete(songId, history);
 	}
 
-	return (
-		<div className="ToolbarComponent">
-			<h1>Options</h1>
-			<button
-				className="action-button action-button-replay"
-				onClick={_handleReplay}
-				disabled={playingChord}>
-				{' '}PLAY SONG{' '}
-			</button>
+	if (history.location.pathname === '/studio') {
+		return (
+			<div className="ToolbarComponent">
+				<h1>Options</h1>
+				<button
+					className="action-button action-button-replay"
+					onClick={_handleReplay}
+					disabled={playingChord}>
+					{' '}PLAY SONG{' '}
+				</button>
+				<button
+					className="action-button action-button-save"
+					onClick={_handleSave}
+					disabled={playingChord}>
+					{' '}SAVE NEW{' '}
+				</button>
+				<button
+					className="action-button action-button-clear"
+					onClick={_handleClear}
+					disabled={playingChord}>
+					{' '}CLEAR CANVAS{' '}
+				</button>
+			</div>
+		);
+	} else {
+		return (
+			<div className="ToolbarComponent">
+				<h1>Options</h1>
+				<button
+					className="action-button action-button-replay"
+					onClick={_handleReplay}
+					disabled={playingChord}>
+					{' '}PLAY SONG{' '}
+				</button>
 
-			{songId
-				? <div className="ToolbarComponent">
-						<button
-							className="action-button action-button-save"
-							onClick={_handleSave}
-							disabled={playingChord}>
-							{' '}SAVE CHANGES{' '}
-						</button>
-						<button
-							className="action-button action-button-undo"
-							onClick={_handleClear}
-							disabled={playingChord}>
-							{' '}UNDO CHANGES{' '}
-						</button>
-						<button
-							className="action-button action-button-delete"
-							onClick={_handleDelete}
-							disabled={playingChord}>
-							{' '}DELETE SONG{' '}
-						</button>
-					</div>
-				: loggedUser
+				{song.authorId === loggedUser.id
 					? <div className="ToolbarComponent">
 							<button
 								className="action-button action-button-save"
 								onClick={_handleSave}
 								disabled={playingChord}>
-								{' '}SAVE NEW{' '}
+								{' '}SAVE CHANGES{' '}
 							</button>
 							<button
-								className="action-button action-button-clear"
+								className="action-button action-button-undo"
 								onClick={_handleClear}
 								disabled={playingChord}>
-								{' '}CLEAR{' '}
+								{' '}UNDO CHANGES{' '}
+							</button>
+							<button
+								className="action-button action-button-delete"
+								onClick={_handleDelete}
+								disabled={playingChord}>
+								{' '}DELETE SONG{' '}
 							</button>
 						</div>
 					: <div className="ToolbarComponent">
-							<button
-								className="action-button action-button-save"
-								onClick={_handleSave}
-								disabled={true}>
-								{' '}SAVE{' '}
-							</button>
 							<button
 								className="action-button action-button-clear"
 								onClick={_handleClear}
@@ -94,6 +98,7 @@ export default function ToolbarComponent({
 								{' '}CLEAR{' '}
 							</button>
 						</div>}
-		</div>
-	);
+			</div>
+		);
+	}
 }
