@@ -45,11 +45,11 @@ export default function SoundStudioPageLayout({
 						playingChord={playingChord}
 					/>
 					<div className="songInfo" />
-					{`Composed by: ${data.find(tune => tune.id === song.id)
-						? data.find(tune => tune.id === song.id).userName
-						: 'UNKNOWN'} on ${data.find(tune => tune.id === song.id)
-						? new Date(Date.parse(data.find(tune => tune.id === song.id).createdAt)).toDateString()
-						: ''}`}
+
+					{data && data.length > 0 && song.id
+						? `Composed by: ${data.find(tune => tune.id === song.id).userName} on
+					${new Date(Date.parse(data.find(tune => tune.id === song.id).createdAt)).toDateString()}`
+						: null}
 				</div>
 				<div className="right">
 					<ToolbarComponent
