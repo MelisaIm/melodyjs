@@ -17,7 +17,8 @@ export default function SoundStudioPage({
 	passChord,
 	playingChord,
 	history,
-	loggedUser
+	loggedUser,
+	addTags
 }) {
 	return (
 		<div className="SoundStudioPage">
@@ -38,6 +39,7 @@ export default function SoundStudioPage({
 				passChord={passChord}
 				history={history}
 				loggedUser={loggedUser}
+				addTags={addTags}
 			/>
 		</div>
 	);

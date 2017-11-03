@@ -5,6 +5,8 @@ import InstrumentsComponent from './InstrumentsComponent';
 import FooterComponent from '../NavBar/FooterComponent';
 import NavBarComponent from '../NavBar/NavBarComponent';
 import Form from './Form';
+import TagDisplayComponent from '../Tags/TagDisplayComponent';
+import TagInputComponent from '../Tags/TagInputComponent';
 
 export default function SoundStudioPageLayout({
 	notes,
@@ -22,7 +24,8 @@ export default function SoundStudioPageLayout({
 	passChord,
 	playingChord,
 	history,
-	loggedUser
+	loggedUser,
+	addTags
 }) {
 	return (
 		<div className="Page">
@@ -33,6 +36,12 @@ export default function SoundStudioPageLayout({
 						data={data}
 						songId={songId}
 						onEditForm={onEditForm}
+						song={song}
+						loggedUser={loggedUser}
+					/>
+					<TagInputComponent
+						addTags={addTags}
+						tags={song.tags}
 						song={song}
 						loggedUser={loggedUser}
 					/>
@@ -50,6 +59,7 @@ export default function SoundStudioPageLayout({
 						? `Composed by: ${data.find(tune => tune.id === song.id).userName} on
 					${new Date(Date.parse(data.find(tune => tune.id === song.id).createdAt)).toDateString()}`
 						: null}
+					<TagDisplayComponent tags={song.tags} song={song} />
 				</div>
 				<div className="right">
 					<ToolbarComponent

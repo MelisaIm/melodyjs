@@ -100,6 +100,9 @@ function mapDispatchToProps(dispatch, ownProps) {
 		},
 		passChord: chord => {
 			dispatch({ type: 'PASS_CHORD', chord });
+		},
+		addTag: (id, tags) => {
+			dispatch(addTagsToSongProcess(id, tags));
 		}
 	};
 }
