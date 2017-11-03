@@ -13,9 +13,10 @@ function mapDispatchToProps(dispatch, ownProps) {
 		onSubmit: ({ userName, password, history }) => {
 			dispatch(loginProcess({ userName, password }, history));
 		},
-		onLogOut: loggedUser => {
+		onLogOut: ({ userName, password, history }) => {
 			localStorage.removeItem('token');
 			dispatch({ type: 'LOGOUT_USER' });
+			history.push('/');
 		}
 	};
 }
