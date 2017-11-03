@@ -6,7 +6,6 @@ export default function LibraryCardComponent({ song = {} }) {
 	function _handleReplay() {
 		handleReplay(song, () => {});
 	}
-
 	if (song && Array.isArray(song.melody)) {
 		return (
 			<div className="LibraryCardComponent">
@@ -36,19 +35,23 @@ export default function LibraryCardComponent({ song = {} }) {
 					</div>
 					<div className="card-block">
 						<h4 className="card-title">
-							{song.title ? song.title : 'Song Title'}
+							{song ? `${song.title || ''}` : null}
 						</h4>
+						<p className="card-text">
+							{`by ${song.userName}`}
+						</p>
 						<p className="card-text">
 							{song.description ? song.description : 'Song Description'}
 						</p>
+
 						<div className="card-buttons">
 							<LinkContainer to={`/studio/${song.id}`} exact>
 								<a href={`/studio/${song.id}`} className="btn btn-primary">
-									Edit
+									Open
 								</a>
 							</LinkContainer>
 							<a className="btn btn-primary" onClick={_handleReplay}>
-								Preview
+								Play
 							</a>
 						</div>
 					</div>
