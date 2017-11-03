@@ -5,7 +5,7 @@ export default function createSongProcess(song, history) {
 		const { loggedUser, token } = getState();
 		return createSong(song, {
 			baseUrl: env.BASE_URL,
-			token: token,
+			token,
 			authorId: loggedUser.id
 		}).then(song => {
 			dispatch({ type: 'CREATE_SONG', song });

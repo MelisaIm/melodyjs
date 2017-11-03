@@ -2,7 +2,7 @@ export default function updateSong(id, update, { baseUrl, token }) {
 	return fetch(`${baseUrl}/songs/${id}`, {
 		method: 'PATCH',
 		headers: {
-			// Authorization: `Bearer ${token}`,
+			Authorization: `Bearer ${token}`,
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({

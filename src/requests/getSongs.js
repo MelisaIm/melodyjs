@@ -1,7 +1,8 @@
 export default function getNotes({ baseUrl, token }) {
 	return fetch(`${baseUrl}/songs/`, {
 		headers: {
-			Authorization: `Bearer ${token}`
+			Authorization: `Bearer ${token}`,
+			'Content-Type': 'application/json'
 		}
 	})
 		.then(response => response.json())

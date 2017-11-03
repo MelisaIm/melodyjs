@@ -5,7 +5,7 @@ export default function deleteSongProcess(id, history) {
 		const { token } = getState();
 		return deleteSong(id, {
 			baseUrl: env.BASE_URL,
-			token: token
+			token
 		}).then(result => {
 			dispatch({ type: 'DELETE_SONG', id });
 			history.push(`/library`);

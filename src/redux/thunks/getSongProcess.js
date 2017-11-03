@@ -5,7 +5,7 @@ export default function getSongProcess(id) {
 		const { token } = getState();
 		return getSong(id, {
 			baseUrl: env.BASE_URL,
-			token: token
+			token
 		}).then(song => {
 			dispatch({ type: 'GET_SONG', song });
 			return song;
