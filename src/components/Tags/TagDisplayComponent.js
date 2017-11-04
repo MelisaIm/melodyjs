@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TagDisplayComponent({ tags = [], song }) {
+export default function TagDisplayComponent({ tags = ['happy', 'weird', 'new'], song }) {
 	const colors = ['red', 'black', 'blue', 'green', 'pink', 'purple', 'violet', 'indigo'];
 
 	return (

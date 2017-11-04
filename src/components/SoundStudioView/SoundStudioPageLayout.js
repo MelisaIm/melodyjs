@@ -46,7 +46,6 @@ export default function SoundStudioPageLayout({
 							song={song}
 							loggedUser={loggedUser}
 						/>
-						<TagDisplayComponent tags={song.tags} />
 					</div>
 
 					<div className="left">
@@ -57,7 +56,7 @@ export default function SoundStudioPageLayout({
 							playingChord={playingChord}
 						/>
 						<div className="songInfo" />
-						<TagDisplayComponent tags={song.tags} song={song} />
+						<TagDisplayComponent tags={[song.tags]} song={song} />
 					</div>
 					<div className="right">
 						<ToolbarComponent
@@ -100,7 +99,6 @@ export default function SoundStudioPageLayout({
 									song={song}
 									loggedUser={loggedUser}
 								/>
-								<TagDisplayComponent tags={song.tags} />
 							</div>
 						: <div className="formlayout songtitleDisplay">
 								<div>
@@ -112,7 +110,6 @@ export default function SoundStudioPageLayout({
 									<p>
 										{song.description}
 									</p>
-									<TagDisplayComponent tags={song.tags} />
 								</div>
 							</div>}
 					<div className="left">
