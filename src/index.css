@@ -82,7 +82,7 @@ button:disabled {
 }
 
 .formlayout {
-	margin-left: 180px;
+	margin-left: 50px;
 	margin-top: 20px;
 	width: 100vw;
 	text-align: center;
@@ -293,4 +293,11 @@ button:disabled {
 .tagInput {
 	display: inline;
 	width: 340px;
+}
+
+.songtitleDisplay {
+	padding-left: 30px;
+	display: flex;
+	flex-flow: column;
+	text-align: left;
 }

@@ -21,7 +21,9 @@ export default class Form extends Component {
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 			],
-			info: { title: '', description: '' }
+			title: '',
+			description: '',
+			authorId: ''
 		}
 	};
 
