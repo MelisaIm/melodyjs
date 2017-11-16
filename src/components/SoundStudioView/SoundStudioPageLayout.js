@@ -56,7 +56,7 @@ export default function SoundStudioPageLayout({
 							playingChord={playingChord}
 						/>
 						<div className="songInfo" />
-						<TagDisplayComponent tags={[song.tags]} song={song} />
+						<TagDisplayComponent tags={song.tags} song={song} />
 					</div>
 					<div className="right">
 						<ToolbarComponent
