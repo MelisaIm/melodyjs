@@ -9,22 +9,22 @@
 		"deep-freeze": "0.0.1",
 		"enzyme": "^2.9.1",
 		"font-awesome": "^4.7.0",
-		"jest": "^21.1.0",
-		"jest-cli": "^21.1.0",
-		"jest-fetch-mock": "^1.2.1",
+		"jest": "^21.2.1",
+		"jest-cli": "^21.2.1",
+		"jest-fetch-mock": "^1.5.0",
 		"jwt-decode": "^2.2.0",
 		"lodash.defer": "^4.1.0",
-		"react": "^15.6.1",
-		"react-bootstrap": "^0.31.3",
-		"react-css-modules": "^4.7.1",
-		"react-dom": "^15.6.1",
-		"react-redux": "^5.0.6",
+		"react": "^15.6.2",
+		"react-bootstrap": "^0.31.5",
+		"react-css-modules": "^4.7.2",
+		"react-dom": "^15.6.2",
+		"react-redux": "^5.0.7",
 		"react-router": "^4.2.0",
 		"react-router-bootstrap": "^0.24.4",
 		"react-router-dom": "^4.2.2",
 		"react-scripts": "1.0.13",
-		"react-test-renderer": "^15.6.1",
-		"recompose": "^0.25.0",
+		"react-test-renderer": "^15.6.2",
+		"recompose": "^0.25.1",
 		"redux": "^3.7.2",
 		"redux-thunk": "^2.2.0",
 		"tone": "^0.11.12"
@@ -38,7 +38,7 @@
 		"deploy": "cp build/index.html build/200.html; surge -p build/ -d melodyjs.surge.sh"
 	},
 	"devDependencies": {
-		"@storybook/react": "^3.2.8",
-		"redux-devtools": "^3.4.0"
+		"@storybook/react": "^3.4.3",
+		"redux-devtools": "^3.4.1"
 	}
 }
